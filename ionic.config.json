@@ -1,0 +1,7 @@
+{
+  "name": "deals4nation",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
