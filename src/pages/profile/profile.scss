@@ -1,3 +1,31 @@
 page-profile {
-
+  .label-md[stacked],
+  .label-md[floating] {
+    margin: 0px;
+  }
+  .item-md {
+    padding-left: 0px;
+  }
+  .profilename .item-input {
+    border-bottom: 1px solid #dedede;
+  }
+  .profilename ion-icon {
+    color: blueviolet;
+  }
+  .changepassword ion-icon {
+    color: blueviolet;
+  }
+  .whitebackground {
+    background: white;
+  }
+  .item-md ion-icon[item-start]+.item-inner {
+    margin-left: 0px;
+  }
+  .swiper-slide img {
+    height: auto;
+  }
+  .scroll-content {
+    padding-bottom: 0px !important;
+    margin-top: 90px !important;
+  }
 }

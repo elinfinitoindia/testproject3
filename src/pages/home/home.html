@@ -1,9 +1,3 @@
-<!--
-  Generated template for the HomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -11,10 +5,16 @@
     </button>
     <ion-title class="pagetitle">Deals Wale</ion-title>
   </ion-navbar>
+  <toolsegmentbtn (tabsindex)="slideChangeByTab($event)"></toolsegmentbtn>
 </ion-header>
 
 
-<ion-content padding>
-  <offercards></offercards>
-  jfdhgkjdfhgjkfdgh
+<ion-content>
+  <!--
+    <offercards [lists]="listcards"></offercards>
+    <fab></fab> 
+  -->
+
+  <slider (segme)=changetab($event)></slider>
+
 </ion-content>

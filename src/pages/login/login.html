@@ -1,18 +1,79 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="pagetitle">
+      {{title}}
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
+<ion-content>
+  <ion-grid class="margintop">
+    <ion-row text-center>
+      <ion-col col-12>
+        <img src="assets/imgs/logo.png" alt="" width="80px;">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 text-center>
+        <h2 class="welcomecolor">Welcome Back</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col col-12>
+        <span>Login to continue</span>
+      </ion-col>
+    </ion-row>
 
 
-<ion-content padding>
+    <ion-row>
+      <ion-col col-10 offset-1>
+        <button ion-button icon-start block style="text-transform:none;background-color:white;color:black">
+          <ion-icon name="logo-google"></ion-icon>
+          Login with Google
+        </button>
+      </ion-col>
+      <!-- <ion-col col-10 offset-1>
+        <button ion-button icon-start >
+          <ion-icon name="star"></ion-icon>
+          Login with Facebook
+        </button>
+      </ion-col> -->
+
+    </ion-row>
+    <ion-row text-center>
+      <ion-col col-10 offset-1>
+        <form (ngSubmit)="logForm()">
+          <ion-item>
+            <ion-icon name="call"></ion-icon>
+            <ion-label stacked>Mobile Number</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>Enter Password</ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
+          <button ion-button type="submit" block class="submitbutton">Login</button>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center class="forgotbutton">
+      <ion-col>
+        <span>Forgot Password?</span>
+        <!-- <button ion-button clear small class="forgotbutton"></button> -->
+      </ion-col>
+    </ion-row>
+
+    <ion-row text-center style="border-top:1px solid lightgrey;">
+      <ion-col col-12 class="registermargin">
+        <span>Register and Enjoy Benefits</span>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear small class="forgotbutton" (click)="gotoRegister()">Register</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 
 </ion-content>

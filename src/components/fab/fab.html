@@ -1,0 +1,19 @@
+<ion-fab bottom right #fab style="position:fixed">
+  <button ion-fab>
+    <ion-icon name="share" class="sharebtn"></ion-icon>
+  </button>
+  <ion-fab-list side="top">
+    <button ion-fab color="whatsapp" (click)="openSocial('Whatsapp', fab)">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </button>
+    <button ion-fab color="google" (click)="openSocial('Gmail', fab)">
+      <ion-icon name="logo-googleplus"></ion-icon>
+    </button>
+    <button ion-fab color="twitter" (click)="openSocial('Twitter', fab)">
+      <ion-icon name="logo-twitter"></ion-icon>
+    </button>
+    <button ion-fab color="facebook" (click)="openSocial('Facebook', fab)">
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>

@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { ComponentsModule } from './../../components/components.module';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ProfilePage } from './profile';
 
@@ -8,6 +9,8 @@ import { ProfilePage } from './profile';
   ],
   imports: [
     IonicPageModule.forChild(ProfilePage),
+    ComponentsModule
   ],
+  schemas: [NO_ERRORS_SCHEMA]
 })
-export class ProfilePageModule {}
+export class ProfilePageModule { }

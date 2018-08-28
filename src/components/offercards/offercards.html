@@ -1,1 +1,20 @@
-
+<ion-card class="fullwidthcard">
+  <ion-card-content class="nopaddingcard">
+    <ion-row>
+      <ion-col col-8>
+        <span>Popular Brands</span>
+      </ion-col>
+      <ion-col col-4 text-right class="nopaddin">
+        <button ion-button clear small id="Brands" class="viewall" (click)="showAllOffers($event)">View All</button>
+      </ion-col>
+    </ion-row>
+    <ion-item no-lines class="paddingleft">
+      <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
+        <ion-card class="scroll-item" id="largecard" (click)="getList($event);" *ngFor="let items of lists">
+          <img src="assets/imgs/logo.png" class="largecardimg" />
+          <div class="card-title">Total Offers: {{items.title}}</div>
+        </ion-card>
+      </ion-scroll>
+    </ion-item>
+  </ion-card-content>
+</ion-card>

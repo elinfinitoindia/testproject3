@@ -1,0 +1,26 @@
+page-offerdetail {
+  .notopmargin {
+    margin-top: 0px;
+  } // this call is used to remove the background image that work as shadow from
+  // header
+  .header-md::after,
+  .tabs-md[tabsPlacement="top"]>.tabbar::after,
+  .footer-md::before,
+  .tabs-md[tabsPlacement="bottom"]>.tabbar::before {
+    background-image: none;
+  }
+  .couponbtngrid {
+    background: blueviolet;
+  }
+  .valignimage {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  } // this class is used for discounted text
+  .dText {
+    font-size: 2em;
+    font-weight: 500;
+    color: blueviolet;
+  }
+}

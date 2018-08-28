@@ -1,0 +1,14 @@
+<ion-toolbar class="segmentcol">
+  <ion-row>
+    <ion-col class="segmentcol">
+      <ion-segment [(ngModel)]="segments" color="theme">
+        <ion-segment-button value="popular" (click)="selectTab(0)" value="0">
+          Popular
+        </ion-segment-button>
+        <ion-segment-button value="all" (click)="selectTab(1)" value="1">
+          All
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>

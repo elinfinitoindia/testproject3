@@ -3,6 +3,9 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+// this is the definition used for navigating between pages 
+// and also used to allow tab as well as side menu
 export interface PageInterface {
   title: string;
   name: string;
@@ -16,28 +19,26 @@ export interface PageInterface {
   templateUrl: 'app.html'
 })
 
-
-
-
-
 export class MyApp {
+
+  // Rootpage is set to tabs page so that first page is tab page(tabs+sidemenu)
+  // Implementation of lazy loading requires string as no component refrence is required.
   rootPage: string = "tabs-page";
   @ViewChild(Nav) nav: Nav;
 
-
-
+  // the pages that will show tabs require tabcomponent.
   pages: PageInterface[] = [
-    { title: 'Home', name: 'TabsPage', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
-    { title: 'Stores', name: 'TabsPage', component: 'TabsPage', tabComponent: 'StoresPage', index: 1, icon: 'md-basket' },
-    { title: 'Deals', name: 'TabsPage', component: 'TabsPage', tabComponent: 'DealsPage', index: 2, icon: 'md-cash' },
+    { title: 'Home', name: 'tabs-page', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'Stores', name: 'tabs-page', component: 'TabsPage', tabComponent: 'StoresPage', index: 1, icon: 'md-basket' },
+    { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 2, icon: 'md-cash' },
     { title: 'Brands', name: 'BrandsPage', component: 'BrandsPage', icon: 'md-cash' },
+    { title: 'My Account', name: 'ProfilePage', component: 'ProfilePage', icon: 'md-cash' },
+    { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-cash' },
+    { title: 'Detail', name: 'OfferdetailPage', component: 'OfferdetailPage', icon: 'md-cash' },
   ];
 
   openPage(page: PageInterface) {
-    const animationsOptions = {
-      animation: 'md-transition',
-      duration: 1000
-    }
+
     let params = {};
 
     // The index is equal to the order of our tabs inside tabs.ts
@@ -51,7 +52,7 @@ export class MyApp {
     } else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage
-      this.nav.setRoot(page.name, animationsOptions).catch((err: any) => {
+      this.nav.setRoot(page.name, params).catch((err: any) => {
         console.log(`Didn't set nav root: ${err}`);
       });
     }

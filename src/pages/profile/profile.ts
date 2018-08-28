@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RedeemComponent } from './../../components/redeem/redeem';
+import { Component, ViewChild, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides, ModalController, ViewController, Keyboard } from 'ionic-angular';
 
 /**
  * Generated class for the ProfilePage page.
@@ -9,17 +10,49 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 
 @IonicPage()
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
+
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('pageSlider') pageSlider: Slides;
+  tabs: any = '0';
+
+  public profile: any = 'profiledetail';
+  public title: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController, public viewCtrl: ViewController, public keyboard: Keyboard) {
+    this.title = "My Account";
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+  changepassword() {
+    // const modal = this.modal.create(CategoriesPage);
+    // modal.present();
   }
+
+  viewEarnings() {
+    // this.navCtrl.push(EarningsPage);
+  }
+
+
+  selectTab(index) {
+    if (this.keyboard.isOpen()) {
+      this.keyboard.close();
+    }
+    this.pageSlider.slideTo(index);
+  }
+
+
+  changeWillSlide($event) {
+    if (this.keyboard.isOpen()) {
+      this.keyboard.close();
+    }
+    this.tabs = $event._snapIndex.toString();
+  }
+
+
 
 }

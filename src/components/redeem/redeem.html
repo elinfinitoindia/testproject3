@@ -1,0 +1,62 @@
+<ion-card id="fullwidthcard">
+  <ion-slides pager="true" (ionSlideTap)="tap($event)" id="dealslides">
+    <ion-slide>
+      <img src="assets/imgs/banner.jpg">
+    </ion-slide>
+  </ion-slides>
+</ion-card>
+<ion-row>
+  <ion-col col-12>
+    <ion-card id="fullwidthcard" class="changepassword">
+      <ion-card-content>
+        <ion-col col-12>
+          <p>Your Balance</p>
+          <p>Amount</p>
+        </ion-col>
+        <ion-row text-center>
+          <ion-col col-10 offset-1>
+            <form (ngSubmit)="logForm()">
+              <ion-item>
+                <ion-icon name="call"></ion-icon>
+                <ion-label stacked>Mobile Number</ion-label>
+                <ion-input type="number"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked>Amount</ion-label>
+                <ion-input type="password"></ion-input>
+              </ion-item>
+              <button ion-button type="submit" block color="theme" class="submitbutton">Redeem</button>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+</ion-row>
+<ion-grid>
+  <ion-row>
+    <ion-col col-12 text-center>
+      Love The App?
+    </ion-col>
+    <ion-col col-12 text-center>
+      Why not share SHare it ?
+    </ion-col>
+    <ion-col col-12 text-center id="shareicon">
+      <button color="whatsapp" (click)="openSocial('Whatsapp', fab)">
+        <ion-icon name="logo-whatsapp" color="whatsapp"></ion-icon>
+      </button>
+      <button color="facebook" (click)="openSocial('Facebook', fab)">
+        <ion-icon name="logo-facebook" color="facebook"></ion-icon>
+      </button>
+      <button color="google" (click)="openSocial('Gmail', fab)">
+        <ion-icon name="logo-googleplus" color="google"></ion-icon>
+      </button>
+      <button color="twitter" (click)="openSocial('Twitter', fab)">
+        <ion-icon name="logo-twitter" color="twitter"></ion-icon>
+      </button>
+
+
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,23 @@
+<!-- <ion-list [virtualScroll]="items" [approxItemHeight]="'40px'">
+  <ion-item *virtualItem="let item">
+    {{ item.title }}
+  </ion-item>
+</ion-list>
+
+<ion-list [virtualScroll]="categories">
+  <ion-item *virtualItem="let item">
+
+    {{item.title}}
+  </ion-item>
+</ion-list> -->
+
+<ion-list>
+  <ion-item *ngFor="let item of categories ">
+    {{item.title}}
+  </ion-item>
+</ion-list>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="circles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
