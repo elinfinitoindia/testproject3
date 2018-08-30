@@ -35,7 +35,6 @@ export class ToolsegmentbtnComponent {
 
   }
 
-
   slideindexs(index) {
     this.segments = index.toString();
   }
