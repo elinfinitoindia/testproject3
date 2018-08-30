@@ -1,3 +1,4 @@
+import { LoginProvider } from './../../providers/login/login';
 import { ToolsegmentbtnComponent } from './../../components/toolsegmentbtn/toolsegmentbtn';
 import { SliderComponent } from './../../components/slider/slider';
 import { CardlistComponent } from './../../components/cardlist/cardlist';
@@ -6,6 +7,7 @@ import { FabComponent } from './../../components/fab/fab';
 import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component, Output, ViewChild, EventEmitter, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 
 /**
@@ -23,6 +25,14 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 export class HomePage {
 
   public listcards: any = [];
+  displayName: any;
+  email: any;
+  familyName: any;
+  givenName: any;
+  userId: any;
+  imageUrl: any;
+
+  isLoggedIn: boolean = false;
 
 
   @ViewChild(SliderComponent)
@@ -36,9 +46,10 @@ export class HomePage {
   @Input() tabindex;
   @Output() slideindex = new EventEmitter();
 
+  public data;
   public items: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider) {
     this.listcards = [{
       title: 'Prateek', desc: 'hi'
     },
@@ -88,9 +99,48 @@ export class HomePage {
   }
 
   // this method is used to change the slides on tabs changes
+
   changetab(index) {
     this.segmentComponent.segments = index;
   }
 
+
+  // login() {
+  //   this.googlePlus.login({})
+  //     .then(res => {
+  //       console.log(res);
+  //       this.displayName = res.displayName;
+  //       this.email = res.email;
+  //       this.familyName = res.familyName;
+  //       this.givenName = res.givenName;
+  //       this.userId = res.userId;
+  //       this.imageUrl = res.imageUrl;
+  //       this.isLoggedIn = true;
+  //     })
+  //     .catch(err => console.error(err));
+  // }
+
+  login() {
+    this.loginservice.login(res => {
+      this.data = res;
+    });
+
+  }
+
+  logout() {
+    this.googlePlus.logout()
+      .then(res => {
+        console.log(res);
+        this.displayName = "";
+        this.email = "";
+        this.familyName = "";
+        this.givenName = "";
+        this.userId = "";
+        this.imageUrl = "";
+
+        this.isLoggedIn = false;
+      })
+      .catch(err => console.error(err));
+  }
 
 }
