@@ -22,4 +22,13 @@ export class LoginProvider {
       })
   }
 
+
+  logout(callback) {
+    this.googlePlus.logout()
+      .then(res => {
+        callback(res);
+      })
+      .catch(err => console.error(err));
+  }
+
 }

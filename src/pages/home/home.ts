@@ -1,3 +1,4 @@
+import { SharedProvider } from './../../providers/shared/shared';
 import { LoginProvider } from './../../providers/login/login';
 import { ToolsegmentbtnComponent } from './../../components/toolsegmentbtn/toolsegmentbtn';
 import { SliderComponent } from './../../components/slider/slider';
@@ -49,31 +50,32 @@ export class HomePage {
   public data;
   public items: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider) {
-    this.listcards = [{
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider) {
+    this.listcards = [
+      {
+        title: 'Prateek', desc: 'hi'
+      },
+      {
+        title: 'Prateek', desc: 'hi'
+      },
+      {
+        title: 'Prateek', desc: 'hi'
+      },
+      {
+        title: 'Prateek', desc: 'hi'
+      },
+      {
+        title: 'Prateek', desc: 'hi'
+      },
+      {
+        title: 'Prateek', desc: 'hi'
+      },
+      {
+        title: 'Prateek', desc: 'hi'
+      },
+      {
+        title: 'Prateek', desc: 'hi'
+      }
     ];
 
     this.items = [
@@ -121,26 +123,33 @@ export class HomePage {
   // }
 
   login() {
-    this.loginservice.login(res => {
-      this.data = res;
-    });
+    // this.loginservice.login(res => {
+    //   this.data = res;
+    //   this.isLoggedIn = true;
+    // });
+
+    this.sharedService.setUsername('HI');
+
 
   }
 
-  logout() {
-    this.googlePlus.logout()
-      .then(res => {
-        console.log(res);
-        this.displayName = "";
-        this.email = "";
-        this.familyName = "";
-        this.givenName = "";
-        this.userId = "";
-        this.imageUrl = "";
 
-        this.isLoggedIn = false;
-      })
-      .catch(err => console.error(err));
-  }
+
+  /* 
+    logout() {
+      this.googlePlus.logout()
+        .then(res => {
+          console.log(res);
+          this.displayName = "";
+          this.email = "";
+          this.familyName = "";
+          this.givenName = "";
+          this.userId = "";
+          this.imageUrl = "";
+  
+          this.isLoggedIn = false;
+        })
+        .catch(err => console.error(err));
+    } */
 
 }

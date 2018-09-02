@@ -14,4 +14,13 @@ export class SharedProvider {
     console.log('Hello SharedProvider Provider');
   }
 
+
+  setUsername(value) {
+    localStorage.setItem('name', value);
+  }
+
+  getUsername() {
+    localStorage.getItem('name');
+  }
+
 }
