@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { GooglePlus } from '@ionic-native/google-plus';
 /*
   Generated class for the LoginProvider provider.
 
@@ -10,8 +10,25 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LoginProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public googlePlus: GooglePlus) {
     console.log('Hello LoginProvider Provider');
+  }
+
+
+  login(callback) {
+    this.googlePlus.login({})
+      .then(res => {
+        callback(res);
+      })
+  }
+
+
+  logout(callback) {
+    this.googlePlus.logout()
+      .then(res => {
+        callback(res);
+      })
+      .catch(err => console.error(err));
   }
 
 }

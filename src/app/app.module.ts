@@ -4,10 +4,15 @@ import { NgModule, ErrorHandler, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginProvider } from '../providers/login/login';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { OffersProvider } from '../providers/offers/offers';
+import { SharedProvider } from '../providers/shared/shared';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +25,14 @@ import { LoginProvider } from '../providers/login/login';
     IonicModule.forRoot(MyApp, {
       navExitApp: false
     }),
-    ComponentsModule
+    ComponentsModule,
+    HttpClientModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
 
 
   ],
@@ -32,7 +40,11 @@ import { LoginProvider } from '../providers/login/login';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    LoginProvider
+    LoginProvider,
+    GooglePlus,
+    HttpClientModule,
+    OffersProvider,
+    SharedProvider
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
