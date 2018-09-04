@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AppMinimize } from '@ionic-native/app-minimize';
+
 
 
 // this is the definition used for navigating between pages 
@@ -25,6 +27,14 @@ export class MyApp {
   // Implementation of lazy loading requires string as no component refrence is required.
   rootPage: string = "tabs-page";
   @ViewChild(Nav) nav: Nav;
+
+
+
+  constructor(private platform: Platform, private appMinimize: AppMinimize) {
+    this.platform.registerBackButtonAction(() => {
+      this.appMinimize.minimize();
+    });
+  }
 
   // the pages that will show tabs require tabcomponent.
   pages: PageInterface[] = [

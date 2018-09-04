@@ -10,7 +10,7 @@ import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component, Output, ViewChild, EventEmitter, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the HomePage page.
@@ -51,8 +51,8 @@ export class HomePage {
   public data;
   public items: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider) {
-   
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing) {
+
 
   }
 
@@ -94,6 +94,9 @@ export class HomePage {
     //   this.isLoggedIn = true;
     // });
 
+    this.socialSharing.share('hi', 'jsjgjsdfhjksdf', 'http://google.com').then(() => {
+      console.log('share open');
+    });
     this.sharedService.setUsername('HI');
 
 

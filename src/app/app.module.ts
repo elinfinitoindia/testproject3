@@ -1,5 +1,4 @@
 import { ComponentsModule } from './../components/components.module';
-
 import { NgModule, ErrorHandler, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -12,7 +11,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { OffersProvider } from '../providers/offers/offers';
 import { SharedProvider } from '../providers/shared/shared';
-
+import { AppMinimize } from '@ionic-native/app-minimize';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { SharedProvider } from '../providers/shared/shared';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    
 
 
 
@@ -45,6 +46,8 @@ import { SharedProvider } from '../providers/shared/shared';
     HttpClientModule,
     OffersProvider,
     SharedProvider,
+    AppMinimize,
+    SocialSharing
 
   ],
   schemas: [NO_ERRORS_SCHEMA]
