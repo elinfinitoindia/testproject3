@@ -1,4 +1,4 @@
-import { FCM } from '@ionic-native/fcm';
+
 import { SharedProvider } from './../../providers/shared/shared';
 import { LoginProvider } from './../../providers/login/login';
 import { ToolsegmentbtnComponent } from './../../components/toolsegmentbtn/toolsegmentbtn';
@@ -51,17 +51,8 @@ export class HomePage {
   public data;
   public items: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private fcm: FCM) {
-    this.fcm.getToken().then(token => {
-      console.log(token);
-    });
-    this.fcm.onNotification().subscribe(data => {
-      if (data.wasTapped) {
-        console.log("Received in background");
-      } else {
-        console.log("Received in foreground");
-      };
-    });
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider) {
+   
 
   }
 

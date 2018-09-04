@@ -12,7 +12,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { OffersProvider } from '../providers/offers/offers';
 import { SharedProvider } from '../providers/shared/shared';
-import { FCM } from '@ionic-native/fcm';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { FCM } from '@ionic-native/fcm';
     HttpClientModule,
     OffersProvider,
     SharedProvider,
-    FCM
+
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
