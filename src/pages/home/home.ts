@@ -117,6 +117,10 @@ export class HomePage {
     this.sharedService.createToast('hello i hjjhhgfhj');
 
 
+
+    // plugins have updated and we are greatness 
+
+
   }
 
 
