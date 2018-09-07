@@ -13,6 +13,9 @@ import { OffersProvider } from '../providers/offers/offers';
 import { SharedProvider } from '../providers/shared/shared';
 import { AppMinimize } from '@ionic-native/app-minimize';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Clipboard } from '@ionic-native/clipboard';
+import { Toast } from '@ionic-native/toast';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    
+
 
 
 
@@ -47,7 +50,9 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     OffersProvider,
     SharedProvider,
     AppMinimize,
-    SocialSharing
+    SocialSharing,
+    Clipboard,
+    Toast
 
   ],
   schemas: [NO_ERRORS_SCHEMA]

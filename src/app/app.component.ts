@@ -31,8 +31,25 @@ export class MyApp {
 
 
   constructor(private platform: Platform, private appMinimize: AppMinimize) {
+    // this.platform.registerBackButtonAction(() => {
+    //   this.appMinimize.minimize();
+    // });
+    this.initializeApp();
+  }
+
+  initializeApp() {
     this.platform.registerBackButtonAction(() => {
-      this.appMinimize.minimize();
+      // Catches the active view
+      let nav = this.nav.getActiveChildNavs()[0];
+      let activeView = nav.getActive();
+      // Checks if can go back before show up the alert
+      if (activeView.name === 'HomePage') {
+        if (nav.canGoBack()) {
+          nav.pop();
+        } else {
+          alert('backtoexit');
+        }
+      }
     });
   }
 

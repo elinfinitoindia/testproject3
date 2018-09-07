@@ -1,3 +1,4 @@
+import { AppMinimize } from '@ionic-native/app-minimize';
 
 import { SharedProvider } from './../../providers/shared/shared';
 import { LoginProvider } from './../../providers/login/login';
@@ -8,7 +9,7 @@ import { ListComponent } from './../../components/list/list';
 import { FabComponent } from './../../components/fab/fab';
 import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component, Output, ViewChild, EventEmitter, Input } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, Platform } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
@@ -51,8 +52,12 @@ export class HomePage {
   public data;
   public items: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize) {
 
+    this.platform.registerBackButtonAction(() => {
+      console.log('appminimze event fired');
+      this.appMinimize.minimize();
+    });
 
   }
 
@@ -94,10 +99,22 @@ export class HomePage {
     //   this.isLoggedIn = true;
     // });
 
-    this.socialSharing.share('hi', 'jsjgjsdfhjksdf', 'http://google.com').then(() => {
-      console.log('share open');
-    });
-    this.sharedService.setUsername('HI');
+    // this.socialSharing.share("Check this app, alot of daily updated offers, good cashback and many more", null, null, 'http://elinfinitoindia.in').then(() => {
+    //   console.log('share open');
+    // });
+
+    // var data = {
+    //   message: 'hi! Install this app to get daily cashbacks, do not forget ot enter my passcode to get cashbacks',
+    //   subject: null,
+    //   image: null,
+    //   link: 'http://elinfinitoindia.in'
+    // }
+
+
+    // this.sharedService.shareApp(data);
+    // this.sharedService.setUsername('HI');
+
+    this.sharedService.createToast('hello i hjjhhgfhj');
 
 
   }

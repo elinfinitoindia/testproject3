@@ -16,14 +16,16 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 export class DealsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
-    platform.registerBackButtonAction(() => {
-
-    });
+  
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DealsPage');
   }
+
+ 
+
+  
 
 
 }
