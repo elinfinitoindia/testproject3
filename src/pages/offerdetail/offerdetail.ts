@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Clipboard } from '@ionic-native/clipboard';
 
 /**
@@ -16,7 +16,11 @@ import { Clipboard } from '@ionic-native/clipboard';
 })
 export class OfferdetailPage implements AfterViewInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private clipboard: Clipboard) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private clipboard: Clipboard, private platform: Platform) {
+    // this.platform.registerBackButtonAction(() => {
+    //   this.navCtrl.pop();
+
+    // })
   }
 
   ionViewDidLoad() {
@@ -32,7 +36,11 @@ export class OfferdetailPage implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-   
 
+
+  }
+
+  insertView() {
+    this.navCtrl.push('BrandsPage');
   }
 }

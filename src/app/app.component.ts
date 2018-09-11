@@ -3,6 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppMinimize } from '@ionic-native/app-minimize';
+import { SharedProvider } from '../providers/shared/shared';
 
 
 
@@ -30,7 +31,7 @@ export class MyApp {
 
 
 
-  constructor(private platform: Platform, private appMinimize: AppMinimize) {
+  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider) {
     // this.platform.registerBackButtonAction(() => {
     //   this.appMinimize.minimize();
     // });
@@ -41,15 +42,23 @@ export class MyApp {
     this.platform.registerBackButtonAction(() => {
       // Catches the active view
       let nav = this.nav.getActiveChildNavs()[0];
-      let activeView = nav.getActive();
+      let activeView = this.nav.getActive();
+      console.log(activeView);
       // Checks if can go back before show up the alert
-      if (activeView.name === 'HomePage') {
-        if (nav.canGoBack()) {
-          nav.pop();
-        } else {
-          alert('backtoexit');
-        }
+      if (activeView.component.name === 'TabsPage') {
+        this.nav.setRoot('tabs-page');
       }
+      else if (activeView.component.name == "tabs-page") {
+        this.sharedService.createToast('App will exit');
+        this.appMinimize.minimize();
+      }
+      if (this.nav.canGoBack()) {
+        this.nav.pop();
+      }
+      else {
+        this.nav.setRoot('tabs-page');
+      }
+
     });
   }
 

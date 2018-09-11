@@ -1,7 +1,7 @@
 import { MarketplacePage } from './../marketplace/marketplace';
 import { DealsPage } from './../deals/deals';
 import { HomePage } from './../home/home';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, Platform, NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 
@@ -19,7 +19,7 @@ export class TabsPage {
   DealsPage: any = "DealsPage";
   MarketplacePage: any = "MarketplacePage";
 
-  constructor() {
+  constructor(private platform: Platform, private navCtrl: NavController) {
 
   }
 }
