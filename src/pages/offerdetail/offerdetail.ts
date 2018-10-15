@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, AfterViewInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { Clipboard } from '@ionic-native/clipboard';
 
 /**
  * Generated class for the OfferdetailPage page.
@@ -13,13 +14,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-offerdetail',
   templateUrl: 'offerdetail.html',
 })
-export class OfferdetailPage {
+export class OfferdetailPage implements AfterViewInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private clipboard: Clipboard, private platform: Platform) {
+    // this.platform.registerBackButtonAction(() => {
+    //   this.navCtrl.pop();
+
+    // })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OfferdetailPage');
+
   }
 
+
+  ionViewDidEnter() {
+    // this.clipboard.copy('hi ');
+
+    // alert('coupon copy');
+  }
+
+  ngAfterViewInit() {
+
+
+  }
+
+  insertView() {
+    this.navCtrl.push('BrandsPage');
+  }
 }

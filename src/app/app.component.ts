@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AppMinimize } from '@ionic-native/app-minimize';
+import { SharedProvider } from '../providers/shared/shared';
+
 
 
 // this is the definition used for navigating between pages 
@@ -25,6 +28,39 @@ export class MyApp {
   // Implementation of lazy loading requires string as no component refrence is required.
   rootPage: string = "tabs-page";
   @ViewChild(Nav) nav: Nav;
+
+
+
+  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider) {
+    // this.platform.registerBackButtonAction(() => {
+    //   this.appMinimize.minimize();
+    // });
+    this.initializeApp();
+  }
+
+  initializeApp() {
+    this.platform.registerBackButtonAction(() => {
+      // Catches the active view
+      let nav = this.nav.getActiveChildNavs()[0];
+      let activeView = this.nav.getActive();
+      console.log(activeView);
+      // Checks if can go back before show up the alert
+      if (activeView.component.name === 'TabsPage') {
+        this.nav.setRoot('tabs-page');
+      }
+      else if (activeView.component.name == "tabs-page") {
+        this.sharedService.createToast('App will exit');
+        this.appMinimize.minimize();
+      }
+      if (this.nav.canGoBack()) {
+        this.nav.pop();
+      }
+      else {
+        this.nav.setRoot('tabs-page');
+      }
+
+    });
+  }
 
   // the pages that will show tabs require tabcomponent.
   pages: PageInterface[] = [

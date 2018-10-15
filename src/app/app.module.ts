@@ -1,5 +1,4 @@
 import { ComponentsModule } from './../components/components.module';
-
 import { NgModule, ErrorHandler, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -12,6 +11,11 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { OffersProvider } from '../providers/offers/offers';
 import { SharedProvider } from '../providers/shared/shared';
+import { AppMinimize } from '@ionic-native/app-minimize';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Clipboard } from '@ionic-native/clipboard';
+import { Toast } from '@ionic-native/toast';
+import { OneSignal } from '@ionic-native/onesignal';
 
 
 @NgModule({
@@ -35,6 +39,7 @@ import { SharedProvider } from '../providers/shared/shared';
 
 
 
+
   ],
   providers: [
     StatusBar,
@@ -44,7 +49,13 @@ import { SharedProvider } from '../providers/shared/shared';
     GooglePlus,
     HttpClientModule,
     OffersProvider,
-    SharedProvider
+    SharedProvider,
+    AppMinimize,
+    SocialSharing,
+    Clipboard,
+    Toast,
+    OneSignal
+
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

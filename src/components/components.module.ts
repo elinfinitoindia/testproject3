@@ -7,6 +7,8 @@ import { SliderComponent } from './slider/slider';
 import { CardlistComponent } from './cardlist/cardlist';
 import { ToolsegmentbtnComponent } from './toolsegmentbtn/toolsegmentbtn';
 import { RedeemComponent } from './redeem/redeem';
+import { RefresherComponent } from './refresher/refresher';
+import { ErrormodalComponent } from './errormodal/errormodal';
 @NgModule({
 	declarations: [OffercardsComponent,
     FabComponent,
@@ -14,7 +16,9 @@ import { RedeemComponent } from './redeem/redeem';
     SliderComponent,
     CardlistComponent,
     ToolsegmentbtnComponent,
-    RedeemComponent],
+    RedeemComponent,
+    RefresherComponent,
+    ErrormodalComponent],
 	imports: [IonicModule],
 	exports: [OffercardsComponent,
     FabComponent,
@@ -22,7 +26,9 @@ import { RedeemComponent } from './redeem/redeem';
     SliderComponent,
     CardlistComponent,
     ToolsegmentbtnComponent,
-    RedeemComponent],
+    RedeemComponent,
+    RefresherComponent,
+    ErrormodalComponent],
 
 })
 export class ComponentsModule { }

@@ -1,3 +1,5 @@
+import { OfferdetailPage } from './../offerdetail/offerdetail';
+import { AppMinimize } from '@ionic-native/app-minimize';
 import { SharedProvider } from './../../providers/shared/shared';
 import { LoginProvider } from './../../providers/login/login';
 import { ToolsegmentbtnComponent } from './../../components/toolsegmentbtn/toolsegmentbtn';
@@ -7,10 +9,11 @@ import { ListComponent } from './../../components/list/list';
 import { FabComponent } from './../../components/fab/fab';
 import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component, Output, ViewChild, EventEmitter, Input } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, Platform, Refresher } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
-
-
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { RefresherComponent } from './../../components/refresher/refresher';
+import { OneSignal } from '@ionic-native/onesignal';
 /**
  * Generated class for the HomePage page.
  *
@@ -22,6 +25,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
+
 })
 export class HomePage {
 
@@ -50,42 +54,19 @@ export class HomePage {
   public data;
   public items: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider) {
-    this.listcards = [
-      {
-        title: 'Prateek', desc: 'hi'
-      },
-      {
-        title: 'Prateek', desc: 'hi'
-      },
-      {
-        title: 'Prateek', desc: 'hi'
-      },
-      {
-        title: 'Prateek', desc: 'hi'
-      },
-      {
-        title: 'Prateek', desc: 'hi'
-      },
-      {
-        title: 'Prateek', desc: 'hi'
-      },
-      {
-        title: 'Prateek', desc: 'hi'
-      },
-      {
-        title: 'Prateek', desc: 'hi'
-      }
-    ];
 
-    this.items = [
-      {
-        title: 'Prateek'
-      },
-      {
-        title: 'Prateek1'
-      }
-    ]
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private oneSignal: OneSignal) {
+    this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+    this.oneSignal.handleNotificationReceived().subscribe(() => {
+      // do something when notification is received
+    });
+
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+
+    });
+
+    this.oneSignal.endInit();
 
 
   }
@@ -107,49 +88,45 @@ export class HomePage {
   }
 
 
-  // login() {
-  //   this.googlePlus.login({})
-  //     .then(res => {
-  //       console.log(res);
-  //       this.displayName = res.displayName;
-  //       this.email = res.email;
-  //       this.familyName = res.familyName;
-  //       this.givenName = res.givenName;
-  //       this.userId = res.userId;
-  //       this.imageUrl = res.imageUrl;
-  //       this.isLoggedIn = true;
-  //     })
-  //     .catch(err => console.error(err));
-  // }
-
   login() {
-    // this.loginservice.login(res => {
-    //   this.data = res;
-    //   this.isLoggedIn = true;
-    // });
+    this.googlePlus.login({})
+      .then(res => {
+        console.log(res);
+        this.displayName = res.displayName;
+        this.email = res.email;
+        this.familyName = res.familyName;
+        this.givenName = res.givenName;
+        this.userId = res.userId;
+        this.imageUrl = res.imageUrl;
 
-    this.sharedService.setUsername('HI');
+        this.isLoggedIn = true;
+      })
+      .catch(err => console.error(err));
+  }
 
+  logout() {
+    this.googlePlus.logout()
+      .then(res => {
+        console.log(res);
+        this.displayName = "";
+        this.email = "";
+        this.familyName = "";
+        this.givenName = "";
+        this.userId = "";
+        this.imageUrl = "";
 
+        this.isLoggedIn = false;
+      })
+      .catch(err => console.error(err));
   }
 
 
 
-  /* 
-    logout() {
-      this.googlePlus.logout()
-        .then(res => {
-          console.log(res);
-          this.displayName = "";
-          this.email = "";
-          this.familyName = "";
-          this.givenName = "";
-          this.userId = "";
-          this.imageUrl = "";
-  
-          this.isLoggedIn = false;
-        })
-        .catch(err => console.error(err));
-    } */
+
+
+
+  doRefresh() {
+    alert('hii');
+  }
 
 }
