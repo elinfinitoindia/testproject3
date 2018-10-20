@@ -13,7 +13,8 @@ import { IonicPage, NavController, NavParams, Slides, Platform, Refresher } from
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { RefresherComponent } from './../../components/refresher/refresher';
-import { OneSignal } from '@ionic-native/onesignal';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
+// import { OneSignal } from '@ionic-native/onesignal';
 /**
  * Generated class for the HomePage page.
  *
@@ -21,6 +22,10 @@ import { OneSignal } from '@ionic-native/onesignal';
  * Ionic pages and navigation.
  */
 
+ export class Brand{
+   Name:String;
+   Logo:String
+ }
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -28,6 +33,8 @@ import { OneSignal } from '@ionic-native/onesignal';
 
 })
 export class HomePage {
+
+
 
   public listcards: any = [];
   displayName: any;
@@ -46,33 +53,63 @@ export class HomePage {
   @ViewChild(ToolsegmentbtnComponent)
   private segmentComponent: ToolsegmentbtnComponent;
 
-
   @Output() selectedTabIndex = new EventEmitter()
   @Input() tabindex;
   @Output() slideindex = new EventEmitter();
 
   public data;
   public items: any = [];
+  public brands = [];
+  public category:any = [];
+  public stores:any = [];
+  
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient:HttpClient) {
+  //   this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
+  //   this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+  //   this.oneSignal.handleNotificationReceived().subscribe(() => {
+  //     // do something when notification is received
+  //   });
+
+  //   this.oneSignal.handleNotificationOpened().subscribe(() => {
+
+  //   });
+
+  //   this.oneSignal.endInit();
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private oneSignal: OneSignal) {
-    this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
-    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-    this.oneSignal.handleNotificationReceived().subscribe(() => {
-      // do something when notification is received
-    });
-
-    this.oneSignal.handleNotificationOpened().subscribe(() => {
-
-    });
-
-    this.oneSignal.endInit();
+  // }
 
 
-  }
+  } 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    const httpOptions = {
+      headers: new HttpHeaders({ 
+        'Access-Control-Allow-Origin':'*',
+      })
+    };
+
+    this.httpClient.get('http://192.168.1.8:5000/api/brand',httpOptions).subscribe((res)=>{
+    var Data=res as any;
+      Data.forEach(element => {
+        this.brands.push(element);
+        console.log(this.brands);
+      });
+      console.log(this.brands);
+    });
+
+    this.httpClient.get('http://192.168.1.8:5000/api/category',httpOptions).subscribe((res)=>{
+      this.category = res;
+      console.log(this.brands);
+    });
+
+    this.httpClient.get('http://192.168.1.8:5000/api/stores',httpOptions).subscribe((res)=>{
+      this.stores = res;
+      console.log(this.brands);
+    });
+    
   }
 
 
@@ -87,43 +124,21 @@ export class HomePage {
     this.segmentComponent.segments = index;
   }
 
-
-  login() {
-    this.googlePlus.login({})
-      .then(res => {
-        console.log(res);
-        this.displayName = res.displayName;
-        this.email = res.email;
-        this.familyName = res.familyName;
-        this.givenName = res.givenName;
-        this.userId = res.userId;
-        this.imageUrl = res.imageUrl;
-
-        this.isLoggedIn = true;
-      })
-      .catch(err => console.error(err));
-  }
-
-  logout() {
-    this.googlePlus.logout()
-      .then(res => {
-        console.log(res);
-        this.displayName = "";
-        this.email = "";
-        this.familyName = "";
-        this.givenName = "";
-        this.userId = "";
-        this.imageUrl = "";
-
-        this.isLoggedIn = false;
-      })
-      .catch(err => console.error(err));
-  }
-
-
-
-
-
+    login() {
+      this.googlePlus.login({})
+        .then(res => {
+          console.log(res);
+          this.displayName = res.displayName;
+          this.email = res.email;
+          this.familyName = res.familyName;
+          this.givenName = res.givenName;
+          this.userId = res.userId;
+          this.imageUrl = res.imageUrl;
+  
+          this.isLoggedIn = true;
+        })
+        .catch(err => console.error(err));
+    }
 
   doRefresh() {
     alert('hii');

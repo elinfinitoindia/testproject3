@@ -9,6 +9,7 @@ import { ToolsegmentbtnComponent } from './toolsegmentbtn/toolsegmentbtn';
 import { RedeemComponent } from './redeem/redeem';
 import { RefresherComponent } from './refresher/refresher';
 import { ErrormodalComponent } from './errormodal/errormodal';
+import { AdscardComponent } from './adscard/adscard';
 @NgModule({
 	declarations: [OffercardsComponent,
     FabComponent,
@@ -18,7 +19,8 @@ import { ErrormodalComponent } from './errormodal/errormodal';
     ToolsegmentbtnComponent,
     RedeemComponent,
     RefresherComponent,
-    ErrormodalComponent],
+    ErrormodalComponent,
+    AdscardComponent],
 	imports: [IonicModule],
 	exports: [OffercardsComponent,
     FabComponent,
@@ -28,7 +30,8 @@ import { ErrormodalComponent } from './errormodal/errormodal';
     ToolsegmentbtnComponent,
     RedeemComponent,
     RefresherComponent,
-    ErrormodalComponent],
+    ErrormodalComponent,
+    AdscardComponent],
 
 })
 export class ComponentsModule { }

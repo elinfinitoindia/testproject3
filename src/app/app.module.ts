@@ -15,7 +15,7 @@ import { AppMinimize } from '@ionic-native/app-minimize';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
 import { Toast } from '@ionic-native/toast';
-import { OneSignal } from '@ionic-native/onesignal';
+// import { OneSignal } from '@ionic-native/onesignal';
 
 
 @NgModule({
@@ -54,7 +54,7 @@ import { OneSignal } from '@ionic-native/onesignal';
     SocialSharing,
     Clipboard,
     Toast,
-    OneSignal
+    // OneSignal
 
   ],
   schemas: [NO_ERRORS_SCHEMA]

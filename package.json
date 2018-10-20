@@ -23,7 +23,7 @@
     "@ionic-native/app-minimize": "^4.12.2",
     "@ionic-native/clipboard": "^4.12.2",
     "@ionic-native/core": "~4.11.0",
-    "@ionic-native/google-plus": "^4.12.0",
+    "@ionic-native/google-plus": "4.7.0",
     "@ionic-native/in-app-browser": "^4.12.2",
     "@ionic-native/network": "^4.12.2",
     "@ionic-native/onesignal": "^4.12.2",
@@ -36,7 +36,7 @@
     "cordova-clipboard": "^1.2.1",
     "cordova-plugin-appminimize": "^1.0.0",
     "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-googleplus": "^5.3.0",
+    "cordova-plugin-googleplus": "5.2.1",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^2.0.0",
@@ -48,7 +48,6 @@
     "es6-promise-plugin": "^4.2.2",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
-    "onesignal-cordova-plugin": "^2.3.1",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
@@ -60,9 +59,6 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.751321163972-9598i87hhj5b9rtbii2df4126lm2td79"
-      },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
@@ -74,7 +70,9 @@
       "cordova-clipboard": {},
       "cordova-plugin-appminimize": {},
       "cordova-plugin-x-toast": {},
-      "onesignal-cordova-plugin": {}
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.qphe0k53hrithdrlaga5c0q13snvf4n3-751321163972"
+      }
     }
   }
 }

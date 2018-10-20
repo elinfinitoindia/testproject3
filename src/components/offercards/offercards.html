@@ -11,8 +11,8 @@
     <ion-item no-lines class="paddingleft">
       <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
         <ion-card class="scroll-item" id="largecard" (click)="getList($event);" *ngFor="let items of lists">
-          <img src="assets/imgs/logo.png" class="largecardimg" />
-          <div class="card-title">Total Offers: {{items.title}}</div>
+          <img src='http://elinfinitoindia.in/images/{{items.logo.name}}' class="largecardimg" />
+          <!-- <div class="card-title">Total Offers: {{items.name}}</div> -->
         </ion-card>
       </ion-scroll>
     </ion-item>

@@ -11,14 +11,9 @@
 
 <ion-content>
 
-  <refresher (refresh)="doRefresh($event)"></refresher>
-
-  <!--
-    <offercards [lists]="listcards"></offercards>
-    <fab></fab> 
-  -->
-
-  <!-- <slider (segme)=changetab($event)></slider> -->
+  <!-- <refresher (refresh)="doRefresh($event)"></refresher> -->
+<offercards [lists]="brands"></offercards>
+ <adscard></adscard>
   <div *ngIf="isLoggedIn; else loginTemplate">
     <h1>Welcome, {{displayName}}!</h1>
     <p>Email: {{email}}<br>
@@ -38,4 +33,8 @@
     <p><button ion-button (click)="login()">Login With Google</button></p>
   </ng-template>
 
+  <offercards [lists]="category"></offercards>
+  <adscard></adscard>
+  <offercards [lists]="stores"></offercards>
+  <adscard></adscard>
 </ion-content>
