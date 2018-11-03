@@ -65,8 +65,8 @@ export class MyApp {
   // the pages that will show tabs require tabcomponent.
   pages: PageInterface[] = [
     { title: 'Home', name: 'tabs-page', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
-    { title: 'Stores', name: 'tabs-page', component: 'TabsPage', tabComponent: 'StoresPage', index: 1, icon: 'md-basket' },
-    { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 2, icon: 'md-cash' },
+    { title: 'Stores', name: 'tabs-page', component: 'TabsPage', tabComponent: 'StoresPage', icon: 'md-basket' },
+    { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 1, icon: 'md-cash' },
     { title: 'Brands', name: 'BrandsPage', component: 'BrandsPage', icon: 'md-cash' },
     { title: 'My Account', name: 'ProfilePage', component: 'ProfilePage', icon: 'md-cash' },
     { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-cash' },

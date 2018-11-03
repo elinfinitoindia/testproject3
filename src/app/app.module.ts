@@ -15,6 +15,7 @@ import { AppMinimize } from '@ionic-native/app-minimize';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Clipboard } from '@ionic-native/clipboard';
 import { Toast } from '@ionic-native/toast';
+import { InterceptorModule } from './interceptor.module';
 // import { OneSignal } from '@ionic-native/onesignal';
 
 
@@ -30,7 +31,8 @@ import { Toast } from '@ionic-native/toast';
       navExitApp: false
     }),
     ComponentsModule,
-    HttpClientModule
+    HttpClientModule,
+    InterceptorModule
 
   ],
   bootstrap: [IonicApp],
