@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the DealsPage page.
@@ -15,12 +16,16 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 })
 export class DealsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
+  public offer:any = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, private httpClient: HttpClient) {
   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DealsPage');
+
+  
   }
 
  

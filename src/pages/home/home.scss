@@ -4,4 +4,36 @@ page-home {
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .padding-left-right{
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .nopadding-left{
+    padding-left:0px;
+  }
+
+  .popover-md .popover-content {
+    border-radius: 2px;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    width: 100px !important;
+  }
+  .radio radio-md{
+    display:none !important;
+  }
+
+  $popover-md-width:100px;
+
+  .radio-md .radio-icon{
+    display: none !important;
+  }
+
+  .toolbar-title-md{
+    color:rgba(60, 60, 60, 0.7) !important;
+  }
+  .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+    color: rgba(60, 60, 60, 0.7) !important;
+    background-color: transparent;
+}
+
 }

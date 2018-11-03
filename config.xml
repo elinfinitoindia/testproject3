@@ -76,9 +76,6 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <plugin name="cordova-plugin-googleplus" spec="^5.3.0">
-        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.751321163972-9598i87hhj5b9rtbii2df4126lm2td79" />
-    </plugin>
     <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
@@ -90,5 +87,7 @@
     <plugin name="cordova-clipboard" spec="^1.2.1" />
     <plugin name="cordova-plugin-appminimize" spec="^1.0.0" />
     <plugin name="cordova-plugin-x-toast" spec="^2.7.0" />
-    <plugin name="onesignal-cordova-plugin" spec="^2.3.1" />
+    <plugin name="cordova-plugin-googleplus" spec="5.2.1">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.qphe0k53hrithdrlaga5c0q13snvf4n3-751321163972" />
+    </plugin>
 </widget>

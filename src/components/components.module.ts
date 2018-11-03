@@ -9,6 +9,12 @@ import { ToolsegmentbtnComponent } from './toolsegmentbtn/toolsegmentbtn';
 import { RedeemComponent } from './redeem/redeem';
 import { RefresherComponent } from './refresher/refresher';
 import { ErrormodalComponent } from './errormodal/errormodal';
+import { AdscardComponent } from './adscard/adscard';
+import { BrandcardsComponent } from './brandcards/brandcards';
+import { CategorycardsComponent } from './categorycards/categorycards';
+import { AdsliderComponent } from './adslider/adslider';
+import { ImagesliderComponent } from './imageslider/imageslider';
+import { SquaredealComponent } from './squaredeal/squaredeal';
 @NgModule({
 	declarations: [OffercardsComponent,
     FabComponent,
@@ -18,7 +24,13 @@ import { ErrormodalComponent } from './errormodal/errormodal';
     ToolsegmentbtnComponent,
     RedeemComponent,
     RefresherComponent,
-    ErrormodalComponent],
+    ErrormodalComponent,
+    AdscardComponent,
+    BrandcardsComponent,
+    CategorycardsComponent,
+    AdsliderComponent,
+    ImagesliderComponent,
+    SquaredealComponent],
 	imports: [IonicModule],
 	exports: [OffercardsComponent,
     FabComponent,
@@ -28,7 +40,13 @@ import { ErrormodalComponent } from './errormodal/errormodal';
     ToolsegmentbtnComponent,
     RedeemComponent,
     RefresherComponent,
-    ErrormodalComponent],
+    ErrormodalComponent,
+    AdscardComponent,
+    BrandcardsComponent,
+    CategorycardsComponent,
+    AdsliderComponent,
+    ImagesliderComponent,
+    SquaredealComponent],
 
 })
 export class ComponentsModule { }

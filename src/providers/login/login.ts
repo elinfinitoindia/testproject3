@@ -14,14 +14,15 @@ export class LoginProvider {
     console.log('Hello LoginProvider Provider');
   }
 
-
-  login(callback) {
-    this.googlePlus.login({})
-      .then(res => {
-        callback(res);
-      })
+  login(data) {
+    // this.googlePlus.login({})
+    //   .then(res => {
+    //     callback(res);
+    //   })
+    this.googlePlus.login().then(res=>{
+      data(res);
+    })
   }
-
 
   logout(callback) {
     this.googlePlus.logout()

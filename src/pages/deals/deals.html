@@ -13,6 +13,62 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
+    <adscard></adscard>
+  <ion-card class="fullwidthcard">
+    <ion-card-content class="nopaddingcard">
+      <ion-row>
+        <ion-col col-8>
+          <span>Popular Brands</span>
+        </ion-col>
+        <ion-col col-4 text-right class="nopaddin">
+          <button ion-button clear small id="Brands" class="viewall" (click)="showAllOffers($event)" style="color:#FF6700">View All</button>
+        </ion-col>
+      </ion-row>
+      <ion-item no-lines class="paddingleft">
+        <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+            <div class="card-title">Total Offers</div> 
+          </ion-card>
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+            <div class="card-title">Total Offers</div> 
+          </ion-card>
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+            <div class="card-title">Total Offers</div> 
+          </ion-card>
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+            <div class="card-title">Total Offers</div> 
+          </ion-card>
+        </ion-scroll>
+      </ion-item>
+    </ion-card-content>
+  </ion-card> 
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 style="border:1px solid black;">  <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+        <div class="card-title">Total Offers</div> 
+      </ion-card></ion-col>
+      <ion-col col-6 style="border:1px solid black;">  <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+        <div class="card-title">Total Offers</div> 
+      </ion-card></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 style="border:1px solid black;">  <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+        <div class="card-title">Total Offers</div> 
+      </ion-card></ion-col>
+      <ion-col col-6 style="border:1px solid black;">  <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+        <div class="card-title">Total Offers</div> 
+      </ion-card></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

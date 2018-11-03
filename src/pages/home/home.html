@@ -3,23 +3,56 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title class="pagetitle">Deals Wale</ion-title>
+    <ion-title class="pagetitle" style="color:#B7B7B7;">Deals Wale</ion-title>
   </ion-navbar>
   <!-- <toolsegmentbtn (tabsindex)="slideChangeByTab($event)"></toolsegmentbtn> -->
 </ion-header>
 
 
 <ion-content>
+  <ion-card class="" style="border-radius: 5px;">
+     <ion-card-header text-center color="white" style="color:white;
+     background: #6500C5;">
+      Write Once Search Anywhere  
+    </ion-card-header> 
+  
+    <ion-card-content class="">
+      <ion-row>
+     
+        <ion-col col-12 text-center class="padding-left-right">
+            <ion-item class="nopadding-left">
+                <ion-label floating></ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+        </ion-col>
+        
+        <ion-col col-12 text-center>
+            <button ion-button round style="background:#E3001D !important">Search</button>
+        </ion-col>
+        <ion-col col-12s>
+          <ion-item no-lines class="paddingleft">
+            <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
+              <ion-card class="scroll-item" id="largecard" (click)="getList($event);" *ngFor="let items of brands">
+                <img src='http://elinfinitoindia.in/images/{{items.logo.name}}' class="largecardimg" />
+                <!-- <div class="card-title">Total Offers: {{items.name}}</div> -->
+               
+              </ion-card>
+            </ion-scroll>
+          </ion-item>
+        </ion-col>
 
-  <refresher (refresh)="doRefresh($event)"></refresher>
+        </ion-row>
+    
+    </ion-card-content>
+  </ion-card>
+  
+  <!-- <refresher (refresh)="doRefresh($event)"></refresher> -->
 
-  <!--
-    <offercards [lists]="listcards"></offercards>
-    <fab></fab> 
-  -->
 
-  <!-- <slider (segme)=changetab($event)></slider> -->
-  <div *ngIf="isLoggedIn; else loginTemplate">
+<h1 class="text-center" style="text-align:center">Best of Brands</h1>
+<offercards [lists]="brands"></offercards>
+ <adscard></adscard>
+  <!-- <div *ngIf="isLoggedIn; else loginTemplate">
     <h1>Welcome, {{displayName}}!</h1>
     <p>Email: {{email}}<br>
       Family Name: {{familyName}}<br>
@@ -36,6 +69,34 @@
   <ng-template #loginTemplate>
     <h1>Please Login to see your Google Account Information</h1>
     <p><button ion-button (click)="login()">Login With Google</button></p>
-  </ng-template>
-
+  </ng-template> -->
+  <h1 class="text-center" style="text-align:center">Best of Categories</h1>
+  <ion-item no-lines class="paddingleft">
+      <ion-item no-lines class="paddingleft"> 
+        <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='http://elinfinitoindia.in/images/fulletron.jpg' class="largecardimg" />
+          </ion-card>
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/images/fulletron.jpg' class="largecardimg" />
+           
+          </ion-card>
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+            <div class="card-title">Total Offers: </div> 
+          </ion-card>
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+            <div class="card-title">Total Offers: </div> 
+          </ion-card>
+          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+            <div class="card-title">Total Offers: </div> 
+          </ion-card>
+        </ion-scroll>
+      </ion-item>
+    </ion-item>
+  <adscard></adscard>
+  <offercards [lists]="stores"></offercards>
+  <adscard></adscard>
 </ion-content>
