@@ -1,13 +1,6 @@
 toolsegmentbtn {
-  // class for bottom border on selected segment
-  // .toolbar .segment-md .segment-button.segment-activated {
-  //   color: white;
-  //   border-color: white !important;
-  //   border-bottom: 2px solid;
-  // }
-  //  this class is used for removing default bottom borders from segment 
   .toolbar .segment-md .segment-button {
-    color: white;
+    color: orange;
     opacity: 1;
     font-size: larger;
     border: none;
@@ -29,5 +22,11 @@ toolsegmentbtn {
   } // to center image 
   .centerimage {
     margin: 0 auto;
+  }
+  .toolbar .segment-md .segment-button:activated {
+    color: orange;
+    opacity: 1;
+    font-size: larger;
+    border: none;
   }
 }

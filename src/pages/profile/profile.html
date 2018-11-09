@@ -32,9 +32,9 @@
       <ion-card id="fullwidthcard" class="profilename">
         <ion-card-content>
           <ion-row text-center>
-            <ion-col col-12>
-              <ion-avatar item-start>
-                <img src="assets/imgs/Ajio.png">
+            <ion-col col-12 offset-4>
+              <ion-avatar>
+                <img src="../../assets/imgs/logo.png" style="height:100px;">
               </ion-avatar>
             </ion-col>
             <ion-col col-12 text-right>
@@ -70,32 +70,13 @@
       <ion-card id="fullwidthcard" class="changepassword">
         <ion-card-content>
           <ion-item>
-            <ion-icon name="phone-portrait" item-start></ion-icon>
+            <ion-icon name="phone-portrait" item-start color="primary"></ion-icon>
             <span (click)="changepassword()">Change Password</span>
           </ion-item>
         </ion-card-content>
       </ion-card>
-      <ion-card id="fullwidthcard">
-        <ion-card-content>
-          <ion-row>
-            <ion-col col-12 text-left>
-              <span>Earnings</span>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col col-12 text-center>
-              <div>Life Time Earning</div>
-            </ion-col>
-          </ion-row>
-          <ion-row text-center>
-            <ion-col (click)="redeem()">
-              Redeem
-            </ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-card>
-
-
+      <h1 class="text-center" style="text-align:center;color:#5683FF">Life Time Earnings</h1>
+      <h3 color="primary">Rs. 500</h3>
     </ion-slide>
     <ion-slide>
       <redeem></redeem>

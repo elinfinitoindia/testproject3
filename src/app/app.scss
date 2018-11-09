@@ -1,17 +1,4 @@
-// http://ionicframework.com/docs/theming/
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+
 // class for full width cards 
 .fullwidthcard {
     margin-left: 0px;
@@ -39,14 +26,14 @@
 
 //this class is used to add bottom border to the selected segment button 
 .toolbar .segment-md .segment-button.segment-activated {
-    color: white;
-    border-color: white !important;
+    color: orange;
+    border-color: orange !important;
     border-bottom: 2px solid;
 }
 
 //  this class is used for removing default bottom borders from segment 
 .toolbar .segment-md .segment-button {
-    color: white;
+    color: orange;
     opacity: 1;
     font-size: larger;
     border: none;
@@ -97,3 +84,4 @@
 .tabs-md .tabbar {
     background: white;
 }
+

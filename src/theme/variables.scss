@@ -21,7 +21,7 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-$colors: (primary: #6200EE , secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222);
+$colors: (primary: #FF6701, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
@@ -29,27 +29,28 @@ $colors: (primary: #6200EE , secondary: #32db64, danger: #f53d3d, light: #f4f4f4
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 // $toolbar-background: color($colors, primary);
-
 $toolbar-background:#fefefe;
-
-
+$text-input-md-highlight-color:#FF6700;
+$label-md-text-color-focused:#FF6700;
+$label-md-text-color:rgba(60, 60, 60, 0.7);
 $popover-md-width:150px;
-
 $popover-md-text-color:blueviolet;
 $radio-md-icon-width:0px;
 $radio-md-icon-height:0px;
 $radio-md-icon-border-width:0;
 $radio-md-icon-border-radius:0;
-
 .tabs-md .tab-button[aria-selected=true] {
-  color: #FF6700 !important ;
+    color: #FF6700 !important;
 }
 
 .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
-  color: #FF6700 !important ;
+    color: #FF6700 !important;
 }
-// $background-md-color:#FAFAFA;
 
+$toolbar-md-button-color:rgba(60,60,60,.7);
+$toolbar-md-title-text-color:rgba(60,60,60,.7);
+
+// $background-md-color:#FAFAFA;
 $fab-md-background-color:white;
 $segment-button-md-border-color-activated:white;
 // App Windows Variables

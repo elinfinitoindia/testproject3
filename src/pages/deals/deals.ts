@@ -17,9 +17,9 @@ import { HttpClient } from '@angular/common/http';
 export class DealsPage {
 
   public offer:any = [];
-
+  public title;
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, private httpClient: HttpClient) {
-  
+  this.title = "Super Deals"
   }
 
   ionViewDidLoad() {

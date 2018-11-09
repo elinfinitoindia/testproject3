@@ -90,10 +90,10 @@ export class HomePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
    
-    this.httpClient.get('http://192.168.43.50:5001/api/brand').subscribe((res) => {
-      this.brands = res;
-      console.log(this.brands);
-    });
+    // this.httpClient.get('http://192.168.43.50:5001/api/brand').subscribe((res) => {
+    //   this.brands = res;
+    //   console.log(this.brands);
+    // });
 
    
   }
