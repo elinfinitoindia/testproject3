@@ -14,82 +14,86 @@
 // automatically applied to the <body> element in the app.
 // class for full width cards 
 .fullwidthcard {
-  margin-left: 0px;
-  margin-right: 0px;
-  border-radius: 0px !important;
-  width: 100%;
-  margin-top: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 0px !important;
+    width: 100%;
+    margin-top: 15px;
 }
 
 // class for no right and bottom padding as required by application
 .nopaddingcard {
-  padding-top: 10px !important;
-  padding-right: 0px !important;
-  padding-bottom: 0px !important;
-  padding-left: 5px !important;
+    padding-top: 10px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 5px !important;
 }
 
 .icon-md-primary {
-  color: blueviolet;
+    color: #FF6700;
 }
 
 .item-md ion-icon[item-start]+.item-inner {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 //this class is used to add bottom border to the selected segment button 
 .toolbar .segment-md .segment-button.segment-activated {
-  color: white;
-  border-color: white !important;
-  border-bottom: 2px solid;
+    color: white;
+    border-color: white !important;
+    border-bottom: 2px solid;
 }
 
 //  this class is used for removing default bottom borders from segment 
 .toolbar .segment-md .segment-button {
-  color: white;
-  opacity: 1;
-  font-size: larger;
-  border: none;
+    color: white;
+    opacity: 1;
+    font-size: larger;
+    border: none;
 }
 
 // no bottom paddign segment col
 .segmentcol {
-  padding-bottom: 0px !important;
-  margin-bottom: 0px;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px;
 }
 
 // no bottom padding segment card
 .segmentcard {
-  padding-bottom: 0px !important;
-  margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 // no bottompadding grid class
 .segmentgrid {
-  padding-bottom: 0px !important;
-  margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 // to reduce the height and bottom distance from segment borders
 .toolbar-md {
-  min-height: 52px !important;
+    min-height: 52px !important;
 }
 
 // to center image 
 .centerimage {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .slide-zoom {
-  height: 95%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+    height: 95%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 // this class is used to vertically align images 
 .valignimage {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tabs-md .tabbar {
+    background: white;
 }

@@ -1,4 +1,10 @@
-<!-- Generated template for the AdsliderComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-slides pager autoplay class="addheight">
+  <ion-slide *ngFor = "let slide of slides">
+    <img
+      src="../../assets/banner.png"
+      alt=""
+      srcset=""
+     class="addimage"
+    />
+  </ion-slide>
+</ion-slides>

@@ -13,10 +13,17 @@ import { Component } from '@angular/core';
 export class AdsliderComponent {
 
   text: string;
+  public slides=[];
 
   constructor() {
     console.log('Hello AdsliderComponent Component');
     this.text = 'Hello World';
+    this.slides = [
+      {'name':'Prateek'},
+    {'name':'sfddfdf'},
+    {'name':'sfdfd'},
+    {'name':'fsf'},
+    {'name':'Agh'}];
   }
 
 }

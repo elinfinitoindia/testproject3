@@ -1,4 +1,22 @@
-<!-- Generated template for the CategorycardsComponent component -->
-<div>
-  {{text}}
-</div>
+<h1 class="text-center" style="text-align:center">Shop by {{text}}</h1>
+<ion-item no-lines class="paddingleft">
+  <ion-item no-lines class="paddingleft">
+    <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
+      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='http://elinfinitoindia.in/images/fulletron.jpg' class="largecardimg" />
+      </ion-card>
+      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/images/fulletron.jpg' class="largecardimg" />
+      </ion-card>
+      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+      </ion-card>
+      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+      </ion-card>
+      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
+        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+      </ion-card>
+    </ion-scroll>
+  </ion-item>
+</ion-item>

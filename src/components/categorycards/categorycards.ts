@@ -16,7 +16,7 @@ export class CategorycardsComponent {
 
   constructor() {
     console.log('Hello CategorycardsComponent Component');
-    this.text = 'Hello World';
+    this.text = 'Category';
   }
 
 }

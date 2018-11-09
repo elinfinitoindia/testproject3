@@ -13,10 +13,12 @@ import { Component } from '@angular/core';
 export class BrandcardsComponent {
 
   text: string;
+  public title:string;
 
   constructor() {
     console.log('Hello BrandcardsComponent Component');
     this.text = 'Hello World';
+    this.title='Brands';
   }
 
 }
