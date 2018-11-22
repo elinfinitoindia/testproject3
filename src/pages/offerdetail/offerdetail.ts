@@ -59,6 +59,6 @@ export class OfferdetailPage implements AfterViewInit {
   }
 
   insertView() {
-    this.navCtrl.push('BrandsPage');
+    this.navCtrl.push('Dea');
   }
 }

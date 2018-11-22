@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the CategoriesPage page.
@@ -15,10 +16,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CategoriesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public categories;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient:HttpClient) {
   }
 
   ionViewDidLoad() {
+    this.httpClient.get(' http://192.168.225.52:5001/api/category').subscribe(res=>{
+      this.categories = res;
+    })
     console.log('ionViewDidLoad CategoriesPage');
   }
 

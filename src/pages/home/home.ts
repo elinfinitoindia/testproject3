@@ -9,11 +9,12 @@ import { ListComponent } from './../../components/list/list';
 import { FabComponent } from './../../components/fab/fab';
 import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component, Output, ViewChild, EventEmitter, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, Platform, Refresher } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, Platform, Refresher, Content } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { RefresherComponent } from './../../components/refresher/refresher';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BrandcardsComponent } from '../../components/brandcards/brandcards';
 // import { OneSignal } from '@ionic-native/onesignal';
 /**
  * Generated class for the HomePage page.
@@ -27,6 +28,11 @@ export class Brand {
   Logo: String
 }
 
+const httpOptions={
+  headers:new HttpHeaders({
+    'Access-Control-Allow-Origin': '*'
+  })
+}
 
 
 
@@ -50,6 +56,8 @@ export class HomePage {
 
   isLoggedIn: boolean = false;
 
+  @ViewChild(Content)
+  private content:Content;
 
   @ViewChild(SliderComponent)
   private sliderComponent: SliderComponent;
@@ -57,6 +65,8 @@ export class HomePage {
   @ViewChild(ToolsegmentbtnComponent)
   private segmentComponent: ToolsegmentbtnComponent;
 
+  @ViewChild(BrandcardsComponent)
+  private Brandcards: BrandcardsComponent
   @Output() selectedTabIndex = new EventEmitter()
   @Input() tabindex;
   @Output() slideindex = new EventEmitter();
@@ -67,6 +77,9 @@ export class HomePage {
   public category: any = [];
   public stores: any = [];
   public offers;
+  public isTrue:Boolean = true;
+  public isFalse:Boolean = false;
+  public DailyNav = 'OffercardlistPage';
  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient) {
@@ -85,20 +98,34 @@ export class HomePage {
 
     // }
 
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-   
-    // this.httpClient.get('http://192.168.43.50:5001/api/brand').subscribe((res) => {
-    //   this.brands = res;
-    //   console.log(this.brands);
+    
+    // this.googlePlus.trySilentLogin().then(res=>{
+    //   alert('res');
     // });
 
    
   }
 
+  ionViewDidLoad() {
+    this.httpClient.get('http://192.168.225.52:5001/api/brand',httpOptions).subscribe(res=>{
+      this.brands = res;
+    })
 
+   
+    console.log('ionViewDidLoad HomePage');
+  
+  }
+
+  scrollHandler($event){
+    if($event.scrollTop > 300){
+      this.httpClient.get('http://192.168.225.52:5001/api/category',httpOptions).subscribe(res=>{
+        this.category = res;
+      })
+    }
+    else{
+      console.log($event);
+    }
+  }
 
   
 
@@ -114,23 +141,25 @@ export class HomePage {
   }
 
   login() {
-    this.googlePlus.login({})
-      .then(res => {
-        console.log(res);
-        this.displayName = res.displayName;
-        this.email = res.email;
-        this.familyName = res.familyName;
-        this.givenName = res.givenName;
-        this.userId = res.userId;
-        this.imageUrl = res.imageUrl;
 
-        this.isLoggedIn = true;
-      })
-      .catch(err => console.error(err));
-  }
-
+    this.navCtrl.push('OffercardlistPage');
+    // this.loginservice.login(a=>{
+    //   this.data = a;
+    //   this.sharedService.setToken(this.data.accessToken);
+    // });
+  }     
+  
+  logOut(){
+    this.googlePlus.logout()
+    .then(res => {
+      this.sharedService.clearToken();
+    })
+    .catch(err => console.error(err));
+}
+  
   doRefresh() {
     alert('hii');
   }
+
 
 }

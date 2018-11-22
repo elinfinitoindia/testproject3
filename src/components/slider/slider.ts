@@ -15,43 +15,21 @@ export class SliderComponent {
 
   text: string;
   @ViewChild('pageSlider') pageSlider: Slides
-
-
-  public listcards: any = [];
+  @Input() listcards: any = [];
   @Output() segme = new EventEmitter();
   @Input() tabindex;
+
 
   constructor() {
     console.log('Hello SliderComponent Component');
     this.text = 'Hello World';
-    this.listcards = [{
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    },
-    {
-      title: 'Prateek', desc: 'hi'
-    }
-    ];
+    
   }
 
+  ngOnInit(){
 
+
+  }
   changeWillSlide($event) {
     // this.segments = $event._snapIndex.toString();
     this.segme.emit($event._snapIndex.toString());

@@ -1,30 +1,17 @@
 <ion-row>
   <ion-col col-12 style="background:white">
-    
-<h1 class="text-center" style="text-align:center;">Shop by {{title}}</h1>
-    <ion-row>
+    <ion-row *ngIf= "view">
       <ion-col col-2 offset-9 text-right>
-        <span style="color:orangered">View All</span>
+          <span style="color:orangered" (click)="ViewAll()">View All</span>
       </ion-col>
-    
     </ion-row>
+    <div *ngIf="view">Text to show</div>
+
     <ion-item no-lines class="paddingleft">
       <ion-item no-lines class="paddingleft">
         <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='../../assets/beardo.jpg' class="largecardimg" />
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='../../assets/unnamed (1).jpg' class="largecardimg" />
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='../../assets/unnamed (2).jpg' class="largecardimg" />
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='../../assets/unnamed (3).jpg' class="largecardimg" />
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='../../assets/imgs/logo.png' class="largecardimg" />
+          <ion-card class="scroll-item" id="largecard" (click)="getList(item);" *ngFor = "let item of items">
+            <img src="http://elinfinitoindia.in/images/{{item.logo.name}}" class="largecardimg" />
           </ion-card>
         </ion-scroll>
       </ion-item>

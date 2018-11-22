@@ -5,27 +5,36 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content #content (ionScroll)="scrollHandler($event)">
+  
   <adslider></adslider>
-  <h1 class="text-center" style="text-align:center;color:  #5683FF;">
-    Shop on Stores
-  </h1>
-  <offercards [lists]="brands"></offercards> <adscard></adscard>
-  <brandcards></brandcards>
-  <h1 class="text-center" style="text-align:center;color:#5683FF;">
-    Super Deal
-  </h1>
-  <squaredeal></squaredeal> <categorycards></categorycards>
-  <h1 class="text-center" style="text-align:center;color:#5683FF;">
-    Todays Exclusive
-  </h1>
+
+  <h1 class="text-center" (click)="login()">Shop on Stores</h1>
+  <offercards [lists]="brands"></offercards> 
   <adscard></adscard>
-  <h1 class="text-center" style="text-align:center;color:#5683FF;">
-    Best Sellers
+
+  <h1 class="text-center">Offers by Brands</h1>
+  <brandcards [navdata]="'BrandsPage'" [type]="'Brands'" [view]=isTrue [isDeal]=isFalse [items]="brands"></brandcards>
+
+  <ng-template [ngIf]="category">
+    <h1 class="text-center">Offers by Categories</h1>
+    <categorycards [items]="category"></categorycards>  
+  </ng-template>
+  
+
+  <h1 class="text-center">New Launches</h1>
+  <brandcards></brandcards>
+
+  <h1 class="text-center">Super Deal</h1>
+  <squaredeal></squaredeal>
+
+  <h1 class="text-center">Todays Exclusive</h1>
+  <adscard></adscard>
+
+  <h1 class="text-center">Daily Offers</h1>
+  <brandcards [navdata]="DailyNav" [type]="'Brands'" [isDeal]=isTrue [items]="brands"></brandcards>
+
+  <h1 class="text-center">
+
   </h1>
-  <imageslider></imageslider>
-  <h1 class="text-center" style="text-align:center;color:#5683FF;">
-    Weekend Offers
-  </h1>
-  <offercards [lists]="brands"></offercards>
 </ion-content>

@@ -70,4 +70,20 @@ categorycards {
         margin-bottom: 0px !important;
         margin-right: 0px !important;
     }
+
+    ion-card {
+        position: relative;
+        text-align: center;
+      }
+    
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 1.5em;
+        width: 100%;
+        font-weight: bold;
+        color: black;
+      }
+    
+    
 }

@@ -10,18 +10,21 @@ import { GooglePlus } from '@ionic-native/google-plus';
 @Injectable()
 export class LoginProvider {
 
+  public logindata;
   constructor(public http: HttpClient, public googlePlus: GooglePlus) {
     console.log('Hello LoginProvider Provider');
   }
 
-  login(data) {
+  login(callback) {
     // this.googlePlus.login({})
     //   .then(res => {
     //     callback(res);
     //   })
-    this.googlePlus.login().then(res=>{
-      data(res);
+  this.googlePlus.login({}).then(res=>{
+    //  this.logindata =res;
+    callback(res);
     })
+  
   }
 
   logout(callback) {

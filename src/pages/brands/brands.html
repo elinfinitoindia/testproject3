@@ -3,10 +3,10 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title class="">Brands</ion-title>
+    <ion-title class="" style="color:white">Brands</ion-title>
   </ion-navbar>
   <toolsegmentbtn (tabsindex)="slideChangeByTab($event)"></toolsegmentbtn>
 </ion-header>
 <ion-content>
-    <slider (segme)=changetab($event)> </slider>
+    <slider (segme)=changetab($event) [listcards]="brandlist"> </slider>
 </ion-content>

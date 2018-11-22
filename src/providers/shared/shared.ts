@@ -20,9 +20,22 @@ export class SharedProvider {
     localStorage.setItem('name', value);
   }
 
+  setToken(value){
+    localStorage.setItem('Token',value);
+  }
+
   getUsername() {
     localStorage.getItem('name');
   }
+
+  getToken(){
+   return  localStorage.getItem('Token');
+  }
+
+  clearToken(){
+    localStorage.setItem('Token','');
+  }
+
 
   // this method is used for sharing the application on different platforms shareAppService
   shareApp(data) {

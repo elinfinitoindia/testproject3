@@ -1,21 +1,10 @@
-<h1 class="text-center" style="text-align:center">Shop by {{text}}</h1>
+
 <ion-item no-lines class="paddingleft">
   <ion-item no-lines class="paddingleft">
     <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
-      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-        <img src='http://elinfinitoindia.in/images/fulletron.jpg' class="largecardimg" />
-      </ion-card>
-      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-        <img src='../../assets/images/fulletron.jpg' class="largecardimg" />
-      </ion-card>
-      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-        <img src='../../assets/imgs/logo.png' class="largecardimg" />
-      </ion-card>
-      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-        <img src='../../assets/imgs/logo.png' class="largecardimg" />
-      </ion-card>
-      <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-        <img src='../../assets/imgs/logo.png' class="largecardimg" />
+      <ion-card class="scroll-item" id="largecard" (click)="getList(item);" *ngFor = "let item of items">
+        <img src="../../assets/ss1.jpg"/>
+    <div class="card-title">{{item.name | titlecase}}</div>
       </ion-card>
     </ion-scroll>
   </ion-item>

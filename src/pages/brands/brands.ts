@@ -2,7 +2,14 @@ import { Component, ViewChild, Output, EventEmitter, Input } from '@angular/core
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SliderComponent } from '../../components/slider/slider';
 import { ToolsegmentbtnComponent } from '../../components/toolsegmentbtn/toolsegmentbtn';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @IonicPage()
 @Component({
@@ -20,12 +27,15 @@ export class BrandsPage {
   @Output() selectedTabIndex = new EventEmitter()
   @Input() tabindex;
   @Output() slideindex = new EventEmitter();
+public brandlist;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient:HttpClient) {
   }
 
   ionViewDidLoad() {
+      this.httpClient.get('http://localhost:5001/api/brand',httpOptions).subscribe(res=>{
+          this.brandlist  = res;
+      })
     console.log('ionViewDidLoad BrandsPage');
   }
 

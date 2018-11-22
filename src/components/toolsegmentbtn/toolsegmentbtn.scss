@@ -1,6 +1,6 @@
 toolsegmentbtn {
   .toolbar .segment-md .segment-button {
-    color: orange;
+    color: white;
     opacity: 1;
     font-size: larger;
     border: none;
@@ -24,9 +24,12 @@ toolsegmentbtn {
     margin: 0 auto;
   }
   .toolbar .segment-md .segment-button:activated {
-    color: orange;
+    color: white;
     opacity: 1;
     font-size: larger;
     border: none;
+  }
+  .toolbar-background-md{
+    background: #FF6700;
   }
 }
