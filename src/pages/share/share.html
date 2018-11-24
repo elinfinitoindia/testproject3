@@ -1,7 +1,9 @@
 <ion-header>
-  <ion-navbar> <ion-title>share</ion-title> </ion-navbar>
+  <ion-navbar>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button
+    ><ion-title>Share</ion-title>
+  </ion-navbar>
 </ion-header>
-
 <ion-content>
   <ion-content>
     <ion-grid id="shareimage">
@@ -12,53 +14,23 @@
       </ion-row>
       <ion-row>
         <ion-col col-12 text-center>
-          <div>Refer your friend and recieve cashback.</div>
+          <h3>Refer your Friend and get benefits.</h3>
         </ion-col>
         <ion-col col-12 text-center>
-          Get 10% of your friends earning forever.
+          <span>Get your friends earning forever.</span>
         </ion-col>
-        <ion-col col-12 text-center>
-          <div id="referlink">Invite Link</div>
-        </ion-col>
+        <ion-col col-12 text-center> <h4>Invite Link</h4> </ion-col>
         <ion-col col-12 text-center> <h3>Link</h3> </ion-col>
-        <ion-col col-12 text-center>
-          <p class="colortext">Invite Friend Using</p>
-        </ion-col>
-        <ion-col col-12 text-center id="shareicon">
-          <button color="whatsapp" (click)="openSocial('Whatsapp', fab)">
-            <ion-icon name="logo-whatsapp" color="whatsapp"></ion-icon>
-          </button>
-          <button color="facebook" (click)="openSocial('Facebook', fab)">
-            <ion-icon name="logo-facebook" color="facebook"></ion-icon>
-          </button>
-          <button color="google" (click)="openSocial('Gmail', fab)">
-            <ion-icon name="logo-googleplus" color="google"></ion-icon>
-          </button>
-          <button color="twitter" (click)="openSocial('Twitter', fab)">
-            <ion-icon name="logo-twitter" color="twitter"></ion-icon>
-          </button>
-
-          <ion-row>
-            <!--
-              <ion-col col-3>
-                <img src="assets/imgs/logo.png" alt="">
-              </ion-col>
-              <ion-col col-3>
-                <img src="assets/imgs/logo.png" alt="">
-              </ion-col>
-              <ion-col col-3>
-                <img src="assets/imgs/logo.png" alt="">
-              </ion-col>
-            -->
-          </ion-row>
-        </ion-col>
       </ion-row>
     </ion-grid>
     <ion-row>
       <ion-col col-12 text-center style="border-top:1px solid gainsboro;">
-        <span> <h4 id="earning">Earnings:</h4> </span> <span> 100 </span>
-        <div class="colortext">View Details</div>
+        <h4 id="earning">Your Earning</h4>
+        <h4> 100 </h4>
       </ion-col>
     </ion-row>
-  </ion-content></ion-content
->
+    <ion-footer color="primary">
+      <button ion-button block class="mybutton">Share Now</button>
+    </ion-footer>
+  </ion-content>
+</ion-content>

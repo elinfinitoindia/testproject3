@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { SharedProvider } from '../../providers/shared/shared';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,7 +18,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 })
 export class LoginPage {
 public res;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService:LoginProvider, private googlePlus:GooglePlus) {
+ 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService:LoginProvider,private sharedService:SharedProvider) {
   }
 
   ionViewDidLoad() {
@@ -25,9 +27,9 @@ public res;
   }
 
   loginWithGoogle(){
-    this.googlePlus.login().then(res=>{
-      console.log(res);
-    })
+      this.loginService.login(a=>{
+        this.res = a;
+        this.sharedService.setToken(this.res.accessToken);
+      });
+    }  
   }
-
-}

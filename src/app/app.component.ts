@@ -31,10 +31,11 @@ export class MyApp {
 
 
 
-  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider) {
-    // this.platform.registerBackButtonAction(() => {
-    //   this.appMinimize.minimize();
-    // });
+  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen:SplashScreen) {
+
+    platform.ready().then(() => {
+      this.splashscreen.hide();
+    });
     this.initializeApp();
   }
 
@@ -66,11 +67,12 @@ export class MyApp {
   pages: PageInterface[] = [
     { title: 'Home', name: 'tabs-page', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
     { title: 'Stores', name: 'StoresPage', component: 'StoresPage',icon: 'md-basket' },
-    { title: 'Brands', name: 'BrandsPage', component: 'BrandsPage', icon: 'md-cash' },
-    { title: 'Category', name: 'CategoriesPage', component: 'CategoriesPage', icon: 'md-cash' },
-    { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 1, icon: 'md-cash' },
-    { title: 'My Account', name: 'ProfilePage', component: 'ProfilePage', icon: 'md-cash' },
-    { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-cash' },
+    { title: 'Brands', name: 'BrandsPage', component: 'BrandsPage', icon: 'md-briefcase' },
+    { title: 'Category', name: 'CategoriesPage', component: 'CategoriesPage', icon: 'md-archive' },
+    { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 1, icon: 'md-flame' },
+    { title: 'My Account', name: 'ProfilePage', component: 'ProfilePage', icon: 'md-person' },
+    { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-power' },
+    {title:'Share',name:'SharePage',component:'SharePage',icon:'md-share'}
   ];
 
   openPage(page: PageInterface) {
