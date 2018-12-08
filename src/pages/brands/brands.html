@@ -5,8 +5,12 @@
     </button>
     <ion-title class="" style="color:white">Brands</ion-title>
   </ion-navbar>
-  <toolsegmentbtn (tabsindex)="slideChangeByTab($event)"></toolsegmentbtn>
+  <shrinkingheader [scrollArea]="myContent" headerHeight="120"> </shrinkingheader>
+  <toolsegmentbtn (tabsindex)="slideChangeByTab($event)">
+  </toolsegmentbtn>
 </ion-header>
-<ion-content>
+<ion-content fullscreen #myContent>
+  <div>
     <slider (segme)=changetab($event) [listcards]="brandlist"> </slider>
+  </div>
 </ion-content>

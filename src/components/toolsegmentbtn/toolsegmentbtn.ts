@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, Renderer } from '@angular/core';
 
 /**
  * Generated class for the ToolsegmentbtnComponent component.
@@ -11,18 +11,33 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: 'toolsegmentbtn.html'
 })
 export class ToolsegmentbtnComponent {
-
   text: string;
   segments = '0';
   @Output() tabsindex = new EventEmitter();
-
-  constructor() {
-
+  // @Input('scrollArea') scrollArea: any;
+  // @Input('headerHeight') headerHeight: number;
+ 
+  newHeaderHeight: any;
+ 
+  constructor(public element: ElementRef, public renderer: Renderer) {
     console.log('Hello ToolsegmentbtnComponent Component');
     this.text = 'Hello World';
     console.log(this.segments);
-
   }
+ 
+  ngAfterViewInit(){
+ 
+   
+ 
+  }
+ 
+  resizeHeader(ev){
+ 
+    
+ 
+  }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');

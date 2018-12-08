@@ -16,6 +16,7 @@ import { RefresherComponent } from './../../components/refresher/refresher';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BrandcardsComponent } from '../../components/brandcards/brandcards';
 import { OneSignal } from '@ionic-native/onesignal';
+import { NotificationProvider } from '../../providers/notification/notification';
 // import { OneSignal } from '@ionic-native/onesignal';
 /**
  * Generated class for the HomePage page.
@@ -83,26 +84,23 @@ export class HomePage {
   public DailyNav = 'OffercardlistPage';
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient,private oneSignal:OneSignal) {
-      this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
-        // do something when notification is received
-      });
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient,private oneSignal:OneSignal,private noftification:NotificationProvider) {
+      // this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
+      // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      // this.oneSignal.handleNotificationReceived().subscribe(() => {
+      //   // do something when notification is received
+      // });
 
-      this.oneSignal.handleNotificationOpened().subscribe((res) => {
-        console.log(res);  
-        this.navCtrl.push('OfferdetailPage');
-      });
+      //   this.noftification.recieveNotification(this.data);
 
-      this.oneSignal.endInit();
+      // this.oneSignal.endInit();
   }
 
   ionViewDidLoad() {
-    this.httpClient.get('http://192.168.225.52:5001/api/brand',httpOptions).subscribe(res=>{
+    this.httpClient.get('http://192.168.225.52:5000/api/brand',httpOptions).subscribe(res=>{
       this.brands = res;
     })
-    this.httpClient.get('http://192.168.225.52:5001/api/category',httpOptions).subscribe(res=>{
+    this.httpClient.get('http://192.168.225.52:5000/api/category',httpOptions).subscribe(res=>{
       this.category = res;
     })
     console.log('ionViewDidLoad HomePage');

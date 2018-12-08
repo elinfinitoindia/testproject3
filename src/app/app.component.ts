@@ -34,7 +34,7 @@ export class MyApp {
   constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen:SplashScreen) {
 
     platform.ready().then(() => {
-      this.splashscreen.hide();
+      // this.splashscreen.hide();
     });
     this.initializeApp();
   }

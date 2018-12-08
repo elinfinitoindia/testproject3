@@ -1,6 +1,7 @@
 import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OffersProvider } from '../../providers/offers/offers';
 
 
 @IonicPage()
@@ -12,15 +13,15 @@ export class OffercardlistPage {
 
 
   public lists: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.lists = [
-      { title: 'Prateek' },
-      { title: 'Prasson' }
-    ];
+  public id;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private offerService:OffersProvider) {
+    this.id = this.navParams.get('id');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OffercardlistPage');
+   this.offerService.getByBrandId(this.id).subscribe(res=>{
+     this.lists = res;
+   })
   }
 
 }

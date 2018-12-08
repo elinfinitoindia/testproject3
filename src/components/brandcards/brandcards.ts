@@ -41,11 +41,17 @@ export class BrandcardsComponent {
 
 
   getList(event){
+    var ID = 'caa79e5e-988b-41eb-90f0-c86f6ed6b9c4';
     if(this.isDeal){
     this.navCtrl.push('OfferdetailPage');
     }
     else{
-      console.log('we got false');
+      if(this.type == "brands"){
+        this.navCtrl.push('OffercardlistPage',{
+          id:ID
+      })
+      }
+     
     }
   }
 }

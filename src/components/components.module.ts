@@ -15,6 +15,7 @@ import { CategorycardsComponent } from './categorycards/categorycards';
 import { AdsliderComponent } from './adslider/adslider';
 import { ImagesliderComponent } from './imageslider/imageslider';
 import { SquaredealComponent } from './squaredeal/squaredeal';
+import { ShrinkingheaderComponent } from './shrinkingheader/shrinkingheader';
 @NgModule({
 	declarations: [OffercardsComponent,
     FabComponent,
@@ -30,7 +31,8 @@ import { SquaredealComponent } from './squaredeal/squaredeal';
     CategorycardsComponent,
     AdsliderComponent,
     ImagesliderComponent,
-    SquaredealComponent],
+    SquaredealComponent,
+    ShrinkingheaderComponent],
 	imports: [IonicModule],
 	exports: [OffercardsComponent,
     FabComponent,
@@ -46,7 +48,8 @@ import { SquaredealComponent } from './squaredeal/squaredeal';
     CategorycardsComponent,
     AdsliderComponent,
     ImagesliderComponent,
-    SquaredealComponent],
+    SquaredealComponent,
+    ShrinkingheaderComponent],
 
 })
 export class ComponentsModule { }

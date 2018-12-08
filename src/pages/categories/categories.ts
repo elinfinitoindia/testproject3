@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { SliderComponent } from '../../components/slider/slider';
+import { ToolsegmentbtnComponent } from '../../components/toolsegmentbtn/toolsegmentbtn';
 
 /**
  * Generated class for the CategoriesPage page.
@@ -17,14 +19,31 @@ import { HttpClient } from '@angular/common/http';
 export class CategoriesPage {
 
   public categories;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient:HttpClient) {
+
+  @ViewChild(SliderComponent)
+  private sliderComponent: SliderComponent;
+
+  @ViewChild(ToolsegmentbtnComponent)
+  private segmentComponent: ToolsegmentbtnComponent;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
   }
 
   ionViewDidLoad() {
-    this.httpClient.get(' http://192.168.225.52:5001/api/category').subscribe(res=>{
+    this.httpClient.get(' http://192.168.225.52:5001/api/category').subscribe(res => {
       this.categories = res;
     })
     console.log('ionViewDidLoad CategoriesPage');
+  }
+
+  slideChangeByTab(tabsindex) {
+    this.sliderComponent.pageSlider.slideTo(tabsindex);
+  }
+
+  // this method is used to change the slides on tabs changes
+  changetab(index) {
+    this.segmentComponent.segments = index;
   }
 
 }

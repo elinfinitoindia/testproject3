@@ -1,11 +1,16 @@
 page-brands {
-    .toolbar-background-md{
-        background: #FF6700;
+    ion-header {
+        background: url('../../assets/imgs/under199.jpg');
     }
-    .toolbar-title-md{
-        color:white;
+    .toolbar-title-md {
+        color: white;
     }
-    .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
-        color:white;
+    .bar-button-default-md,
+    .bar-button-clear-md-default,
+    .bar-button-md-default {
+        color: white;
+    }
+    .toolbar-background-md {
+        background: transparent;
     }
 }

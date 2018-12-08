@@ -30,6 +30,62 @@ export class BrandsPage {
 public brandlist;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient:HttpClient) {
+    this.brandlist =  [{
+      'Name':'Praeek'},
+      {
+        'Name':'Prsdaeek',
+      },
+      {
+        'Name':'Prsdaesdfdsfdsek',
+      },{
+        'Name':'Prdfgdfgdfsdaeek',
+      },{
+        'Name':'Prsdsdfdsfaeek',
+      },{
+        'Name':'Prsdfgdfgdaeek',
+      },{
+        'Name':'Prsdfgdfgdaeek',
+      },{
+        'Name':'Prsddgaeek',
+      },{
+        'Name':'Prsddfgdgfaeek',
+      },{
+        'Name':'Prsddfgdfgaeek',
+      },
+      {
+        'Name':'Prsddfgdfgaeek',
+      },
+      {
+        'Name':'Prsdddfgfgaeek',
+      },
+      {
+        'Name':'Prssdsdddfgaeek',
+      },
+      {
+        'Name':'Prsddfsdfgaeek',
+      },
+      {
+        'Name':'Prsdfgddfgaeek',
+      },
+      {
+        'Name':'Prsdfgddfgaeek',
+      },
+      {
+        'Name':'Pdfgrsddfgaeek',
+      },
+      {
+        'Name':'Prsddfdfgaeek',
+      },
+      {
+        'Name':'Prsddfgdfgaeek',
+      },
+      {
+        'Name':'Prsddfgsgdfgaeek',
+      },
+      {
+        'Name':'Prshhggffgddfghfgdfgaeek',
+      },
+  ]
   }
 
   ionViewDidLoad() {

@@ -17,6 +17,7 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { Toast } from '@ionic-native/toast';
 import { InterceptorModule } from './interceptor.module';
 import {OneSignal} from '@ionic-native/onesignal';
+import { NotificationProvider } from '../providers/notification/notification';
 // import { OneSignal } from '@ionic-native/onesignal';
 
 
@@ -57,7 +58,8 @@ import {OneSignal} from '@ionic-native/onesignal';
     SocialSharing,
     Clipboard,
     Toast,
-    OneSignal
+    OneSignal,
+    NotificationProvider
 
   ],
   schemas: [NO_ERRORS_SCHEMA]

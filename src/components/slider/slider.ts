@@ -14,21 +14,48 @@ import { Slides } from 'ionic-angular';
 export class SliderComponent {
 
   text: string;
+  slide;
   @ViewChild('pageSlider') pageSlider: Slides
   @Input() listcards: any = [];
   @Output() segme = new EventEmitter();
   @Input() tabindex;
-
+  @Output() scroll = new EventEmitter();
 
   constructor() {
     console.log('Hello SliderComponent Component');
     this.text = 'Hello World';
-    
+    this.listcards = [{
+      'Name':'Praeek'},
+      {
+        'Name':'Prsdaeek',
+      },
+      {
+        'Name':'Prsdaesdfdsfdsek',
+      },{
+        'Name':'Prdfgdfgdfsdaeek',
+      },{
+        'Name':'Prsdsdfdsfaeek',
+      },{
+        'Name':'Prsdfgdfgdaeek',
+      },{
+        'Name':'Prsdfgdfgdaeek',
+      },{
+        'Name':'Prsddgaeek',
+      },{
+        'Name':'Prsddfgdgfaeek',
+      },{
+        'Name':'Prsddfgaeek',
+      },
+  ]
   }
 
   ngOnInit(){
 
 
+  }
+
+  ngAfterViewInit(): void {
+    
   }
   changeWillSlide($event) {
     // this.segments = $event._snapIndex.toString();
@@ -40,4 +67,5 @@ export class SliderComponent {
   }
 
 
+ 
 }
