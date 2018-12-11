@@ -4,8 +4,9 @@
         <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
         <ion-title class="pagetitle" style="color:#B7B7B7;">Stores</ion-title>
       </ion-navbar>
+      <shrinkingheader [scrollArea]="myContent" headerHeight="120"> </shrinkingheader>
   <toolsegmentbtn (tabsindex)="slideChangeByTab($event)"></toolsegmentbtn>
 </ion-header>
-<ion-content>
+<ion-content fullscreen #myContent>
     <slider (segme)=changetab($event)> </slider>
 </ion-content>

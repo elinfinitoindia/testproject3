@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the SquaredealComponent component.
@@ -13,35 +13,12 @@ import { Component } from '@angular/core';
 export class SquaredealComponent {
 
   text: string;
-  public deals:any = [];
+  @Input() deals:any;
 
   constructor() {
     console.log('Hello SquaredealComponent Component');
     this.text = 'Hello World';
-    this.deals = [{
-      'name':'Prateek',
-      'link':'http://elinfinitoindia.in'
-    },
-    {
-      'name':'Prateek1',
-      'link':'http://elinfinitoindia.in'
-    },
-    {
-      'name':'Prateek2',
-      'link':'http://elinfinitoindia.in'
-    },
-    {
-      'name':'Prateek3',
-      'link':'http://elinfinitoindia.in'
-    },
-    {
-      'name':'Prateek4',
-      'link':'http://elinfinitoindia.in'
-    },
-    {
-      'name':'Prateek5',
-      'link':'http://elinfinitoindia.in'
-    },]
+    
   }
 
 }

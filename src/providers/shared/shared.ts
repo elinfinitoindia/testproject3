@@ -1,7 +1,7 @@
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Toast } from '@ionic-native/toast';
+import { LoadingController, ToastController } from 'ionic-angular';
 /*
   Generated class for the SharedProvider provider.
 
@@ -11,8 +11,13 @@ import { Toast } from '@ionic-native/toast';
 @Injectable()
 export class SharedProvider {
 
-  constructor(public http: HttpClient, private socialShare: SocialSharing, private toast: Toast) {
+  public loader:any;
+
+
+
+  constructor(public http: HttpClient, private socialShare: SocialSharing, private toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     console.log('Hello SharedProvider Provider');
+  
   }
 
 
@@ -48,14 +53,22 @@ export class SharedProvider {
   // this method is used to generate toast
 
   createToast(data) {
-    this.toast.show(data, '5000', 'center').subscribe(
-      toast => {
-        console.log(toast);
-      }
-    );
+    const toast = this.toastCtrl.create({
+      message: data,
+      duration: 3000,
+      position: "middle"
+    });
+    toast.present();
+  }
+  
+  showLoader() {
+    this.loader = this.loadingCtrl.create({
+      content: "Please wait...",
+    });  
+       this.loader.present();
   }
 
-
-
-
+  hideLoader(){
+    this.loader.dismissAll();
+  }
 }

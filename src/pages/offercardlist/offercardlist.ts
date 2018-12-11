@@ -2,6 +2,7 @@ import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OffersProvider } from '../../providers/offers/offers';
+import { SharedProvider } from '../../providers/shared/shared';
 
 
 @IonicPage()
@@ -14,14 +15,45 @@ export class OffercardlistPage {
 
   public lists: any;
   public id;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private offerService:OffersProvider) {
+  public type;
+  public title:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private offerService: OffersProvider, private sharedService:SharedProvider) {
     this.id = this.navParams.get('id');
+    this.type = this.navParams.get('type');
+    this.title = this.navParams.get('name')
   }
 
   ionViewDidLoad() {
-   this.offerService.getByBrandId(this.id).subscribe(res=>{
-     this.lists = res;
-   })
+    if(this.type == 'Brands'){
+      this.sharedService.showLoader();
+      this.offerService.getByBrandId(this.id).subscribe(res => {
+        this.lists = res;
+        this.sharedService.hideLoader();
+      })
+    }
+    else if(this.type == 'Category'){
+      this.sharedService.showLoader();
+      this.offerService.getByCategoryId(this.id).subscribe(res=>{
+            this.lists = res;
+            this.sharedService.hideLoader()
+      });
+    }
+    else if (this.type == 'Stores'){
+      this.sharedService.showLoader()
+      this.offerService.getOffersByStoreId(this.id).subscribe(res=>{
+        this.lists = res;
+        this.sharedService.hideLoader()
+      })
+    }
+    
+  }
+
+  ionViewWillEnter(){
+    // this.sharedService.hideLoader();
+  }
+
+  ionViewWillLeave(){
+    console.log(this.navCtrl);
   }
 
 }

@@ -1,3 +1,16 @@
 page-offercardlist {
-
+    .toolbar-background-md {
+        background: transparent;
+    }
+    ion-header {
+        background: url('../../assets/imgs/under199.jpg');
+    }
+    .toolbar-title-md {
+        color: white;
+    }
+    .bar-button-default-md,
+    .bar-button-clear-md-default,
+    .bar-button-md-default {
+        color: white;
+    }
 }

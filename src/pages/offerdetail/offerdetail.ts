@@ -23,34 +23,33 @@ const httpOptions = {
 })
 export class OfferdetailPage implements AfterViewInit {
 
-  public offers;
+  public offerDetail;
+  public id: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private clipboard: Clipboard, private platform: Platform, private httpClient:HttpClient) {
-    // this.platform.registerBackButtonAction(() => {
-    //   this.navCtrl.pop();
-
-    // })
+  constructor(public navCtrl: NavController, public navParams: NavParams, private clipboard: Clipboard, private platform: Platform, private httpClient: HttpClient) {
    
- 
+   
+  }
 
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+   
+  
   }
 
   ionViewDidLoad() {
-  
-    this.httpClient.get('http://192.168.1.90:5000/api/offers', httpOptions).subscribe((res)=>{
-      this.offers = res;
-      console.log(this.offers);
- });
- 
+    this.id = this.navParams.get('ID');
+    this.httpClient.get('http://192.168.225.52:5000/api/offers/' + this.id, httpOptions).subscribe((res) => {
+      this.offerDetail = res;
+      console.log(this.offerDetail);
+    });
     console.log('ionViewDidLoad OfferdetailPage');
 
   }
 
 
   ionViewDidEnter() {
-    // this.clipboard.copy('hi ');
-
-    // alert('coupon copy');
   }
 
   ngAfterViewInit() {

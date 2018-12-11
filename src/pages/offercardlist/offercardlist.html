@@ -1,15 +1,13 @@
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>offercardlist</ion-title>
+    <ion-title>Offers from {{title}}</ion-title>
   </ion-navbar>
+  <shrinkingheader [scrollArea]="myContent" headerHeight="120"> </shrinkingheader>
   <toolsegmentbtn (tabsindex)="slideChangeByTab($event)"></toolsegmentbtn>
 </ion-header>
-
-
-<ion-content>
-  <cardlist></cardlist>
+<ion-content fullscreen #myContent>
+  <cardlist [lists] = "lists" ></cardlist>
 </ion-content>

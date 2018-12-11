@@ -10,7 +10,7 @@
   <adslider></adslider>
 
   <h1 class="text-center" (click)="login()">Shop on Stores</h1>
-  <offercards [lists]="brands"></offercards> 
+  <offercards [lists]="brands" [type]="'Brands'"></offercards> 
   <adscard></adscard>
 
   <h1 class="text-center">Offers by Brands</h1>
@@ -23,10 +23,10 @@
   
 
   <h1 class="text-center">New Launches</h1>
-  <brandcards></brandcards>
+  <brandcards [items]="category" [type]="'Category'"></brandcards>
 
   <h1 class="text-center">Super Deal</h1>
-  <squaredeal></squaredeal>
+  <squaredeal [deals]=brands></squaredeal>
 
   <h1 class="text-center">Todays Exclusive</h1>
   <adscard></adscard>

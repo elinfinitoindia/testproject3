@@ -14,8 +14,8 @@ offercards {
         }
         img {
             margin: 5px;
-            width: 80px;
-            height: 100%;
+            // width: 80px;
+            // height: 100%;
         }
     } // 
     ion-scroll[scroll-avatar] {
@@ -54,9 +54,9 @@ offercards {
         padding-right: 0px;
     } // this class is used for logo display on cards
     .largecardimg {
-        width: 3.4cm;
+        width: 3.4cm !important;
         margin: 5px auto !important;
-        height:1.5cm;
+        height:1.5cm !important;
     } // the title of cards displaying title of cards
     .cartcard-title {
         position: absolute;

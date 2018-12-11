@@ -1,40 +1,4 @@
- <!-- <ion-card class="">
-  <ion-card-content class="nopaddingcard">
-    <ion-row>
-      <ion-col col-8>
-        <span>Popular Brands</span>
-      </ion-col>
-      <ion-col col-4 text-right class="nopaddin">
-        <button ion-button clear small id="Brands" class="viewall" (click)="showAllOffers($event)" style="color:#FF6700">View All</button>
-      </ion-col>
-    </ion-row>
-    <ion-item no-lines class="paddingleft">
-      <ion-item no-lines class="paddingleft"> 
-        <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='http://elinfinitoindia.in/images/fulletron.jpg' class="largecardimg" />
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='assets/images/fulletron.jpg' class="largecardimg" />
-           
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='assets/imgs/logo.png' class="largecardimg" />
-            <div class="card-title">Total Offers: </div> 
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='assets/imgs/logo.png' class="largecardimg" />
-            <div class="card-title">Total Offers: </div> 
-          </ion-card>
-          <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-            <img src='assets/imgs/logo.png' class="largecardimg" />
-            <div class="card-title">Total Offers: </div> 
-          </ion-card>
-        </ion-scroll>
-      </ion-item>
-    </ion-item>
-  </ion-card-content>
-</ion-card>  -->
+
  <ion-row>
       <ion-col col-2 offset-9 text-right>
         <span style="color:orangered">View All</span>
@@ -45,24 +9,8 @@
  <ion-item no-lines class="paddingleft">
     <ion-item no-lines class="paddingleft"> 
       <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
-        <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-          <img src='http://elinfinitoindia.in/images/fulletron.jpg' class="largecardimg" />
-        </ion-card>
-        <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-          <img src='assets/images/fulletron.jpg' class="largecardimg" />
-         
-        </ion-card>
-        <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-          <img src='assets/imgs/logo.png' class="largecardimg" />
-          <div class="card-title">Total Offers: </div> 
-        </ion-card>
-        <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-          <img src='assets/imgs/logo.png' class="largecardimg" />
-          <div class="card-title">Total Offers: </div> 
-        </ion-card>
-        <ion-card class="scroll-item" id="largecard" (click)="getList($event);">
-          <img src='assets/imgs/logo.png' class="largecardimg" />
-          <div class="card-title">Total Offers: </div> 
+        <ion-card class="scroll-item" id="largecard" (click)="getList(items);" *ngFor = "let items of offers">
+          <img src='../../assets/imgs/Ajio_e.png' class="largecardimg" />
         </ion-card>
       </ion-scroll>
     </ion-item>

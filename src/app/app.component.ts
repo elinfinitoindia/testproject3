@@ -90,9 +90,24 @@ export class MyApp {
     } else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage
-      this.nav.setRoot(page.name, params).catch((err: any) => {
-        console.log(`Didn't set nav root: ${err}`);
-      });
+      if(page.name == 'ProfilePage'){
+          if(this.sharedService.getToken() != null || this.sharedService.getToken() != undefined){
+            this.nav.setRoot(page.name, params).catch((err: any) => {
+              console.log(`Didn't set nav root: ${err}`);
+            });
+          }
+          else{
+            this.nav.setRoot('LoginPage', params).catch((err: any) => {
+              console.log(`Didn't set nav root: ${err}`);
+            });
+          }
+      }
+      else{
+        this.nav.setRoot(page.name, params).catch((err: any) => {
+          console.log(`Didn't set nav root: ${err}`);
+        });
+      }
+    
     }
   }
 

@@ -1,25 +1,21 @@
-<ion-card id="catcards nopaddingoffercard" *ngFor="let items of categories">
+<ion-card id="catcards nopaddingoffercard" *ngFor="let items of lists" (click)="getOfferDetails(items)">
   <ion-card-content style="padding:5px;">
     <ion-row>
       <ion-col item-left class="nopaddingcol" style="margin-top: 5px;margin-bottom: 0px;">
-        <img src="assets/imgs/Ajio.png" class="logo">
+        <img src="../../assets/imgs/Ajio_e.png" class="logo">
       </ion-col>
       <ion-col col-12>
-        <p style="white-space: normal;">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque, iusto? Quae, quidem possimus aut nisi eius
-          dolore nemo?
-        </p>
+        <h3 style="white-space: normal;">
+          {{items.ShortDescription}}
+        </h3>
       </ion-col>
-      <ion-col style="    padding-top: 0px;
-          padding-bottom: 0px;">
+      <ion-col style="padding-top: 0px;padding-bottom: 0px;">
         <ion-icon ios="ios-cash" md="md-cash" color="theme"></ion-icon>
         <span style="color:blueviolet">Flat 25 CD Cashback </span>
       </ion-col>
     </ion-row>
   </ion-card-content>
 </ion-card>
-
-
 <!-- </ion-col> -->
 <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
   <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">

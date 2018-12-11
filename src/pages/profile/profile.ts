@@ -26,18 +26,11 @@ export class ProfilePage {
   public profile: any = 'profiledetail';
   public title: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController, public viewCtrl: ViewController, public keyboard: Keyboard, private sharedService:SharedProvider, private googlePlus:GooglePlus) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modal: ModalController, public viewCtrl: ViewController, public keyboard: Keyboard, private sharedService: SharedProvider, private googlePlus: GooglePlus) {
     this.title = "My Account";
   }
 
   ionViewCanEnter() {
-    if(this.sharedService.getToken().length> 1){
-       return true;
-    } 
-  else{
-    return false;
-  }
-    
   }
 
   changepassword() {

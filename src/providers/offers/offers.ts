@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 /*
   Generated class for the OffersProvider provider.
@@ -26,7 +27,7 @@ export class OffersProvider {
 
   
   // get all brands 
-  public getBrands(){
+  public getBrands():Observable<any>{
     return this.http.get(apiUrl+'api/brand',httpOptions);
   }
 
@@ -43,18 +44,18 @@ export class OffersProvider {
   }
 
   public getOffersByStoreId(id){
-    return  this.http.get(apiUrl+'api/offer/GetByStoreId/'+id, httpOptions);
+    return  this.http.get(apiUrl+'api/offers/GetByStoreId/'+id, httpOptions);
   }
   
   public getByBrandId(id){
-    return this.http.get(apiUrl+'api/offer/GetByBrandId/'+id, httpOptions);
+    return this.http.get(apiUrl+'api/offers/GetByBrandId/'+id, httpOptions);
   }
   
   public getByCategoryId(id){
-    return  this.http.get(apiUrl+'api/offer/GetByCategories/'+id, httpOptions);
+    return  this.http.get(apiUrl+'api/offers/GetByCategories/'+id, httpOptions);
   }
 
   public GetFavouriteByUserId(id){
-    return this.http.get(apiUrl+'api/offer/GetFavouriteByUserId'+id,httpOptions);
+    return this.http.get(apiUrl+'api/offers/GetFavouriteByUserId'+id,httpOptions);
   }
 }

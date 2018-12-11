@@ -17,6 +17,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BrandcardsComponent } from '../../components/brandcards/brandcards';
 import { OneSignal } from '@ionic-native/onesignal';
 import { NotificationProvider } from '../../providers/notification/notification';
+import { filter, map } from 'rxjs/operators';
+import { OffersProvider } from '../../providers/offers/offers';
 // import { OneSignal } from '@ionic-native/onesignal';
 /**
  * Generated class for the HomePage page.
@@ -30,8 +32,8 @@ export class Brand {
   Logo: String
 }
 
-const httpOptions={
-  headers:new HttpHeaders({
+const httpOptions = {
+  headers: new HttpHeaders({
     'Access-Control-Allow-Origin': '*'
   })
 }
@@ -59,7 +61,7 @@ export class HomePage {
   isLoggedIn: boolean = false;
 
   @ViewChild(Content)
-  private content:Content;
+  private content: Content;
 
   @ViewChild(SliderComponent)
   private sliderComponent: SliderComponent;
@@ -79,30 +81,37 @@ export class HomePage {
   public category: any = [];
   public stores: any = [];
   public offers;
-  public isTrue:Boolean = true;
-  public isFalse:Boolean = false;
+  public isTrue: Boolean = true;
+  public isFalse: Boolean = false;
   public DailyNav = 'OffercardlistPage';
- 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient,private oneSignal:OneSignal,private noftification:NotificationProvider) {
-      // this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
-      // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-      // this.oneSignal.handleNotificationReceived().subscribe(() => {
-      //   // do something when notification is received
-      // });
 
-      //   this.noftification.recieveNotification(this.data);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider) {
+    // this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
+    // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+    // this.oneSignal.handleNotificationReceived().subscribe(() => {
+    //   // do something when notification is received
+    // });
 
-      // this.oneSignal.endInit();
+    //   this.noftification.recieveNotification(this.data);
+
+    // this.oneSignal.endInit();
   }
 
   ionViewDidLoad() {
-    this.httpClient.get('http://192.168.225.52:5000/api/brand',httpOptions).subscribe(res=>{
+
+
+    this.offerProvider.getBrands().subscribe(res => {
       this.brands = res;
-    })
-    this.httpClient.get('http://192.168.225.52:5000/api/category',httpOptions).subscribe(res=>{
-      this.category = res;
-    })
+      console.log(this.brands);
+    });
+
+    this.offerProvider.getCategories().
+      subscribe(res => {
+        this.category = res;
+        console.log(this.category);
+      });
+
     console.log('ionViewDidLoad HomePage');
   }
 
@@ -117,6 +126,10 @@ export class HomePage {
     this.segmentComponent.segments = index;
   }
 
+  ionViewWillLeave() {
+
+  }
+
   login() {
 
     this.navCtrl.push('OffercardlistPage');
@@ -124,16 +137,16 @@ export class HomePage {
     //   this.data = a;
     //   this.sharedService.setToken(this.data.accessToken);
     // });
-  }     
-  
-  logOut(){
+  }
+
+  logOut() {
     this.googlePlus.logout()
-    .then(res => {
-      this.sharedService.clearToken();
-    })
-    .catch(err => console.error(err));
-}
-  
+      .then(res => {
+        this.sharedService.clearToken();
+      })
+      .catch(err => console.error(err));
+  }
+
   doRefresh() {
     alert('hii');
   }

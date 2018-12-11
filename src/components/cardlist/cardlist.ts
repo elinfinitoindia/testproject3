@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { OffersProvider } from '../../providers/offers/offers';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the CardlistComponent component.
@@ -14,18 +16,19 @@ export class CardlistComponent {
 
   text: string;
   public categories;
+  @Input() lists:any =[];
 
-  constructor() {
+  constructor(private offerProvider:OffersProvider , private navCtrl:NavController) {
     console.log('Hello CardlistComponent Component');
     this.text = 'Hello World';
-    this.categories = [
-      { 'title': 'Mohit', 'description': 'Hello how are you?' },
-      { 'title': 'Prateek', 'description': 'Hello how are you?' },
-      { 'title': 'Mohit1', 'description': 'Hello how are you?' },
-      { 'title': 'Mohit2', 'description': 'Hello how are you?' },
-      { 'title': 'Mohit3', 'description': 'Hello how are you?' },
-      { 'title': 'Mohit6', 'description': 'Hello how are you?' },
-    ];
+   
   }
+
+  getOfferDetails(event){
+        this.navCtrl.push('OfferdetailPage',{
+          ID: event.ID
+        })
+      }
+  
 
 }

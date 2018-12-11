@@ -4,14 +4,14 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title class="pagetitle">
-      {{title}}
+     Login
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-grid class="margintop">
     <ion-row text-center>
-      <ion-col col-12>
+      <ion-col col-12 icon-start>
         <img src="assets/imgs/logo.png" alt="" width="80px;">
       </ion-col>
     </ion-row>
@@ -29,8 +29,8 @@
 
     <ion-row>
       <ion-col col-10 offset-1>
-        <button ion-button icon-start block style="text-transform:none;background-color:#5683FF;color:white" (click)="loginWithGoogle()">
-          <ion-icon name="logo-google"></ion-icon>
+        <button ion-button icon-start block style="text-transform:none;color:white" (click)="loginWithGoogle()">
+          <img src="../../assets/imgs/google.jpg" alt="" style="width:18%;">
           Login with Google
         </button>
       </ion-col>
