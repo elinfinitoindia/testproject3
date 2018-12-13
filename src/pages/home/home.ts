@@ -101,16 +101,33 @@ export class HomePage {
   ionViewDidLoad() {
 
 
-    this.offerProvider.getBrands().subscribe(res => {
-      this.brands = res;
-      console.log(this.brands);
+    this.offerProvider.getBrands().pipe(
+      map((response:any) => {
+        let y = response.filter(x => x.isFav==true)
+        console.log(y);
+        return y;
+    }))
+    .subscribe(res => {
+            this.brands = res;
+            console.log(this.brands);
+    },err=>{
+    this.sharedService.createToast('Unable to load brands')
     });
 
-    this.offerProvider.getCategories().
+    this.offerProvider.getCategories().pipe(
+      map((response:any) => {
+        let y = response.filter(x => x.isFav==true)
+        console.log(y);
+        return y;
+    })).
       subscribe(res => {
         this.category = res;
         console.log(this.category);
-      });
+      },err=>{
+        this.sharedService.createToast('Unable to load categories')
+      }
+
+      );
 
     console.log('ionViewDidLoad HomePage');
   }

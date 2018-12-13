@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the CategorycardsComponent component.
@@ -14,10 +15,19 @@ export class CategorycardsComponent {
 
   text: string;
   @Input() items:any = [];
+  @Input() navdata: string;
+  @Input() type: string;
+  @Input() view: boolean;
+  @Input() isDeal: boolean;
+  
 
-  constructor() {
+  constructor(private navCtrl:NavController) {
     console.log('Hello CategorycardsComponent Component');
     this.text = 'Category';
+  }
+
+  ViewAll() {
+    this.navCtrl.push(this.navdata);
   }
 
 }

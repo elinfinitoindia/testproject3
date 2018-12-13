@@ -16,44 +16,58 @@ export class OffercardlistPage {
   public lists: any;
   public id;
   public type;
-  public title:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private offerService: OffersProvider, private sharedService:SharedProvider) {
+  public title: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private offerService: OffersProvider, private sharedService: SharedProvider) {
     this.id = this.navParams.get('id');
     this.type = this.navParams.get('type');
     this.title = this.navParams.get('name')
   }
 
   ionViewDidLoad() {
-    if(this.type == 'Brands'){
+    if (this.type == 'Brands') {
       this.sharedService.showLoader();
       this.offerService.getByBrandId(this.id).subscribe(res => {
         this.lists = res;
         this.sharedService.hideLoader();
-      })
-    }
-    else if(this.type == 'Category'){
-      this.sharedService.showLoader();
-      this.offerService.getByCategoryId(this.id).subscribe(res=>{
-            this.lists = res;
-            this.sharedService.hideLoader()
+      }, err => {
+        console.log(err);
+        this.sharedService.hideLoader();
       });
     }
-    else if (this.type == 'Stores'){
-      this.sharedService.showLoader()
-      this.offerService.getOffersByStoreId(this.id).subscribe(res=>{
+    else if (this.type == 'Category') {
+      this.sharedService.showLoader();
+      this.offerService.getByCategoryId(this.id).subscribe(res => {
         this.lists = res;
         this.sharedService.hideLoader()
+      }, err => {
+        console.log(err);
+      }
+      );
+    }
+    else if (this.type == 'Stores') {
+      this.sharedService.showLoader()
+      this.offerService.getOffersByStoreId(this.id).subscribe(res => {
+        this.lists = res;
+        this.sharedService.hideLoader()
+      }, err => {
+        console.log(err);
       })
     }
-    
+
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     // this.sharedService.hideLoader();
   }
 
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     console.log(this.navCtrl);
+  }
+
+  getOfferDetails(event){
+    this.navCtrl.push('OfferdetailPage',{
+      ID: event.ID
+    })
   }
 
 }

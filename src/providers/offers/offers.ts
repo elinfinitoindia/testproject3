@@ -43,7 +43,7 @@ export class OffersProvider {
     return this.http.get(apiUrl+'api/offers/'+id,httpOptions);
   }
 
-  public getOffersByStoreId(id){
+  public getOffersByStoreId(id):Observable<any>{
     return  this.http.get(apiUrl+'api/offers/GetByStoreId/'+id, httpOptions);
   }
   
@@ -57,5 +57,9 @@ export class OffersProvider {
 
   public GetFavouriteByUserId(id){
     return this.http.get(apiUrl+'api/offers/GetFavouriteByUserId'+id,httpOptions);
+  }
+
+  public getAllDeals(){
+    return this.http.get(apiUrl+'api/deals',httpOptions);
   }
 }

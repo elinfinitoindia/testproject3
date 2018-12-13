@@ -18,7 +18,7 @@
 
   <ng-template [ngIf]="category">
     <h1 class="text-center">Offers by Categories</h1>
-    <categorycards [items]="category"></categorycards>  
+    <categorycards [items]="category" [view]=isTrue [navdata]="'CategoriesPage'"></categorycards>  
   </ng-template>
   
 
