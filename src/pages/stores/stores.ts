@@ -2,6 +2,8 @@ import { Component, ViewChild, Output, EventEmitter, Input } from '@angular/core
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SliderComponent } from '../../components/slider/slider';
 import { ToolsegmentbtnComponent } from '../../components/toolsegmentbtn/toolsegmentbtn';
+import { OffersProvider } from '../../providers/offers/offers';
+import { SharedProvider } from '../../providers/shared/shared';
 
 /**
  * Generated class for the StoresPage page.
@@ -26,11 +28,18 @@ export class StoresPage {
   @Input() tabindex;
   @Output() slideindex = new EventEmitter();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public stores:any = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams , private offerService: OffersProvider, private sharedService: SharedProvider) {
+   
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad StoresPage');
+   this.offerService.getStores().subscribe(res=>{
+     this.stores = res;
+   }, err=>{
+     this.sharedService.createToast('Unable to load Stores');
+   })
   }
   slideChangeByTab(tabsindex) {
     this.sliderComponent.pageSlider.slideTo(tabsindex);

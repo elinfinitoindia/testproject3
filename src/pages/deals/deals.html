@@ -7,10 +7,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content #content (ionScroll)="scrollHandler($event)">
+
+
+
   <adslider></adslider>
+
+  <button ion-button block (click)="totop()"></button>
   <h1 class="text-center" style="text-align:center;">Today's Deals</h1>
-  <brandcards [title]="title"></brandcards>
+  <brandcards [title]="title" [items]="dailyDeals"></brandcards>
 
   <h1 class="text-center" style="text-align:center;">Deals on Mobile</h1>
   <brandcards [title]="title"></brandcards>
@@ -36,4 +41,9 @@
   <h1 class="text-center" style="text-align: center">
     For Perfect Looks</h1>
   <brandcards></brandcards>
+  <ion-fab right bottom>
+  <button ion-fab color="light" *ngIf = "showBtn" [@fadeInOut] >
+    <ion-icon name="md-arrow-dropup"></ion-icon>
+  </button>
+  </ion-fab>
 </ion-content>

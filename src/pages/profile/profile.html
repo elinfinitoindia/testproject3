@@ -10,14 +10,11 @@
   <ion-toolbar class="segmentcol">
     <ion-row>
       <ion-col class="segmentcol">
-        <ion-segment [(ngModel)]="tabs" color="primary">
-          <ion-segment-button value="profiledetail" (click)="selectTab(0)" value="0">
-            Profile
-          </ion-segment-button>
-          <ion-segment-button value="redeem" (click)="selectTab(1)" value="1">
+        <ion-segment [(ngModel)]="tabs">
+          <ion-segment-button value="redeem" (click)="selectTab(0)" value="0">
             Redeem
           </ion-segment-button>
-          <ion-segment-button value="history" (click)="selectTab(2)" value="2">
+          <ion-segment-button value="history" (click)="selectTab(1)" value="1">
             History
           </ion-segment-button>
           <div id="slide" class="slide"></div>
@@ -29,60 +26,8 @@
 <ion-content>
   <ion-slides #pageSlider (ionSlideWillChange)="changeWillSlide($event)">
     <ion-slide>
-      <ion-card id="fullwidthcard" class="profilename">
-        <ion-card-content>
-          <ion-row text-center>
-            <ion-col col-12 offset-4>
-              <ion-avatar>
-                <img src="assets/imgs/logo.png" style="height:100px;">
-              </ion-avatar>
-            </ion-col>
-            <ion-col col-12 text-right>
-              <span>
-                <button ion-button small color="theme">Edit</button>
-              </span>
-            </ion-col>
-            <ion-col col-12>
-              <ion-item>
-                <ion-label stacked>Name</ion-label>
-                <ion-input type="text"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col col-12>
-              <ion-item>
-                <ion-label stacked>Email</ion-label>
-                <ion-input type="email"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col col-12>
-              <ion-item>
-                <ion-label stacked>Mobile Number</ion-label>
-                <ion-input type="text"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col col-12>
-            </ion-col>
-          </ion-row>
-
-
-        </ion-card-content>
-      </ion-card>
-      <ion-card id="fullwidthcard" class="changepassword">
-        <ion-card-content>
-          <ion-item>
-            <ion-icon name="phone-portrait" item-start color="primary"></ion-icon>
-            <span (click)="changepassword()">Change Password</span>
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-      <h1 class="text-center" style="text-align:center;color:#5683FF">Life Time Earnings</h1>
-      <h3 color="primary">Rs. 500</h3>
-    </ion-slide>
-    <ion-slide>
       <redeem></redeem>
     </ion-slide>
-    <ion-slide>
-
-    </ion-slide>
+    <ion-slide>   </ion-slide>
   </ion-slides>
 </ion-content>

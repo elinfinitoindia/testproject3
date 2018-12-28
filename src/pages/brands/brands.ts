@@ -3,10 +3,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SliderComponent } from '../../components/slider/slider';
 import { ToolsegmentbtnComponent } from '../../components/toolsegmentbtn/toolsegmentbtn';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SharedProvider } from '../../providers/shared/shared';
+import { OffersProvider } from '../../providers/offers/offers';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   })
 };
@@ -18,7 +20,7 @@ const httpOptions = {
 })
 export class BrandsPage {
 
-   @ViewChild(SliderComponent)
+  @ViewChild(SliderComponent)
   private sliderComponent: SliderComponent;
 
   @ViewChild(ToolsegmentbtnComponent)
@@ -27,76 +29,22 @@ export class BrandsPage {
   @Output() selectedTabIndex = new EventEmitter()
   @Input() tabindex;
   @Output() slideindex = new EventEmitter();
-public brandlist;
+  public brandlist;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient:HttpClient) {
-    this.brandlist =  [{
-      'Name':'Praeek'},
-      {
-        'Name':'Prsdaeek',
-      },
-      {
-        'Name':'Prsdaesdfdsfdsek',
-      },{
-        'Name':'Prdfgdfgdfsdaeek',
-      },{
-        'Name':'Prsdsdfdsfaeek',
-      },{
-        'Name':'Prsdfgdfgdaeek',
-      },{
-        'Name':'Prsdfgdfgdaeek',
-      },{
-        'Name':'Prsddgaeek',
-      },{
-        'Name':'Prsddfgdgfaeek',
-      },{
-        'Name':'Prsddfgdfgaeek',
-      },
-      {
-        'Name':'Prsddfgdfgaeek',
-      },
-      {
-        'Name':'Prsdddfgfgaeek',
-      },
-      {
-        'Name':'Prssdsdddfgaeek',
-      },
-      {
-        'Name':'Prsddfsdfgaeek',
-      },
-      {
-        'Name':'Prsdfgddfgaeek',
-      },
-      {
-        'Name':'Prsdfgddfgaeek',
-      },
-      {
-        'Name':'Pdfgrsddfgaeek',
-      },
-      {
-        'Name':'Prsddfdfgaeek',
-      },
-      {
-        'Name':'Prsddfgdfgaeek',
-      },
-      {
-        'Name':'Prsddfgsgdfgaeek',
-      },
-      {
-        'Name':'Prshhggffgddfghfgdfgaeek',
-      },
-  ]
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient, private sharedService: SharedProvider, private offerService: OffersProvider) {
+
   }
 
   ionViewDidLoad() {
-      this.httpClient.get('http://localhost:5001/api/brand',httpOptions).subscribe(res=>{
-          this.brandlist  = res;
-      })
-    console.log('ionViewDidLoad BrandsPage');
+    this.offerService.getBrands().subscribe(res => {
+      this.brandlist = res;
+    }, err => {
+      this.sharedService.createToast('Unable to load brands')
+    })
   }
 
-   // this method is used to change the selected tabs on slide change
-   slideChangeByTab(tabsindex) {
+  // this method is used to change the selected tabs on slide change
+  slideChangeByTab(tabsindex) {
     this.sliderComponent.pageSlider.slideTo(tabsindex);
   }
 

@@ -23,13 +23,48 @@ page-profile {
         padding-bottom: 0px !important;
         margin-top: 90px !important;
     }
-    .toolbar-background-md{
-        background: #FF6700;
+    ion-header {
+        background: url('../../assets/imgs/under199.jpg');
     }
-    .toolbar-title-md{
-        color:white;
+    .toolbar-title-md {
+        color: white;
     }
-    .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
-        color:white;
+    .bar-button-default-md,
+    .bar-button-clear-md-default,
+    .bar-button-md-default {
+        color: white;
     }
+    .toolbar-background-md {
+        background: transparent;
+    }
+    .toolbar .segment-md .segment-button {
+        color: white;
+        opacity: 1;
+        font-size: larger;
+        border: none;
+      } // no bottom paddign segment col
+      .segmentcol {
+        padding-bottom: 0px !important;
+        margin-bottom: 0px;
+      } // no bottom padding segment card
+      .segmentcard {
+        padding-bottom: 0px !important;
+        margin-bottom: 0px !important;
+      } // no bottompadding grid class
+      .segmentgrid {
+        padding-bottom: 0px !important;
+        margin-bottom: 0px !important;
+      } // to reduce the height and bottom distance from segment borders
+      .toolbar-md {
+        min-height: 52px !important;
+      } // to center image 
+      .centerimage {
+        margin: 0 auto;
+      }
+      .toolbar .segment-md .segment-button:activated {
+        color: white;
+        opacity: 1;
+        font-size: larger;
+        border: none;
+      }
 }

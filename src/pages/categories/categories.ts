@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { SliderComponent } from '../../components/slider/slider';
 import { ToolsegmentbtnComponent } from '../../components/toolsegmentbtn/toolsegmentbtn';
+import { OffersProvider } from '../../providers/offers/offers';
+import { SharedProvider } from '../../providers/shared/shared';
 
 /**
  * Generated class for the CategoriesPage page.
@@ -27,14 +29,15 @@ export class CategoriesPage {
   private segmentComponent: ToolsegmentbtnComponent;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient , private offersService:OffersProvider , private sharedService: SharedProvider ) {
   }
 
   ionViewDidLoad() {
-    this.httpClient.get(' http://192.168.225.52:5001/api/category').subscribe(res => {
-      this.categories = res;
-    })
-    console.log('ionViewDidLoad CategoriesPage');
+   this.offersService.getCategories().subscribe(res=>{
+     this.categories = res;
+   }, err=>{
+     this.sharedService.createToast('Unable to load Categories');
+   })
   }
 
   slideChangeByTab(tabsindex) {

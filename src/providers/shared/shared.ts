@@ -71,4 +71,14 @@ export class SharedProvider {
   hideLoader(){
     this.loader.dismissAll();
   }
+
+  checkLoginStatus(){
+    return localStorage.getItem('isLogin');
+  }
+
+  setLoginStatus(data){
+    localStorage.setItem('isLogin', data);
+   
+    
+  }
 }

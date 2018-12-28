@@ -14,39 +14,20 @@ import { Slides } from 'ionic-angular';
 export class SliderComponent {
 
   text: string;
-  slide;
+  slide:any;
   @ViewChild('pageSlider') pageSlider: Slides
   @Input() listcards: any = [];
   @Output() segme = new EventEmitter();
-  @Input() tabindex;
+  @Input() tabindex:any;
   @Output() scroll = new EventEmitter();
+
+  public startIndex:number;
+  public endIndex: number;
 
   constructor() {
     console.log('Hello SliderComponent Component');
     this.text = 'Hello World';
-    this.listcards = [{
-      'Name':'Praeek'},
-      {
-        'Name':'Prsdaeek',
-      },
-      {
-        'Name':'Prsdaesdfdsfdsek',
-      },{
-        'Name':'Prdfgdfgdfsdaeek',
-      },{
-        'Name':'Prsdsdfdsfaeek',
-      },{
-        'Name':'Prsdfgdfgdaeek',
-      },{
-        'Name':'Prsdfgdfgdaeek',
-      },{
-        'Name':'Prsddgaeek',
-      },{
-        'Name':'Prsddfgdgfaeek',
-      },{
-        'Name':'Prsddfgaeek',
-      },
-  ]
+   
   }
 
   ngOnInit(){
@@ -66,6 +47,10 @@ export class SliderComponent {
     this.pageSlider.slideTo(tabsindex);
   }
 
+  doInfinite(infiniteScroll) {
+   console.log('Begin async operation');
+   
+  }
 
  
 }

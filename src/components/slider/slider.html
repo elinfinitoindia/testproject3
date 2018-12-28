@@ -1,16 +1,15 @@
-<ion-slides #pageSlider (ionSlideWillChange)="changeWillSlide($event)" effect="flip" speed="800" >
+<ion-slides #pageSlider (ionSlideWillChange)="changeWillSlide($event)" effect="slide" speed="800">
   <ion-slide>
     <ion-list>
-      <ion-item *ngFor="let items of listcards" class="">
-        {{items.Name}}
-      </ion-item>
+      <ion-item *ngFor="let item of listcards">{{item.Name}}</ion-item>
     </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </ion-slide>
   <ion-slide>
     <ion-list>
-      <ion-item *ngFor="let items of listcards ">
-        {{items.title}}
-      </ion-item>
+      <ion-item *ngFor="let item of listcards">{{item.Name}}</ion-item>
     </ion-list>
   </ion-slide>
 </ion-slides>

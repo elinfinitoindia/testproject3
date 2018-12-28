@@ -32,17 +32,12 @@ export class ShrinkingheaderComponent {
   }
  
   resizeHeader(ev){
- 
     ev.domWrite(() => {
- 
-      this.newHeaderHeight = this.headerHeight - ev.scrollTop;
- 
+      this.newHeaderHeight = this.headerHeight - ev.scrollTop; 
       if(this.newHeaderHeight < 0){
         this.newHeaderHeight = 0;
       }  
- 
-      this.renderer.setElementStyle(this.element.nativeElement, 'height', this.newHeaderHeight + 'px');
- 
+      this.renderer.setElementStyle(this.element.nativeElement, 'background', 'transparent');
     });
  
   }

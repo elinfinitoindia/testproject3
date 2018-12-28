@@ -18,6 +18,7 @@ import { Toast } from '@ionic-native/toast';
 import { InterceptorModule } from './interceptor.module';
 import {OneSignal} from '@ionic-native/onesignal';
 import { NotificationProvider } from '../providers/notification/notification';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { OneSignal } from '@ionic-native/onesignal';
 
 
@@ -30,20 +31,20 @@ import { NotificationProvider } from '../providers/notification/notification';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, {
-      navExitApp: false
+      navExitApp: false,
+      // to hide tabs on sub page 
+      tabsHideOnSubPages: true,
     }),
     ComponentsModule,
     HttpClientModule,
-    InterceptorModule
+    InterceptorModule,
+    BrowserAnimationsModule
+ 
 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
-
-
-
   ],
   providers: [
     StatusBar,

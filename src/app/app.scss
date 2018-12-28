@@ -28,7 +28,7 @@
 .toolbar .segment-md .segment-button.segment-activated {
     color:white;
     border-color: white !important;
-    border-bottom: 2px solid;
+    border-bottom: 4px solid;
 }
 
 //  this class is used for removing default bottom borders from segment 
@@ -59,7 +59,7 @@
 
 // to reduce the height and bottom distance from segment borders
 .toolbar-md {
-    min-height: 52px !important;
+    min-height: 58px !important;
 }
 
 // to center image 

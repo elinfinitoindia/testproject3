@@ -32,7 +32,7 @@ export class OffersProvider {
   }
 
   public getCategories(){
-    return this.http.get(apiUrl+'api/category',httpOptions);
+    return this.http.get(apiUrl+'api/category', httpOptions);
   }
 
   public getStores(){

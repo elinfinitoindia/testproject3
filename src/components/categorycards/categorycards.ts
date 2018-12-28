@@ -30,4 +30,13 @@ export class CategorycardsComponent {
     this.navCtrl.push(this.navdata);
   }
 
+
+  getList(event){
+    this.navCtrl.push('OffercardlistPage', {
+      id: event.ID,
+      type: this.type,
+      name: event.Name
+    })
+  }
+
 }

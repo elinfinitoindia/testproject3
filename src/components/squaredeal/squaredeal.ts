@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the SquaredealComponent component.
@@ -15,10 +16,17 @@ export class SquaredealComponent {
   text: string;
   @Input() deals:any;
 
-  constructor() {
+  constructor( private navCtrl: NavController) {
     console.log('Hello SquaredealComponent Component');
     this.text = 'Hello World';
     
+  }
+
+  getOfferDetail(event){
+    this.navCtrl.push('OfferdetailPage',{
+      id:event.ID,
+      name:event.Name
+    })
   }
 
 }

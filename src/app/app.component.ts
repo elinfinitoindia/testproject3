@@ -31,7 +31,7 @@ export class MyApp {
 
 
 
-  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen:SplashScreen) {
+  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen: SplashScreen) {
 
     platform.ready().then(() => {
       // this.splashscreen.hide();
@@ -40,39 +40,32 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.platform.registerBackButtonAction(() => {
-      // Catches the active view
-      let nav = this.nav.getActiveChildNavs()[0];
-      let activeView = this.nav.getActive();
-      console.log(activeView);
-      // Checks if can go back before show up the alert
-      if (activeView.component.name === 'TabsPage') {
-        this.nav.setRoot('tabs-page');
-      }
-      else if (activeView.component.name == "tabs-page") {
-        this.sharedService.createToast('App will exit');
-        this.appMinimize.minimize();
-      }
-      if (this.nav.canGoBack()) {
-        this.nav.pop();
-      }
-      else {
-        this.nav.setRoot('tabs-page');
-      }
+  
+    if (this.sharedService.getToken() != null || this.sharedService.getToken() != undefined) {
+      var a =
+        { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-power' }
 
-    });
+      this.pages.push(a);
+
+    }
+    else {
+      var a =
+        { title: 'Profile', name: 'LoginPage', component: 'LoginPage', icon: 'md-power' }
+
+      this.pages.push(a);
+    }
   }
 
   // the pages that will show tabs require tabcomponent.
   pages: PageInterface[] = [
     { title: 'Home', name: 'tabs-page', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
-    { title: 'Stores', name: 'StoresPage', component: 'StoresPage',icon: 'md-basket' },
+    { title: 'Stores', name: 'StoresPage', component: 'StoresPage', icon: 'md-basket' },
     { title: 'Brands', name: 'BrandsPage', component: 'BrandsPage', icon: 'md-briefcase' },
     { title: 'Category', name: 'CategoriesPage', component: 'CategoriesPage', icon: 'md-archive' },
-    { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 1, icon: 'md-flame' },
+    // { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 1, icon: 'md-flame' },
     { title: 'My Account', name: 'ProfilePage', component: 'ProfilePage', icon: 'md-person' },
-    { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-power' },
-    {title:'Share',name:'SharePage',component:'SharePage',icon:'md-share'}
+    // { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-power' },
+    { title: 'Share', name: 'SharePage', component: 'SharePage', icon: 'md-share' }
   ];
 
   openPage(page: PageInterface) {
@@ -87,29 +80,15 @@ export class MyApp {
     // The active child nav is our Tabs Navigation
     if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
-    } else {
-      // Tabs are not active, so reset the root page 
-      // In this case: moving to or from SpecialPage
-      if(page.name == 'ProfilePage'){
-          if(this.sharedService.getToken() != null || this.sharedService.getToken() != undefined){
-            this.nav.setRoot(page.name, params).catch((err: any) => {
-              console.log(`Didn't set nav root: ${err}`);
-            });
-          }
-          else{
-            this.nav.setRoot('LoginPage', params).catch((err: any) => {
-              console.log(`Didn't set nav root: ${err}`);
-            });
-          }
-      }
-      else{
-        this.nav.setRoot(page.name, params).catch((err: any) => {
-          console.log(`Didn't set nav root: ${err}`);
-        });
-      }
-    
     }
+    else {
+      this.nav.setRoot(page.name, params).catch((err: any) => {
+        console.log(`Didn't set nav root: ${err}`);
+      });
+    }
+
   }
+
 
   isActive(page: PageInterface) {
     // Again the Tabs Navigation

@@ -48,9 +48,6 @@ const httpOptions = {
 })
 export class HomePage {
 
-
-
-  public listcards: any = [];
   displayName: any;
   email: any;
   familyName: any;
@@ -84,6 +81,7 @@ export class HomePage {
   public isTrue: Boolean = true;
   public isFalse: Boolean = false;
   public DailyNav = 'OffercardlistPage';
+  public listcards:any = [];
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider) {
@@ -95,13 +93,25 @@ export class HomePage {
 
     //   this.noftification.recieveNotification(this.data);
 
+    for (let i = 0; i < 300; i++) {
+      this.listcards.push( this.listcards.length );
+      
+    }
+    this.platform.registerBackButtonAction(() => {
+      // Catches the active view
+      // Checks if can go back before show up the alert
+        this.sharedService.createToast('App will exit');
+        this.appMinimize.minimize();
+      }
+    );
     // this.oneSignal.endInit();
   }
 
   ionViewDidLoad() {
 
-
+    this.sharedService.showLoader();
     this.offerProvider.getBrands().pipe(
+      
       map((response:any) => {
         let y = response.filter(x => x.isFav==true)
         console.log(y);
@@ -110,8 +120,10 @@ export class HomePage {
     .subscribe(res => {
             this.brands = res;
             console.log(this.brands);
+      
     },err=>{
-    this.sharedService.createToast('Unable to load brands')
+      
+    this.sharedService.createToast('Unable to load Brands')
     });
 
     this.offerProvider.getCategories().pipe(
@@ -123,13 +135,15 @@ export class HomePage {
       subscribe(res => {
         this.category = res;
         console.log(this.category);
+        this.sharedService.hideLoader();
       },err=>{
-        this.sharedService.createToast('Unable to load categories')
+        this.sharedService.createToast('Unable to load categories');
+          this.sharedService.hideLoader();
       }
 
       );
-
     console.log('ionViewDidLoad HomePage');
+    
   }
 
   // this method is used to change the selected tabs on slide change
