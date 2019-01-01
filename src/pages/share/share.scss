@@ -12,19 +12,29 @@ page-share {
         background: white;
     }
     $background-md-color:white;
-  
-    h3{
+    h3 {
         text-align: center;
-        color:#5683FF;
+        color: #5683FF;
     }
-
-    .mybutton{
-        margin:0px !important;
-        padding:0px !important;
-        height:3.5em;
+    .mybutton {
+        margin: 0px !important;
+        padding: 0px !important;
+        height: 3.5em;
     }
-
-    .toolbar-background-md{
-        background:white !important;
+    .toolbar-background-md {
+        background: white !important;
+    }
+    .addheight {
+        height: 150px;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+    .shareCardDescription {
+        padding: 0px;
+        margin-bottom:0px;
+    }
+    .shareDescriptionImage {
+        padding: 10px;
     }
 }

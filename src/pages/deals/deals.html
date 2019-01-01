@@ -8,42 +8,64 @@
 </ion-header>
 
 <ion-content #content (ionScroll)="scrollHandler($event)">
-
-
-
+  <!-- slider for ads  -->
   <adslider></adslider>
 
-  <button ion-button block (click)="totop()"></button>
+  <!-- Cards Scroll for today's deal based on category -->
   <h1 class="text-center" style="text-align:center;">Today's Deals</h1>
   <brandcards [title]="title" [items]="dailyDeals"></brandcards>
 
+  <!-- Deals on Mobile Category -->
   <h1 class="text-center" style="text-align:center;">Deals on Mobile</h1>
   <brandcards [title]="title"></brandcards>
+
+  <!-- Ads -->
   <adslider></adslider>
+
+  <!-- Deals on Super Saver -->
   <h1 class="text-center" style="text-align:center;">Super Saver Deals</h1>
   <squaredeal></squaredeal>
+
+  <!-- ads -->
   <adscard></adscard>
+
+  <!-- deals based on fashion -->
   <h1 class="text-center" style="text-align:center;"> Fashion Deals</h1>
   <brandcards [title]="title"></brandcards>
+
+  <!-- deals on electronic category -->
   <h1 class="text-center" style="text-align:center;"> Electronics Deals</h1>
   <brandcards [title]="title"></brandcards>
+
+  <!-- 499 category deals -->
   <h1 class="text-center" style="text-align:center;">Under 499 Deals</h1>
   <squaredeal></squaredeal>
+
+  <!-- 999 Under deals -->
   <h1 class="text-center" style="text-align:center;">Under 999 Deals</h1>
   <squaredeal></squaredeal>
+
+  <!-- Supper Accessories Deals -->
   <h1 class="text-center" style="text-align:center;">Super Accessories Deals</h1>
   <brandcards></brandcards>
+
+  <!-- Deals on watches -->
   <h1 class="text-center" style="text-align:center;">Deals on Watches</h1>
   <brandcards></brandcards>
+
+  <!-- deals on shoes -->
   <h1 class="text-center" style="text-align:center;">Deals on Shoes</h1>
   <brandcards></brandcards>
 
+  <!-- Deals for perfect looks -->
   <h1 class="text-center" style="text-align: center">
     For Perfect Looks</h1>
   <brandcards></brandcards>
+
+  <!-- button for scroll to top event -->
   <ion-fab right bottom>
-  <button ion-fab color="light" *ngIf = "showBtn" [@fadeInOut] >
-    <ion-icon name="md-arrow-dropup"></ion-icon>
-  </button>
+    <button ion-fab color="light" *ngIf="showBtn"  (click)="scrollToTop()">
+      <ion-icon name="md-arrow-dropup"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>

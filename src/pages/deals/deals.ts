@@ -4,35 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import { OffersProvider } from '../../providers/offers/offers';
 import { SharedProvider } from '../../providers/shared/shared';
 import { map } from 'rxjs/operators/map';
+import { useAnimation, animation } from '@angular/animations';
+import { flyin } from '../../app/animation';
 
-/**
- * Generated class for the DealsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
   selector: 'page-deals',
   templateUrl: 'deals.html',
-  animations: [
-  trigger('fadeInOut', [
-    transition(':enter',    // :enter is alias to 'void => *'
-     animate('700ms ease-out', keyframes([
-        style({
-          transform: 'scale(0)',
-          opacity: 1,
-        }),
-       style({
-         transform: 'scale(1)',
-         opacity: 1,})
-     ]))),
-    transition(':leave', [   // :leave is alias to '* => void'
-      animate(500, style({opacity:0})) 
-    ])
-  ])
-]
+  animations: [flyin]
+
+  
+
 })
 export class DealsPage {
 
@@ -64,12 +48,8 @@ export class DealsPage {
           
   },err=>{
       this.sharedService.hideLoader();
-  this.sharedService.createToast('Unable to load Brands')
+  // this.sharedService.createToast('Unable to load Brands')
   });
-
-   
-   
-  
   }
 
 
@@ -86,15 +66,8 @@ export class DealsPage {
   ionViewDidEnter() {
     this.content.scrollToTop(300);
   }
-
-
-  totop
-  (){
-  
-  
-    
-  }
  
+  // show and hide button 
   scrollHandler(event){
     if(event.scrollTop > 500){
       console.log('show button');
@@ -104,6 +77,12 @@ export class DealsPage {
     else{
       this.showBtn = false;
     }
+  }
+
+
+  // scroll to top method form fab- button 
+  scrollToTop(){
+    this.content.scrollToTop(500);
   }
   
 

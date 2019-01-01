@@ -20,7 +20,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [class.activeHightlight]="isActive(p)">
         <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
         {{p.title}}
       </button>

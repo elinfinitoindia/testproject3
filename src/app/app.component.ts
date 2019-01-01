@@ -6,7 +6,6 @@ import { AppMinimize } from '@ionic-native/app-minimize';
 import { SharedProvider } from '../providers/shared/shared';
 
 
-
 // this is the definition used for navigating between pages 
 // and also used to allow tab as well as side menu
 export interface PageInterface {
@@ -28,8 +27,6 @@ export class MyApp {
   // Implementation of lazy loading requires string as no component refrence is required.
   rootPage: string = "tabs-page";
   @ViewChild(Nav) nav: Nav;
-
-
 
   constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen: SplashScreen) {
 

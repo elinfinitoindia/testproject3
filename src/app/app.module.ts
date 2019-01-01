@@ -19,14 +19,13 @@ import { InterceptorModule } from './interceptor.module';
 import {OneSignal} from '@ionic-native/onesignal';
 import { NotificationProvider } from '../providers/notification/notification';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrormodalComponent } from '../components/errormodal/errormodal';
 // import { OneSignal } from '@ionic-native/onesignal';
 
 
 @NgModule({
   declarations: [
     MyApp,
-
-
   ],
   imports: [
     BrowserModule,
@@ -39,12 +38,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     InterceptorModule,
     BrowserAnimationsModule
- 
-
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    MyApp, 
+    ErrormodalComponent
+    
   ],
   providers: [
     StatusBar,
@@ -61,6 +60,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Toast,
     OneSignal,
     NotificationProvider
+    
 
   ],
   schemas: [NO_ERRORS_SCHEMA]

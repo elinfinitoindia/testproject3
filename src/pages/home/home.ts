@@ -123,7 +123,7 @@ export class HomePage {
       
     },err=>{
       
-    this.sharedService.createToast('Unable to load Brands')
+    // this.sharedService.createToast('Unable to load Brands')
     });
 
     this.offerProvider.getCategories().pipe(
@@ -137,7 +137,7 @@ export class HomePage {
         console.log(this.category);
         this.sharedService.hideLoader();
       },err=>{
-        this.sharedService.createToast('Unable to load categories');
+        // this.sharedService.createToast('Unable to load categories');
           this.sharedService.hideLoader();
       }
 

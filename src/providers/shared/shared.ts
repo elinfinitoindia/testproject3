@@ -56,7 +56,7 @@ export class SharedProvider {
     const toast = this.toastCtrl.create({
       message: data,
       duration: 3000,
-      position: "middle"
+      position: 'bottom'
     });
     toast.present();
   }

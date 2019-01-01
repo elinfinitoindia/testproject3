@@ -15,7 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MarketplacePage {
 
+  public name:string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.name = 'New Year'
   }
 
   ionViewDidLoad() {

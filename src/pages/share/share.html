@@ -1,12 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button
-    ><ion-title>Share</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Share</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-content>
-    <ion-grid id="shareimage">
+    <ion-card class="addheight">
+      <img src="assets/banner.png" alt="" class="addimage">
+    </ion-card>
+    <!-- <ion-grid id="shareimage">
       <ion-row>
         <ion-col text-center col-4 offset-4>
           <img src="assets/imgs/logo.png" alt="" />
@@ -28,9 +33,60 @@
         <h4 id="earning">Your Earning</h4>
         <h4> 100 </h4>
       </ion-col>
+    </ion-row> -->
+
+    <ion-row>
+      <ion-col col-12>
+        <ion-card style="padding:0px;" class="shareCardDescription">
+          <ion-card-content class="shareCardDescription">
+            <ion-row>
+              <ion-col col-4>
+                <img src="../../assets/imgs/logo.png" alt="" class="shareDescriptionImage">
+              </ion-col>
+              <ion-col col-8 style="margin:auto;">
+                <h3 style="color:#ff6700;margin:auto;">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </h3>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12>
+        <ion-card style="padding:0px;" class="shareCardDescription">
+          <ion-card-content class="shareCardDescription">
+            <ion-row>
+              <ion-col col-4>
+                <img src="../../assets/imgs/logo.png" alt="" class="shareDescriptionImage">
+              </ion-col>
+              <ion-col col-8 style="margin:auto;">
+                <h3 style="color:#ff6700;margin:auto;">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </h3>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12>
+        <ion-card style="padding:0px;" class="shareCardDescription">
+          <ion-card-content class="shareCardDescription">
+            <ion-row>
+              <ion-col col-4>
+                <img src="../../assets/imgs/logo.png" alt="" class="shareDescriptionImage">
+              </ion-col>
+              <ion-col col-8 style="margin:auto;">
+                <h3 style="color:#ff6700;margin:auto;">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </h3>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
-    <ion-footer color="primary">
-      <button ion-button block class="mybutton">Share Now</button>
-    </ion-footer>
   </ion-content>
+  <ion-footer color="primary">
+    <button ion-button block class="mybutton">Share Now</button>
+  </ion-footer>
 </ion-content>
