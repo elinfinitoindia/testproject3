@@ -18,6 +18,7 @@ import { SquaredealComponent } from './squaredeal/squaredeal';
 import { ShrinkingheaderComponent } from './shrinkingheader/shrinkingheader';
 import { LoginComponent } from './login/login';
 import { ProfileComponent } from './profile/profile';
+import { HistoryComponent } from './history/history';
 @NgModule({
 	declarations: [OffercardsComponent,
     FabComponent,
@@ -36,7 +37,8 @@ import { ProfileComponent } from './profile/profile';
     SquaredealComponent,
     ShrinkingheaderComponent,
     LoginComponent,
-    ProfileComponent],
+    ProfileComponent,
+    HistoryComponent],
 	imports: [IonicModule],
 	exports: [OffercardsComponent,
     FabComponent,
@@ -55,7 +57,8 @@ import { ProfileComponent } from './profile/profile';
     SquaredealComponent,
     ShrinkingheaderComponent,
     LoginComponent,
-    ProfileComponent],
+    ProfileComponent,
+    HistoryComponent],
 
 })
 export class ComponentsModule { }

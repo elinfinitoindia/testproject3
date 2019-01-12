@@ -32,10 +32,12 @@ export class OffercardsComponent {
 
   getList(evnt) {
     console.log(evnt);
-   this.navCtrl.push('OffercardlistPage',{
-    id:evnt.ID,
-    type:this.type
-   })
-  }
+  //  this.navCtrl.push('OffercardlistPage',{
+  //   id:evnt.ID,
+  //   type:this.type
+  //  })
+  // }
+    this.navCtrl.push('OfferdetailPage');
+}
 
 }

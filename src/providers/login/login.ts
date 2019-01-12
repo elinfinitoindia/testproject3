@@ -1,12 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GooglePlus } from '@ionic-native/google-plus';
-/*
-  Generated class for the LoginProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin': '*'
+  })
+}
+
+
 @Injectable()
 export class LoginProvider {
 
@@ -34,5 +37,30 @@ export class LoginProvider {
       })
       .catch(err => console.error(err));
   }
+
+
+  changePassword(data){
+    return this.http.post('api', data, httpOptions);
+  }
+
+  forgotPassword(data){
+    return this.http.post('api' , data , httpOptions);
+  }
+
+  loginWithEmail(data){
+    return this.http.post('api', data, httpOptions);
+  }
+
+  registerWithEmail(data){
+    return this.http.post('api', data, httpOptions);
+  }
+
+  // Create a payment request 
+  // Get Payment Request Status On The History Page
+  // Load user data 
+  // Offer Error Detection
+  // Offer Click Records
+  // Ads Table Record
+  // 
 
 }

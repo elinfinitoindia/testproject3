@@ -16,7 +16,7 @@ const httpOptions ={
   })
 }
 
-const apiUrl = 'http://192.168.225.52:5000/';
+const apiUrl = 'http://localhost:5000/';
 
 @Injectable()
 export class OffersProvider {

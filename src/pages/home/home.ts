@@ -19,6 +19,7 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { NotificationProvider } from '../../providers/notification/notification';
 import { filter, map } from 'rxjs/operators';
 import { OffersProvider } from '../../providers/offers/offers';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 // import { OneSignal } from '@ionic-native/onesignal';
 /**
  * Generated class for the HomePage page.
@@ -84,7 +85,7 @@ export class HomePage {
   public listcards:any = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider, private inAppBrowser: InAppBrowser) {
     // this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
     // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
     // this.oneSignal.handleNotificationReceived().subscribe(() => {
@@ -143,7 +144,7 @@ export class HomePage {
 
       );
     console.log('ionViewDidLoad HomePage');
-    
+    const browser = this.inAppBrowser.create('https://www.hubfly.com', '_self', { location: 'no' });
   }
 
   // this method is used to change the selected tabs on slide change
@@ -180,6 +181,13 @@ export class HomePage {
 
   doRefresh() {
     alert('hii');
+  }
+
+  visit(){
+    // const browser = window.open('https://ionicframework.com/');
+    // console.log(browser);
+ this.inAppBrowser.create("https://google.com","_self");
+    
   }
 
 

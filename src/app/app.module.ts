@@ -20,6 +20,7 @@ import {OneSignal} from '@ionic-native/onesignal';
 import { NotificationProvider } from '../providers/notification/notification';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrormodalComponent } from '../components/errormodal/errormodal';
+import {InAppBrowser} from '@ionic-native/in-app-browser';
 // import { OneSignal } from '@ionic-native/onesignal';
 
 
@@ -59,9 +60,8 @@ import { ErrormodalComponent } from '../components/errormodal/errormodal';
     Clipboard,
     Toast,
     OneSignal,
-    NotificationProvider
-    
-
+    NotificationProvider,
+    InAppBrowser
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

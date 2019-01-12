@@ -78,7 +78,6 @@ export class SharedProvider {
 
   setLoginStatus(data){
     localStorage.setItem('isLogin', data);
-   
     
   }
 }

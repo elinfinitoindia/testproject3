@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title class="pagetitle">
-    {{offerDetail?.Name}}
+      {{offerDetail?.Name}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -16,14 +16,17 @@
     </ion-col>
   </ion-row>
 
-  <ion-card>
-    <ion-card-header>
+  <ion-row>
+    <ion-col col-12>
       <span style="color:#FF6700">Description</span>
-    </ion-card-header>
-    <ion-card-content>
-      {{offerDetail?.Description}}
-    </ion-card-content>
-  </ion-card>
+      <p> {{offerDetail?.Description}}
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <!-- <span style="color:#FF6700">Description</span>
+      {{offerDetail?.Description}} -->
+
   <ion-row class="reportproblem" style="border-top:1px solid lightgray">
     <ion-col col-12>
       <ion-list>
@@ -40,7 +43,7 @@
   <ion-row>
     <ion-col col-12>
       <h1 style="text-align:center">Credits Cards</h1>
-        <adscard></adscard>
+      <adscard></adscard>
     </ion-col>
   </ion-row>
   <ion-fab bottom right #fab>
@@ -67,10 +70,10 @@
   <ion-grid class="couponbtngrid">
     <ion-row>
       <ion-col col-6 text-left>
-        <button ion-button clear style="color:white;margin:0px;" (tap)="insertView()">Coupon Code</button>
+        <button ion-button clear style="color:white;margin:0px;" (tap)="copyCode()">Coupon Code</button>
       </ion-col>
       <ion-col col-6 text-right>
-        <button ion-button clear style="color:white;margin:0px;">Visit Site</button>
+        <button ion-button clear style="color:white;margin:0px;" (tap)="visitSite()">Visit Site</button>
       </ion-col>
     </ion-row>
   </ion-grid>
