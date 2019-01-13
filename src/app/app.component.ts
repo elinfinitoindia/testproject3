@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppMinimize } from '@ionic-native/app-minimize';
@@ -27,11 +27,37 @@ export class MyApp {
   // Implementation of lazy loading requires string as no component refrence is required.
   rootPage: string = "tabs-page";
   @ViewChild(Nav) nav: Nav;
+  @ViewChild(NavController) mynav:NavController;
+  public counter = 0;
 
-  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen: SplashScreen) {
+  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen: SplashScreen ,
+   ) {
 
     platform.ready().then(() => {
-      // this.splashscreen.hide();
+      this.platform.registerBackButtonAction(() => {
+
+        console.log(this.nav.getActive());
+        console.log(this.nav.getActiveChildNavs()[0].select());
+        console.log(this.nav.getActiveChildNavs()[0]
+                    .getSelected())
+        if (this.nav.canGoBack()){
+          this.nav.pop();
+        }
+        else if (this.nav.getActiveChildNavs()[0]
+          .getSelected().root === 'HomePage'){
+            if (this.counter == 0) {
+            this.counter++;
+            this.sharedService.createToast('Press back again to exit the applicaiton')
+            setTimeout(() => { this.counter = 0 }, 3000)
+          } else {
+            // console.log("exitapp");
+            this.appMinimize.minimize();
+          }
+        }
+        else{
+          this.nav.setRoot('tabs-page');
+        }
+      },100);
     });
     this.initializeApp();
   }

@@ -74,6 +74,7 @@ export class HomePage {
   @Output() slideindex = new EventEmitter();
 
   public data;
+  public counter =0;
   public items: any = [];
   public brands: any = [];
   public category: any = [];
@@ -101,10 +102,16 @@ export class HomePage {
     this.platform.registerBackButtonAction(() => {
       // Catches the active view
       // Checks if can go back before show up the alert
-        this.sharedService.createToast('App will exit');
+      if (this.counter == 0) {
+        this.counter++;
+        this.sharedService.createToast('Press back again to exit the applicaiton')
+        setTimeout(() => { this.counter = 0 }, 3000)
+      } else {
+        // console.log("exitapp");
         this.appMinimize.minimize();
       }
-    );
+    }, 1);
+    
     // this.oneSignal.endInit();
   }
 
@@ -144,7 +151,7 @@ export class HomePage {
 
       );
     console.log('ionViewDidLoad HomePage');
-    const browser = this.inAppBrowser.create('https://www.hubfly.com', '_self', { location: 'no' });
+    // const browser = this.inAppBrowser.create('https://www.hubfly.com', '_self', { location: 'no' });
   }
 
   // this method is used to change the selected tabs on slide change

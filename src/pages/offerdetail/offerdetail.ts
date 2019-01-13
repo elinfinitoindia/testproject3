@@ -35,11 +35,11 @@ export class OfferdetailPage implements AfterViewInit {
 
 
   public options: InAppBrowserOptions = {
-    location: 'yes',//Or 'no' 
+    location: 'no',//Or 'no' 
     hidden: 'no', //Or  'yes'
     clearcache: 'yes',
     clearsessioncache: 'yes',
-    zoom: 'yes',//Android only ,shows browser zoom controls 
+    zoom: 'no',//Android only ,shows browser zoom controls 
     hardwareback: 'yes',
     mediaPlaybackRequiresUserAction: 'no',
     shouldPauseOnSuspend: 'no', //Android only 
@@ -64,7 +64,16 @@ export class OfferdetailPage implements AfterViewInit {
     private alertController: AlertController,
     private iab: InAppBrowser,
     
-  ) {}
+  ) {
+
+    this.platform.registerBackButtonAction(() => {
+      // Catches the active view
+      // Checks if can go back before show up the alert
+     
+     this.navCtrl.pop();
+    },2
+    );
+  }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -128,9 +137,8 @@ export class OfferdetailPage implements AfterViewInit {
     this.navCtrl.push("Dea");
   }
   
-  visitSite
-    () {
-      const browser = this.iab.create('https://ionicframework.com/','_self');
+  visitSite() {
+    const browser = this.iab.create('https://ionicframework.com/', '_blank', this.options);
       console.log(browser);
   }
 
