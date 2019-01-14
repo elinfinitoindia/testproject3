@@ -12,11 +12,14 @@ export const flyin = [
         state('in', style({ transform: 'translateX(0)' })),
         transition(':enter', [
             animate(500, keyframes([
-                style({transform: 'rotate(-360deg)',
-opacity: 0}),
+                style({
+                    transform: 'rotate(-360deg)',
+                    opacity: 0
+                }),
                 style({
                     transform: 'rotate(0)',
-                    opacity: 1 })
+                    opacity: 1
+                })
             ]))
         ]),
         transition(':leave', [

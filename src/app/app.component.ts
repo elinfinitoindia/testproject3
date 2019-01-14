@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppMinimize } from '@ionic-native/app-minimize';
 import { SharedProvider } from '../providers/shared/shared';
+import {TabsPage} from '../pages/tabs/tabs';
 
 
 // this is the definition used for navigating between pages 
@@ -25,13 +26,13 @@ export class MyApp {
 
   // Rootpage is set to tabs page so that first page is tab page(tabs+sidemenu)
   // Implementation of lazy loading requires string as no component refrence is required.
-  rootPage: string = "tabs-page";
+  rootPage: string = "TabsPage";
   @ViewChild(Nav) nav: Nav;
-  @ViewChild(NavController) mynav:NavController;
+  @ViewChild(NavController) mynav: NavController;
   public counter = 0;
 
-  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen: SplashScreen ,
-   ) {
+  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen: SplashScreen,
+  ) {
 
     platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
@@ -39,13 +40,13 @@ export class MyApp {
         console.log(this.nav.getActive());
         console.log(this.nav.getActiveChildNavs()[0].select());
         console.log(this.nav.getActiveChildNavs()[0]
-                    .getSelected())
-        if (this.nav.canGoBack()){
+          .getSelected())
+        if (this.nav.canGoBack()) {
           this.nav.pop();
         }
         else if (this.nav.getActiveChildNavs()[0]
-          .getSelected().root === 'HomePage'){
-            if (this.counter == 0) {
+          .getSelected().root === 'HomePage') {
+          if (this.counter == 0) {
             this.counter++;
             this.sharedService.createToast('Press back again to exit the applicaiton')
             setTimeout(() => { this.counter = 0 }, 3000)
@@ -54,16 +55,16 @@ export class MyApp {
             this.appMinimize.minimize();
           }
         }
-        else{
+        else {
           this.nav.setRoot('tabs-page');
         }
-      },100);
+      }, 100);
     });
     this.initializeApp();
   }
 
   initializeApp() {
-  
+
     if (this.sharedService.getToken() != null || this.sharedService.getToken() != undefined) {
       var a =
         { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-power' }
@@ -81,18 +82,17 @@ export class MyApp {
 
   // the pages that will show tabs require tabcomponent.
   pages: PageInterface[] = [
-    { title: 'Home', name: 'tabs-page', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'Home', name: 'TabsPage', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
     { title: 'Stores', name: 'StoresPage', component: 'StoresPage', icon: 'md-basket' },
     { title: 'Brands', name: 'BrandsPage', component: 'BrandsPage', icon: 'md-briefcase' },
     { title: 'Category', name: 'CategoriesPage', component: 'CategoriesPage', icon: 'md-archive' },
-    // { title: 'Deals', name: 'tabs-page', component: 'TabsPage', tabComponent: 'DealsPage', index: 1, icon: 'md-flame' },
+    { title: 'Deals', name: 'TabsPage', component: 'TabsPage', tabComponent: 'DealsPage', index: 1, icon: 'md-flame' },
     { title: 'My Account', name: 'ProfilePage', component: 'ProfilePage', icon: 'md-person' },
     // { title: 'Login', name: 'LoginPage', component: 'LoginPage', icon: 'md-power' },
     { title: 'Share', name: 'SharePage', component: 'SharePage', icon: 'md-share' }
   ];
 
   openPage(page: PageInterface) {
-
     let params = {};
 
     // The index is equal to the order of our tabs inside tabs.ts
@@ -100,18 +100,15 @@ export class MyApp {
       params = { tabIndex: page.index };
     }
 
-    // The active child nav is our Tabs Navigation
+    // If tabs page is already active just change the tab index
     if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
+    } else {
+      // Tabs are not active, so reset the root page 
+      // In this case: moving to or from SpecialPage
+      this.nav.setRoot(page.name, params);
     }
-    else {
-      this.nav.setRoot(page.name, params).catch((err: any) => {
-        console.log(`Didn't set nav root: ${err}`);
-      });
-    }
-
   }
-
 
   isActive(page: PageInterface) {
     // Again the Tabs Navigation

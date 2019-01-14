@@ -1,13 +1,13 @@
 import { MarketplacePage } from './../marketplace/marketplace';
 import { DealsPage } from './../deals/deals';
 import { HomePage } from './../home/home';
-import { IonicPage, Platform, NavController } from 'ionic-angular';
+import { IonicPage, Platform, NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 
 @IonicPage(
   {
-    name: 'tabs-page'
+    name: 'TabsPage'
   }
 )
 @Component({
@@ -18,8 +18,9 @@ export class TabsPage {
   HomePage: any = 'HomePage';
   DealsPage: any = "DealsPage";
   MarketplacePage: any = "MarketplacePage";
+  myIndex:number;
 
-  constructor(private platform: Platform, private navCtrl: NavController) {
-
+  constructor(private platform: Platform, private navCtrl: NavController , private navParams:NavParams) {
+    this.myIndex = navParams.data.tabIndex || 0;
   }
 }
