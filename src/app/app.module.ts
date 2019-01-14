@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrormodalComponent } from '../components/errormodal/errormodal';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 // import { OneSignal } from '@ionic-native/onesignal';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {InAppBrowser} from '@ionic-native/in-app-browser';
     ComponentsModule,
     HttpClientModule,
     InterceptorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

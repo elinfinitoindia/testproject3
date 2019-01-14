@@ -48,11 +48,11 @@ export class LoginProvider {
   }
 
   loginWithEmail(data){
-    return this.http.post('api', data, httpOptions);
+    return this.http.post("http://localhost:5000/api/users", data, httpOptions);
   }
 
   registerWithEmail(data){
-    return this.http.post('api', data, httpOptions);
+    return this.http.post("http://localhost:5000/api/users", data, httpOptions);
   }
 
   // Create a payment request 

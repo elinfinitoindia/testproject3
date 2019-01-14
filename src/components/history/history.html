@@ -1,15 +1,7 @@
 <ion-row>
   <ion-col col-12>
-    <ion-list>
-      <ion-item (click)="editDetails()">
-        <span>Amount Trasnfered</span>
-        <p>Date</p>
-      </ion-item>
-      <ion-item>
-        <span>Amount Trasnfered</span>
-        <p>Date</p>
-      </ion-item>
-      <ion-item (click)="logOut()">
+    <ion-list inset>
+      <ion-item (click)="editDetails()" *ngFor="let item of items"  [class.payed]="item.status == true">>
         <span>Amount Trasnfered</span>
         <p>Date</p>
       </ion-item>

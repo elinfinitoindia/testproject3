@@ -19,24 +19,32 @@
   <ion-row text-center>
 
     <ion-col col-10 offset-1>
-      <ion-item>
-        <ion-icon name="call"></ion-icon>
-        <ion-label stacked>Mobile Number</ion-label>
-        <ion-input type="number" [(ngModel)]="user.mobile"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Email Id</ion-label>
-        <ion-input type="email" [(ngModel)]="user.email"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label stacked>Password</ion-label>
-          <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-        </ion-item>
-    </ion-col>
-    <ion-col col-6 offset-3>
-      <button ion-button type="submit" block class="submitbutton" style="background: white;
-                color: #ff6700;" (click)="registerUser()">Login
-      </button>
+  <form #heroForm="ngForm">
+    <ion-item>
+      <ion-icon name="call"></ion-icon>
+      <ion-label stacked>Name</ion-label>
+      <ion-input type="text" required name="Name" [(ngModel)]="user.Name" #Name="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="call"></ion-icon>
+      <ion-label stacked>Mobile Number</ion-label>
+      <ion-input type="number" required name="PhoneNo" [(ngModel)]="user.PhoneNo" #PhoneNo="ngModel" minlength=10></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="call"></ion-icon>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="email" required name="Email" [(ngModel)]="user.Email" #Email="ngModel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Enter Password</ion-label>
+      <ion-input type="password" required name="password" [(ngModel)]="user.Password" #Password="ngModel"></ion-input>
+    </ion-item>
+  </form>
+  </ion-col>
+  <ion-col col-6 offset-3>
+    <button ion-button type="submit" block class="submitbutton" [disabled]="heroForm.invalid" (click)="loginWithEmail()">
+      Login
+    </button>
     </ion-col>
 
   </ion-row>

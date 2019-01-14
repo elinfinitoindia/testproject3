@@ -2,13 +2,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { SharedProvider } from '../../providers/shared/shared';
 import { NavController } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
+import { Login} from '../../models/login';
+import {FormsModule} from '@angular/forms';
 
-/**
- * Generated class for the LoginComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'login',
   templateUrl: 'login.html'
@@ -17,27 +13,32 @@ export class LoginComponent {
 
   text: string;
   public res;
+  public login;
   @Output() loginStatus = new EventEmitter();
 
   constructor(private sharedService: SharedProvider, private navCtrl: NavController, private loginService:LoginProvider) {
-    console.log('Hello LoginComponent Component');
-    this.text = 'Hello World';
+    this.login = new Login();
   }
 
-  loginwithEmail() {
-    // setting the login status in localStorage;
-    this.sharedService.setLoginStatus(true);
-    this.loginStatus.emit('true');
-    // this.navCtrl.setRoot('HomePage');
+  loginWithEmail() {
+  this.loginStatus.emit('true');
+    // this.loginService.loginWithEmail(this.login).subscribe(res=>{
+    //   console.log(res);
+    // })
   }
 
   forgotPassword(){
-    this.navCtrl.push('PasswordchangePage');
+    alert('email send');
+    this.navCtrl.push('VerifyotpPage');
   }
   loginWithGoogle(){
     this.loginService.login(a => {
       this.res = a;
       this.sharedService.setToken(this.res.accessToken);
     });
+  }
+
+  gotoRegister(){
+    this.navCtrl.push('RegisterPage');
   }
 }

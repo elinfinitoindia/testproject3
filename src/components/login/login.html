@@ -15,7 +15,6 @@
     </ion-col>
   </ion-row>
 
-
   <ion-row>
     <ion-col col-10 offset-1>
       <button ion-button icon-start block style="    text-transform: none;
@@ -25,25 +24,26 @@
         <img src="../../assets/imgs/google.jpg" alt="" style="width:18%;">
         Login with Google
       </button>
-
     </ion-col>
   </ion-row>
   <ion-row text-center>
     <ion-col col-10 offset-1>
-      <ion-item>
-        <ion-icon name="call"></ion-icon>
-        <ion-label stacked>Mobile Number</ion-label>
-        <ion-input type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Enter Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
+
+      <form #loginForm="ngForm">
+        <ion-item>
+          <ion-icon name="call"></ion-icon>
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="email" required name="Email" [(ngModel)]="login.Email" #Email="ngModel"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>Enter Password</ion-label>
+            <ion-input type="password" required name="password" [(ngModel)]="login.Password" #Password="ngModel"></ion-input>
+          </ion-item>
+      </form>
     </ion-col>
     <ion-col col-6 offset-3>
-      <button ion-button type="submit" block class="submitbutton" style="background: white;
-                    color: #ff6700;"
-        (click)="loginwithEmail()">Login
+      <button ion-button type="submit" block class="submitbutton" [disabled]="loginForm.invalid" (click)="loginWithEmail()">
+        Login
       </button>
     </ion-col>
   </ion-row>

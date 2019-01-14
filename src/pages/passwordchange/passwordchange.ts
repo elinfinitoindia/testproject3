@@ -19,11 +19,18 @@ export class PasswordchangePage {
   public title:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-      this.changePassword = true;
+
       this.title = "Change Password";
+
   }
 
   ionViewDidLoad() {
+    if (this.navParams.get('changePassword') == "true") {
+      this.changePassword = true;
+    }
+    else {
+      this.changePassword = false;
+    }
     console.log('ionViewDidLoad PasswordchangePage');
   }
 
