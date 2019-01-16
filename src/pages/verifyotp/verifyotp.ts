@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginProvider } from '../../providers/login/login';
+import { SharedProvider } from '../../providers/shared/shared';
 
 /**
  * Generated class for the VerifyotpPage page.
@@ -16,9 +18,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class VerifyotpPage {
 
   public status;
+  public otp;
+public email;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loginService: LoginProvider, private sharedService: SharedProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
   }
 
   ionViewDidLoad() {
@@ -26,17 +29,34 @@ export class VerifyotpPage {
     console.log('ionViewDidLoad VerifyotpPage');
   }
 
-  verifyOtp(){
-    this.navCtrl.push('PasswordchangePage',{
-      changePassword:"false"
+  verifyOtp() {
+    this.loginService.verifyOtp(this.otp).subscribe(res => {
+      console.log(res);
+      if (res == "verfiy otp") {
+        this.navCtrl.push('PasswordchangePage', {
+          changePassword: "false"
+        })
+      }
+      else {
+        this.sharedService.createToast('Otp not verified');
+      }
+    }, err => {
+      console.log(err);
     })
   }
 
-  sendOtp(){
-    this.status = false;
+  sendOtp() {
+   
+    this.loginService.sendOtp(this.email).subscribe(res=>{
+      console.log(res);
+      this.status = false;
+    },err=>{
+      this.sharedService.createToast("Unable to send otp");
+    })
+  
   }
 
-  resendOtp(){
+  resendOtp() {
     this.status = true;
   }
 }

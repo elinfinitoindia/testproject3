@@ -9,7 +9,7 @@ import { ListComponent } from './../../components/list/list';
 import { FabComponent } from './../../components/fab/fab';
 import { OffercardsComponent } from './../../components/offercards/offercards';
 import { Component, Output, ViewChild, EventEmitter, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, Platform, Refresher, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, Platform, Refresher, Content, Events } from 'ionic-angular';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { RefresherComponent } from './../../components/refresher/refresher';
@@ -20,7 +20,10 @@ import { NotificationProvider } from '../../providers/notification/notification'
 import { filter, map } from 'rxjs/operators';
 import { OffersProvider } from '../../providers/offers/offers';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { Network } from '@ionic-native/network';
 // import { OneSignal } from '@ionic-native/onesignal';
+
+
 /**
  * Generated class for the HomePage page.
  *
@@ -84,9 +87,11 @@ export class HomePage {
   public isFalse: Boolean = false;
   public DailyNav = 'OffercardlistPage';
   public listcards:any = [];
+  public isConnected: boolean = true;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider, private inAppBrowser: InAppBrowser) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider, private inAppBrowser: InAppBrowser , 
+    private network:Network , 
+    private ev:Events) {
     // this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
     // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
     // this.oneSignal.handleNotificationReceived().subscribe(() => {
@@ -95,25 +100,16 @@ export class HomePage {
 
     //   this.noftification.recieveNotification(this.data);
 
-    for (let i = 0; i < 300; i++) {
-      this.listcards.push( this.listcards.length );
-      
-    }
-    this.platform.registerBackButtonAction(() => {
-      // Catches the active view
-      // Checks if can go back before show up the alert
-      if (this.counter == 0) {
-        this.counter++;
-        this.sharedService.createToast('Press back again to exit the applicaiton')
-        setTimeout(() => { this.counter = 0 }, 3000)
-      } else {
-        // console.log("exitapp");
-        this.appMinimize.minimize();
-      }
-    }, 1);
+    // var status = localStorage.getItem('nT');
+    // console.log(status);
+    this.sharedService.mySubject.subscribe(res => {
+      this.isConnected = res;
+    })
     
     // this.oneSignal.endInit();
   }
+
+
 
   ionViewDidLoad() {
 
@@ -196,6 +192,8 @@ export class HomePage {
  this.inAppBrowser.create("https://google.com","_self");
     
   }
+
+  
 
 
 }

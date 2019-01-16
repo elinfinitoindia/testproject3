@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {SharedProvider} from '../../providers/shared/shared';
 /**
  * Generated class for the FabComponent component.
  *
@@ -14,9 +14,15 @@ export class FabComponent {
 
   text: string;
 
-  constructor() {
+  constructor(private sharedService: SharedProvider) {
     console.log('Hello FabComponent Component');
     this.text = 'Hello World';
   }
+
+  // share(){
+  //   this.sharedService.shareApp()
+  // }
+
+
 
 }

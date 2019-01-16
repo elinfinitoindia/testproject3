@@ -7,7 +7,7 @@
 
 <ion-content #content>
 
-  <button ion-button (click)="visit()">visit website</button>
+  <button ion-button (click)="visit()" *ngIf="isConnected">visit website</button>
   
   <adslider></adslider>
 

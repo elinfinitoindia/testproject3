@@ -23,6 +23,10 @@ import { ErrormodalComponent } from '../components/errormodal/errormodal';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 // import { OneSignal } from '@ionic-native/onesignal';
 import { FormsModule } from '@angular/forms';
+import { PaymentsProvider } from '../providers/payments/payments';
+import { Device } from '@ionic-native/device';
+import { Network } from '@ionic-native/network';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 
 @NgModule({
@@ -63,7 +67,12 @@ import { FormsModule } from '@angular/forms';
     Toast,
     OneSignal,
     NotificationProvider,
-    InAppBrowser
+    InAppBrowser,
+    PaymentsProvider,
+    Device,
+    Network,
+    UniqueDeviceID
+    
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

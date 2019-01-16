@@ -32,10 +32,11 @@ export class OfferdetailPage implements AfterViewInit {
   public  browser;
   testRadioOpen: boolean;
   testRadioResult;
+  public errorModel;
 
 
   public options: InAppBrowserOptions = {
-    location: 'no',//Or 'no' 
+    location: 'yes',//Or 'no' 
     hidden: 'no', //Or  'yes'
     clearcache: 'yes',
     clearsessioncache: 'yes',
@@ -65,14 +66,17 @@ export class OfferdetailPage implements AfterViewInit {
     private iab: InAppBrowser,
     
   ) {
-
-    this.platform.registerBackButtonAction(() => {
-      // Catches the active view
-      // Checks if can go back before show up the alert
-     
-     this.navCtrl.pop();
-    },2
-    );
+    // this.platform.registerBackButtonAction(() => {
+    //   console.log(this.navCtrl
+    //                    .canGoBack());
+    //   // if there is child page, we pop that page
+    //   if (this.navCtrl
+    //            .canGoBack()) {
+    //     this.navCtrl.pop();
+    //   }
+    // },101
+    // )
+  
   }
 
   ngOnInit(): void {
@@ -170,7 +174,14 @@ export class OfferdetailPage implements AfterViewInit {
       handler: data => {
         this.testRadioOpen = false;
         this.testRadioResult = data;
-        console.log(this.testRadioResult);
+        this.errorModel = {
+          'ID':this.id,
+          'Data': data
+        }
+        console.log(this.errorModel);
+      this.sharedService.sendErrorReports(this.errorModel).subscribe(res=>{
+        console.log(res);
+      })
       }
     });
     alert.present();

@@ -21,6 +21,10 @@ export class LoginComponent {
   }
 
   loginWithEmail() {
+    this.loginService.loginWithEmail(this.login).subscribe(res=>{
+  
+    console.log(res);
+    })
   this.loginStatus.emit('true');
     // this.loginService.loginWithEmail(this.login).subscribe(res=>{
     //   console.log(res);

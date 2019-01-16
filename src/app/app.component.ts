@@ -5,7 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppMinimize } from '@ionic-native/app-minimize';
 import { SharedProvider } from '../providers/shared/shared';
 import {TabsPage} from '../pages/tabs/tabs';
-
+import {Device} from '@ionic-native/device';
+import { Network } from '@ionic-native/network';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
+import { App } from 'ionic-angular';
 
 // this is the definition used for navigating between pages 
 // and also used to allow tab as well as side menu
@@ -28,21 +31,25 @@ export class MyApp {
   // Implementation of lazy loading requires string as no component refrence is required.
   rootPage: string = "TabsPage";
   @ViewChild(Nav) nav: Nav;
-  @ViewChild(NavController) mynav: NavController;
+ 
   public counter = 0;
 
-  constructor(private platform: Platform, private appMinimize: AppMinimize, private sharedService: SharedProvider, private splashscreen: SplashScreen,
-  ) {
+  constructor(
+    private platform: Platform,
+    private appMinimize: AppMinimize,
+    private sharedService: SharedProvider,
+    private splashscreen: SplashScreen,
+    private device:Device,
+    private network:Network , 
+    private uniqueDeviceID: UniqueDeviceID,
+    public app: App)
+  {
 
     platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
-
-        console.log(this.nav.getActive());
-        console.log(this.nav.getActiveChildNavs()[0].select());
-        console.log(this.nav.getActiveChildNavs()[0]
-          .getSelected())
-        if (this.nav.canGoBack()) {
-          this.nav.pop();
+        let nav = app.getActiveNavs()[0];
+        if (nav.canGoBack()) {
+          nav.pop();
         }
         else if (this.nav.getActiveChildNavs()[0]
           .getSelected().root === 'HomePage') {
@@ -51,12 +58,11 @@ export class MyApp {
             this.sharedService.createToast('Press back again to exit the applicaiton')
             setTimeout(() => { this.counter = 0 }, 3000)
           } else {
-            // console.log("exitapp");
             this.appMinimize.minimize();
           }
         }
         else {
-          this.nav.setRoot('tabs-page');
+          this.nav.setRoot('TabsPage');
         }
       }, 100);
     });
@@ -78,6 +84,21 @@ export class MyApp {
 
       this.pages.push(a);
     }
+
+    // stop connect watch
+    
+    console.log(this.device.uuid);
+    console.log(this.device.model);
+    console.log(this.device.manufacturer);
+
+    this.sharedService.onConnect();
+    this.sharedService.onDisconnect();
+    var status = localStorage.getItem('nT');
+    console.log(status);
+    this.uniqueDeviceID.get()
+      .then((uuid: any) => console.log(uuid))
+      .catch((error: any) => console.log(error));
+
   }
 
   // the pages that will show tabs require tabcomponent.
