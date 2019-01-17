@@ -66,22 +66,10 @@ export class OfferdetailPage implements AfterViewInit {
     private iab: InAppBrowser,
     
   ) {
-    // this.platform.registerBackButtonAction(() => {
-    //   console.log(this.navCtrl
-    //                    .canGoBack());
-    //   // if there is child page, we pop that page
-    //   if (this.navCtrl
-    //            .canGoBack()) {
-    //     this.navCtrl.pop();
-    //   }
-    // },101
-    // )
-  
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+
   }
 
   ionViewDidLoad() {
@@ -98,21 +86,6 @@ export class OfferdetailPage implements AfterViewInit {
   ionViewDidEnter() {
     var coupon = "coupon";
 
-    // this.clipboard.copy(coupon).then(res => {
-    // })
-
-    // let alert = this.alertController.create({
-    //   title: 'Coupon Copied',
-    //   message: 'Visit the Site',
-    //   buttons: [
-    //     {
-    //       text: 'Visit',
-    //       handler: () => {
-    //         console.log('Buy clicked');
-    //       }
-    //     }
-    //   ]
-    // });
     let alert = this.alertController.create({
       title: "Coupon Copied",
       subTitle: "Visit the website for the deal",

@@ -1,33 +1,28 @@
 <ion-row class="mt5">
   <ion-col col-12 text-left>
     <p>Account Balance:</p>
-    <h3 style="color:#FF6700">2500</h3>
+    <h3 style="color:#FF6700">{{redeem.Balance}}</h3>
   </ion-col>
 
   <ion-col col-12>
     <ion-row>
-      <ion-col col-12> <h3 style="color:#FF6700">Redeem</h3> </ion-col>
+      <ion-col col-12>
+        <h3 style="color:#FF6700">Redeem</h3>
+      </ion-col>
     </ion-row>
     <ion-row text-center>
       <ion-col col-10 offset-1>
-        <form (ngSubmit)="logForm()">
+        <form #redeemForm="ngForm">
           <ion-item>
             <ion-icon name="call"></ion-icon>
             <ion-label stacked>Mobile Number</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="redeem.PhoneNo" name="PhoneNo"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label stacked>Amount</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="redeem.Amount" name="Amount"></ion-input>
           </ion-item>
-          <button
-            ion-button
-            type="submit"
-            block
-            color="theme"
-            class="submitbutton"
-            style="color:#FF6700;background-color: white"
-          >
+          <button ion-button type="submit" block color="theme" class="submitbutton" (click)="redeemRequest()" [disabled]= "redeemForm.invalid">
             Redeem
           </button>
         </form>
@@ -41,5 +36,4 @@
     <ion-col col-12 text-center>
       <span> Why not share Share it ?</span>
     </ion-col>
-  </ion-row> 
-
+  </ion-row>

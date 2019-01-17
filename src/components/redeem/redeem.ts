@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Redeem } from '../../models/redeem';
 /**
  * Generated class for the RedeemComponent component.
  *
@@ -13,10 +13,16 @@ import { Component } from '@angular/core';
 export class RedeemComponent {
 
   text: string;
+  public redeem;
 
   constructor() {
     console.log('Hello RedeemComponent Component');
     this.text = 'Hello World';
+    this.redeem = new Redeem();
+  }
+
+  redeemRequest() {
+    console.log(this.redeem);
   }
 
 }

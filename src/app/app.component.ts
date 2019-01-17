@@ -86,19 +86,13 @@ export class MyApp {
     }
 
     // stop connect watch
-    
-    console.log(this.device.uuid);
-    console.log(this.device.model);
-    console.log(this.device.manufacturer);
-
-    this.sharedService.onConnect();
-    this.sharedService.onDisconnect();
-    var status = localStorage.getItem('nT');
-    console.log(status);
     this.uniqueDeviceID.get()
-      .then((uuid: any) => console.log(uuid))
-      .catch((error: any) => console.log(error));
-
+        .then((uuid: any) => {
+          localStorage.setItem('UUID', uuid);
+        })
+        .catch(err => {
+          console.log(err);
+        })
   }
 
   // the pages that will show tabs require tabcomponent.

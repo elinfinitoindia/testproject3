@@ -21,27 +21,8 @@ import { filter, map } from 'rxjs/operators';
 import { OffersProvider } from '../../providers/offers/offers';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
+import { Observable } from 'rxjs/Observable';
 // import { OneSignal } from '@ionic-native/onesignal';
-
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-export class Brand {
-  Name: String;
-  Logo: String
-}
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Origin': '*'
-  })
-}
-
 
 
 @IonicPage()
@@ -79,7 +60,7 @@ export class HomePage {
   public data;
   public counter =0;
   public items: any = [];
-  public brands: any = [];
+  public brands;
   public category: any = [];
   public stores: any = [];
   public offers;
@@ -99,9 +80,6 @@ export class HomePage {
     // });
 
     //   this.noftification.recieveNotification(this.data);
-
-    // var status = localStorage.getItem('nT');
-    // console.log(status);
     this.sharedService.mySubject.subscribe(res => {
       this.isConnected = res;
     })
@@ -165,32 +143,13 @@ export class HomePage {
 
   }
 
-  login() {
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
 
-    this.navCtrl.push('OffercardlistPage');
-    // this.loginservice.login(a=>{
-    //   this.data = a;
-    //   this.sharedService.setToken(this.data.accessToken);
-    // });
-  }
-
-  logOut() {
-    this.googlePlus.logout()
-      .then(res => {
-        this.sharedService.clearToken();
-      })
-      .catch(err => console.error(err));
-  }
-
-  doRefresh() {
-    alert('hii');
-  }
-
-  visit(){
-    // const browser = window.open('https://ionicframework.com/');
-    // console.log(browser);
- this.inAppBrowser.create("https://google.com","_self");
-    
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
   

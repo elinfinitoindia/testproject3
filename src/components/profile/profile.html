@@ -7,88 +7,36 @@
   </ion-col>
 </ion-row>
 <ion-row text-center>
-  <!-- <ion-col col-10 offset-1 text-right>
-                <span>
-                  <button ion-button small color="theme" (click) = "editDetails()" *ngIf = "btnStatus">Edit</button>
-                  <button ion-button small color="theme" (click) = "saveDetails()" *ngIf = "!btnStatus">Save</button>
-                </span>
-              </ion-col> -->
-  <!-- <ion-col col-10 offset-1>
-        <ion-item>
-          <ion-label stacked>Name</ion-label>
-          <ion-input type="text" [disabled]="noteditable"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-10 offset-1>
-        <ion-item>
-          <ion-label stacked>Email</ion-label>
-          <ion-input type="email" [disabled]="noteditable"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-10 offset-1>
-        <ion-item>
-          <ion-label stacked>Mobile Number</ion-label>
-          <ion-input type="text" [disabled]="noteditable"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-10 offset-1>
-        <ion-item>
-          <ion-label stacked>Balance</ion-label>
-          <ion-input type="number" [disabled]="true"></ion-input>
-        </ion-item>
-      </ion-col> -->
-  <!-- <ion-col col-12>
-      
-          <ion-list>
-              <ion-list-header>
-                Profile
-              </ion-list-header>
-          <ion-item>
-            <ion-label fixed>Username</ion-label>
-            <ion-input type="text" value=""></ion-input>
-          </ion-item>
-        
-          <ion-item>
-            <ion-label fixed>Password</ion-label>
-            <ion-input type="password"></ion-input>
-          </ion-item>
-        
-        </ion-list>
-    
-  </ion-col> -->
 </ion-row>
 <ion-list>
   <ion-list-header style="    margin-bottom: 0px !important;    font-size: 1.5em;">
     Profile
   </ion-list-header>
+  <form #profileForm="ngForm">
   <ion-item>
     <ion-label fixed>Username</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Email</ion-label>
-    <ion-input type="email" [disabled]="noteditable"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Mobile Number</ion-label>
-    <ion-input type="text" [disabled]="noteditable"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Balance</ion-label>
-    <ion-input type="number" [disabled]="true"></ion-input>
-  </ion-item>
+    <ion-input type="text" name="Username" [(ngModel)]="profile.Username" [disabled]="editFormStatus"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type="email"  name="Email" [(ngModel)]="profile.Email" [disabled]="editFormStatus"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Mobile Number</ion-label>
+      <ion-input type="text"  name="PhoneNo" [(ngModel)]="profile.PhoneNo" [disabled]="editFormStatus"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Balance</ion-label>
+      <ion-input type="number" [disabled]="true" name="Balance" [(ngModel)]="profile.Balance"></ion-input>
+    </ion-item>
+  </form>
+
 </ion-list>
 <ion-row>
   <ion-col col-6 offset-3>
-
-    <button ion-button full color="theme" (click)="saveDetails()" *ngIf="!btnStatus">Save</button>
+    <button ion-button full color="theme" (click)="saveDetail()" *ngIf="btnStatus" [disabled]="profileForm.invalid">Save</button>
   </ion-col>
 </ion-row>
-<!-- <ion-row>
-      <ion-col col-10 offset-1>
-        <button ion-button full>Logout</button>
-      </ion-col>
-    </ion-row> -->
 
 <ion-list>
   <ion-list-header style="margin-bottom: 0px !important;font-size: 1.5em;">

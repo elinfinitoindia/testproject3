@@ -5,15 +5,17 @@
           <span style="color:orangered" (click)="ViewAll()">View All</span>
       </ion-col>
     </ion-row>
-
-    <ion-item no-lines class="paddingleft">
       <ion-item no-lines class="paddingleft">
-        <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer" >
+        <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer" *ngIf="items; else loading">
           <ion-card class="scroll-item" id="largecard" (click)="getList(item);" *ngFor = "let item of items">
             <img src="../../assets/ajio edited.jpg" class="largecardimg" />
           </ion-card>
         </ion-scroll>
+        <ng-template #loading>
+          dfjghfjkdghjkh
+        
+        </ng-template>
       </ion-item>
-    </ion-item>
-  </ion-col>
+  
+    </ion-col>
 </ion-row>

@@ -6,17 +6,21 @@
 </ion-header>
 
 <ion-content #content>
-
-  <button ion-button (click)="visit()" *ngIf="isConnected">visit website</button>
-  
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
   <adslider></adslider>
 
   <h1 class="text-center" (click)="login()">Shop on Stores</h1>
   <offercards [lists]="brands" [type]="'Brands'"></offercards> 
   <adscard></adscard>
 
-  <h1 class="text-center">Offers by Brands</h1>
-  <brandcards [navdata]="'BrandsPage'" [type]="'Brands'" [view]=isTrue [isDeal]=isFalse [items]="brands"></brandcards>
+ 
+<h1 class="text-center">Offers by Brands</h1>
+<brandcards [navdata]="'BrandsPage'" [type]="'Brands'" [view]=isTrue [isDeal]=isFalse [items]="brands"></brandcards>
+
 
   <ng-template [ngIf]="category">
     <h1 class="text-center">Offers by Categories</h1>

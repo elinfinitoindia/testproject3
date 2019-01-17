@@ -5,15 +5,18 @@
         <span style="color:orangered" (click)="ViewAll()">View All</span>
       </ion-col>
     </ion-row>
-    <ion-item no-lines class="paddingleft">
+   
       <ion-item no-lines class="paddingleft">
-        <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer">
+        <ion-scroll scrollX="true" scroll-avatar id="largecardcontainer" *ngIf="items; else loading">
           <ion-card class="scroll-item" id="largecard" (click)="getList(item);" *ngFor="let item of items">
             <img src="../../assets/ss1.jpg" />
             <div class="card-title">{{item.name | titlecase}}</div>
           </ion-card>
         </ion-scroll>
-      </ion-item>
+    <ng-template #loading>
+    <ion-spinner name="bubbles"></ion-spinner>
+    </ng-template>
+  
     </ion-item>
   </ion-col>
 </ion-row>
