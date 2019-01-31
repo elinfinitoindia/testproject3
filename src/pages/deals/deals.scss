@@ -3,4 +3,18 @@ page-deals {
         color: white;
         background-color: #ff6700;
     }
+    .icn {
+        font-size: 2.4rem;
     }
+    .btnBottom {
+            
+            position: fixed;
+            bottom: 2%;
+            right: 2%;
+        
+    }
+
+    .active{
+        display:none;
+    }
+}

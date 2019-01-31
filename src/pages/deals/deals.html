@@ -63,9 +63,24 @@
   <brandcards></brandcards>
 
   <!-- button for scroll to top event -->
-  <ion-fab right bottom>
-    <button ion-fab color="light" *ngIf="showBtn"  (click)="scrollToTop()">
-      <ion-icon name="md-arrow-dropup"></ion-icon>
-    </button>
-  </ion-fab>
+
+<!-- <ion-fab right bottom>
+  <button ion-fab color="light" (click)="scrollToTop()">
+    <ion-icon name="md-arrow-dropup"></ion-icon>
+  </button>
+</ion-fab> -->
+
+
+<ng-template *ngIf="showBtn">
+<ion-fab right bottom >
+  <button ion-fab color="light" (click)="scrollToTop()">
+    <ion-icon name="md-arrow-dropup"></ion-icon>
+  </button>
+</ion-fab>
+</ng-template>
+  
+
+  
+
 </ion-content>
+

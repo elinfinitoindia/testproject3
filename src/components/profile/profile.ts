@@ -1,28 +1,41 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 import { Profile } from '../../models/profile';
-/**
- * Generated class for the RegisterComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+import { flyin } from '../../app/animation';
+import { LoginProvider } from '../../providers/login/login';
+
 @Component({
   selector: 'profile',
-  templateUrl: 'profile.html'
+  templateUrl: 'profile.html',
+  animations:flyin
 })
 export class ProfileComponent {
 
-  text: string;
   @Output() logout = new EventEmitter();
   public profile;
   public editFormStatus: boolean = true;
   public btnStatus: boolean = false;
+  public userid;
 
-  constructor(private navCtrl: NavController) {
-    console.log('Hello RegisterComponent Component');
-    this.text = 'Hello World';
+  constructor(private navCtrl: NavController , private loginService:LoginProvider , private navParams : NavParams) {
     this.profile = new Profile();
+    var id = localStorage.getItem('userId');
+    console.log(id);
+    
+   
+      // this.loginService.getState().subscribe((res) => {
+      //   this.userid = res;
+      // })
+    
+    
+  }
+
+  ionViewDidLoad() {
+   
+    
+    // this.loginService.getUserDetails(this.userId).subscribe(res => {
+    //   this.profile = res;
+    // }) 
   }
 
   logOut() {

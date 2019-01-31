@@ -5,12 +5,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content #content>
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
-        refreshingText="Refreshing...">
-      </ion-refresher-content>
-    </ion-refresher>
+<ion-content #content  (ionScroll)="scrollHandler($event)">
+
+  <!-- top offers -->
   <adslider></adslider>
 
   <h1 class="text-center" (click)="login()">Shop on Stores</h1>
@@ -28,12 +25,15 @@
   </ng-template>
   
 
+  <!-- new launches -->
   <h1 class="text-center">New Launches</h1>
   <brandcards [items]="category" [type]="'Category'"></brandcards>
+
 
   <h1 class="text-center">Super Deal</h1>
   <squaredeal [deals]=brands></squaredeal>
 
+  <!-- todays exclusive -->
   <h1 class="text-center">Todays Exclusive</h1>
   <adscard></adscard>
 

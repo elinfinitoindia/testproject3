@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Observable } from 'rxjs/Observable';
+import { User } from '../../models/user';
+import { Subject } from 'rxjs/Subject';
 
 
 const httpOptions = {
@@ -57,8 +60,8 @@ export class LoginProvider {
     return this.http.post("http://localhost:5000/api/users", data, httpOptions);
   }
 
-  getUserDetails(){
-    
+  getUserDetails(data){
+    return this.http.post('api', data, httpOptions);
   }
 
 
@@ -79,5 +82,15 @@ export class LoginProvider {
   // Offer Click Records
   // Ads Table Record
   // 
+
+  private selectionFormatState = new Subject<any>();
+
+  setState(state: any) {
+    this.selectionFormatState.next(state);
+  }
+
+  getState(): Observable<any> {
+    return this.selectionFormatState.asObservable();
+  }
 
 }

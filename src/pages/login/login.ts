@@ -1,46 +1,50 @@
-import { Component, trigger, transition, animate, keyframes, style, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { keyframes, ViewChild, ViewContainerRef, ComponentFactoryResolver, } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides, Content } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { SharedProvider } from '../../providers/shared/shared';
+import { flyin, slideIn, flyItems, animation } from '../../app/animation'
+import { Component, AnimationTransitionEvent, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition, query, stagger } from '@angular/animations';
 
 @IonicPage()
 @Component({
   selector: "page-login",
   templateUrl: "login.html",
   animations: [
-    trigger("fadeInOut", [
-      transition(
-        ":enter", // :enter is alias to 'void => *'
-        animate(
-          "700ms ease-out",
-          keyframes([
-            style({
-              transform: "scale(0)",
-              opacity: 1
-            }),
-            style({
-              transform: "scale(1)",
-              opacity: 1
-            })
-          ])
-        )
-      ),
-      transition(":leave", [
-        // :leave is alias to '* => void'
-        animate(500, style({ opacity: 0 }))
-      ])
-    ])
+    trigger('filterAnimation', [
+      transition(':enter', [
+        query('*', [
+          style({ opacity: 0}),
+          stagger(20, [
+            animate('300ms ease-out',
+             style({ opacity: 1,})),
+          ]),
+        ])
+      ]),
+      
+      transition(':leave', [
+        query('*', [
+          animate('300ms ease-out', style({ opacity: 0 })),        
+        ])
+           
+      ]),
+    ]),
   ]
+
 })
 export class LoginPage {
+
+
   public res;
   public isLoggedIn: boolean = false;
   public btnStatus: boolean = true;
   public noteditable;
   public userDetails: any = [];
-  public title:string;
- 
+  public title: string;
+  state: string;
+  @ViewChild('content') content: Content;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -48,7 +52,9 @@ export class LoginPage {
     private sharedService: SharedProvider,
     private resolver: ComponentFactoryResolver
   ) {
-    this.noteditable = true;
+      
+        this.noteditable = true;
+
   }
 
   ionViewDidLoad() {
@@ -56,12 +62,13 @@ export class LoginPage {
     // this.isLoggedIn = this.sharedService.checkLoginStatus();
     console.log("ionViewDidLoad LoginPage");
     // this.isLoggedIn = this.sharedService.checkLoginStatus();
-    if(this.sharedService.checkLoginStatus() == 'true'){
+    if (this.sharedService.checkLoginStatus() == 'true') {
+
       this.isLoggedIn = true;
       this.title = 'Profile';
     }
-    else{
-       this.isLoggedIn = false;
+    else {
+      this.isLoggedIn = false;
       this.title = 'Login';
     }
     console.log(this.isLoggedIn);
@@ -75,7 +82,7 @@ export class LoginPage {
   }
 
   gotoRegister() {
-   
+
     this.navCtrl.push("RegisterPage");
   }
 
@@ -90,27 +97,28 @@ export class LoginPage {
   }
 
   loginWithEmail() {
-    // setting the login status in localStorage;
     this.sharedService.setLoginStatus(true);
-    
-    // this.navCtrl.setRoot('HomePage');
   }
 
   logOut($event) {
-  this.sharedService.setLoginStatus(false);
+    this.content.scrollToTop(500);
+    this.sharedService.setLoginStatus(false);
     this.sharedService.clearToken();
     this.isLoggedIn = false;
     this.title = 'Login';
-    
+
   }
   displayCounter(count) {
-   if(count == 'true'){
-  this.isLoggedIn = true;
-     this.title = 'Profile';
-  this.sharedService.setLoginStatus('true');
-   }
+    if (count == 'true') {
+      this.isLoggedIn = true;
+      this.title = 'Profile';
+      this.sharedService.setLoginStatus('true');
+    }
   }
-
-
-  
+ 
+  animationDone(event: AnimationTransitionEvent) {
+    if (event.fromState === 'visible' && event.toState === 'hidden') {
+      
+    }
+  }
 }

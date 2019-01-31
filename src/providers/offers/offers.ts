@@ -62,4 +62,8 @@ export class OffersProvider {
   public getAllDeals(){
     return this.http.get(apiUrl+'api/deals',httpOptions);
   }
+
+  getAds() {
+    return this.http.get(apiUrl);
+  }
 }

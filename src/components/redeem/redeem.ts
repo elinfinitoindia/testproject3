@@ -19,9 +19,12 @@ export class RedeemComponent {
     console.log('Hello RedeemComponent Component');
     this.text = 'Hello World';
     this.redeem = new Redeem();
+    
   }
 
   redeemRequest() {
+    this.redeem.DeviceID = localStorage.getItem('UUID');
+    this.redeem.Status = 'Pending';
     console.log(this.redeem);
   }
 

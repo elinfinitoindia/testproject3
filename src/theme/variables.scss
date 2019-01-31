@@ -29,7 +29,6 @@ $colors: (primary: #FF6701, secondary: #32db64, danger: #f53d3d, light: #f4f4f4,
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 // $toolbar-background: color($colors, primary);
-
 $text-input-md-highlight-color:#FF6700;
 $label-md-text-color-focused:#FF6700;
 $label-md-text-color:rgba(60, 60, 60, 0.7);
@@ -39,6 +38,11 @@ $radio-md-icon-width:0px;
 $radio-md-icon-height:0px;
 $radio-md-icon-border-width:0;
 $radio-md-icon-border-radius:0;
+$alert-md-title-text-color:#ff6700;
+$alert-md-message-text-color:grey !important;
+$alert-md-head-text-align:center;
+$alert-md-border-radius:10px !important;
+
 .tabs-md .tab-button[aria-selected=true] {
     color: #FF6700 !important;
 }
@@ -47,20 +51,14 @@ $radio-md-icon-border-radius:0;
     color: #FF6700 !important;
 }
 
-$toolbar-md-button-color:rgba(60,60,60,.7);
-$toolbar-md-title-text-color:rgba(60,60,60,.7);
-
+$toolbar-md-button-color:rgba(60, 60, 60, .7);
+$toolbar-md-title-text-color:rgba(60, 60, 60, .7);
 // $background-md-color:#FAFAFA;
 $fab-md-background-color:white;
 $segment-button-md-border-color-activated:white;
-
-
 $toast-width:100%;
 $toast-md-background:white;
 $toast-md-title-color:#FF6700;
-
-
-
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here

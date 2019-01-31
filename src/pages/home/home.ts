@@ -22,9 +22,11 @@ import { OffersProvider } from '../../providers/offers/offers';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { Network } from '@ionic-native/network';
 import { Observable } from 'rxjs/Observable';
+import { Cordova } from '@ionic-native/core';
 // import { OneSignal } from '@ionic-native/onesignal';
 
 
+declare var window: { KochavaTracker }
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -58,7 +60,7 @@ export class HomePage {
   @Output() slideindex = new EventEmitter();
 
   public data;
-  public counter =0;
+  public counter = 0;
   public items: any = [];
   public brands;
   public category: any = [];
@@ -67,12 +69,21 @@ export class HomePage {
   public isTrue: Boolean = true;
   public isFalse: Boolean = false;
   public DailyNav = 'OffercardlistPage';
-  public listcards:any = [];
+  public listcards: any = [];
   public isConnected: boolean = true;
+  public isRefresherEnabled: boolean = true;
+  public topOffers: any = [];
+  public flashSale: any = [];
+  public newLaunches: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider, private inAppBrowser: InAppBrowser , 
-    private network:Network , 
-    private ev:Events) {
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public googlePlus: GooglePlus, private loginservice: LoginProvider, public sharedService: SharedProvider, private socialSharing: SocialSharing, private platform: Platform, private appMinimize: AppMinimize, private httpClient: HttpClient, private oneSignal: OneSignal, private noftification: NotificationProvider, private offerProvider: OffersProvider, private inAppBrowser: InAppBrowser,
+    private network: Network,
+    private ev: Events) {
+
+    console.dir(window)
+
     // this.oneSignal.startInit('c45b66d2-dbfc-4201-a829-f3bd12086360', '751321163972');
     // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
     // this.oneSignal.handleNotificationReceived().subscribe(() => {
@@ -83,7 +94,13 @@ export class HomePage {
     this.sharedService.mySubject.subscribe(res => {
       this.isConnected = res;
     })
-    
+    // var configMapObject = {}
+    // configMapObject[window.KochavaTracker.PARAM_ANDROID_APP_GUID_STRING_KEY] = "kodemo-rgtlsve";
+
+    // window.KochavaTracker.configure(configMapObject);
+
+
+
     // this.oneSignal.endInit();
   }
 
@@ -91,39 +108,67 @@ export class HomePage {
 
   ionViewDidLoad() {
 
-    this.sharedService.showLoader();
-    this.offerProvider.getBrands().pipe(
-      
-      map((response:any) => {
-        let y = response.filter(x => x.isFav==true)
-        console.log(y);
-        return y;
-    }))
-    .subscribe(res => {
-            this.brands = res;
-            console.log(this.brands);
-      
-    },err=>{
-      
-    // this.sharedService.createToast('Unable to load Brands')
-    });
+    // checking if internet is onn
 
-    this.offerProvider.getCategories().pipe(
-      map((response:any) => {
-        let y = response.filter(x => x.isFav==true)
-        console.log(y);
-        return y;
-    })).
-      subscribe(res => {
-        this.category = res;
-        console.log(this.category);
-        this.sharedService.hideLoader();
-      },err=>{
-        // this.sharedService.createToast('Unable to load categories');
+    if (this.isConnected == true) {
+      this.sharedService.showLoader();
+
+      // get the brands 
+      this.offerProvider.getBrands().pipe(
+
+        map((response: any) => {
+          let y = response.filter(x => x.isFav == true)
+          console.log(y);
+          return y;
+        }))
+        .subscribe(res => {
+          this.brands = res;
+          console.log(this.brands);
+
+        }, err => {
+
+          // this.sharedService.createToast('Unable to load Brands')
+        });
+
+      
+      // get categories 
+
+      this.offerProvider.getCategories().pipe(
+        map((response: any) => {
+          let y = response.filter(x => x.isFav == true)
+          console.log(y);
+          return y;
+        })).
+        subscribe(res => {
+          this.category = res;
+          console.log(this.category);
           this.sharedService.hideLoader();
-      }
-
+        }, err => {
+          // this.sharedService.createToast('Unable to load categories');
+          this.sharedService.hideLoader();
+        }
       );
+      
+      // get ads 
+      this.offerProvider.getAds().pipe(
+        map((res: any) => {
+          let y = res.filter(x => x.Category == "TO");
+          console.log(y);
+          return y;
+        })).
+        subscribe(res => {
+          this.topOffers = res;
+        }, err => {
+          this.sharedService.createToast("");
+        });
+
+    }
+
+    else {
+      this.sharedService.createToast('Please connect to internet')
+    }
+
+
     console.log('ionViewDidLoad HomePage');
     // const browser = this.inAppBrowser.create('https://www.hubfly.com', '_self', { location: 'no' });
   }
@@ -152,7 +197,16 @@ export class HomePage {
     }, 2000);
   }
 
-  
 
-
+  scrollHandler(event) {
+    if (event.scrollTop < 10) {
+      console.log('enabled button');
+      if (this.isRefresherEnabled == false)
+        this.isRefresherEnabled = true;
+    }
+    else {
+      console.log('disabled button');
+      this.isRefresherEnabled = false;
+    }
+  }
 }

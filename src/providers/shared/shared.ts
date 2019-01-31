@@ -112,4 +112,8 @@ export class SharedProvider {
     this.createToast(`You are now ${connectionState} via ${networkType}`);
 
   }
+
+  sendClicks(data) {
+    return this.http.post('api', data);
+  }
 }

@@ -92,3 +92,25 @@
     background: white !important;
     color: #ff6700 !important;
 }
+
+.alert-md .alert-title {
+    font-size: 22px;
+    color: #ff6700 !important;
+    text-align: center;
+}
+
+.alert-md .alert-sub-title {
+    text-align: center;
+}
+
+.alert-md .alert-message {
+    max-height: 240px;
+    font-size: 15px;
+    overflow-y: hidden !important;
+}
+
+.alert-md .alert-button-inner {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}

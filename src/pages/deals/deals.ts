@@ -82,6 +82,7 @@ export class DealsPage {
 
   // scroll to top method form fab- button 
   scrollToTop(){
+    
     this.content.scrollToTop(500);
   }
   

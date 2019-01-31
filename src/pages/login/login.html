@@ -8,7 +8,7 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
-<login (loginStatus)='displayCounter($event)' *ngIf='!isLoggedIn'></login>
-<profile  (logout)='logOut($event)' *ngIf='isLoggedIn'></profile>
+<ion-content #content>
+<login (loginStatus)='displayCounter($event)' *ngIf="!isLoggedIn"  [@filterAnimation]></login>
+<profile (logout)='logOut($event)' *ngIf="isLoggedIn" [@filterAnimation]></profile>
 </ion-content>

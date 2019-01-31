@@ -71,7 +71,9 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
     PaymentsProvider,
     Device,
     Network,
-    UniqueDeviceID
+    UniqueDeviceID,
+    
+    
     
   ],
   schemas: [NO_ERRORS_SCHEMA]

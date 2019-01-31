@@ -23,17 +23,32 @@ page-offerdetail {
         font-weight: 500;
         color: blueviolet;
     }
-
-    h1{
+    h1 {
         text-align: center;
-        color:#5683FF;
+        color: #5683FF;
     }
-
-    .toolbar-background-md{
-        background:white;
-
+    .toolbar-background-md {
+        background: white;
     }
-    .tabs-md .tabbar{
-        display:none !important;
+    .tabs-md .tabbar {
+        display: none !important;
+    }
+    .alert-md .alert-title {
+        font-size: 22px;
+        color: #ff6700 !important;
+        text-align: center;
+    }
+    .alert-md .alert-sub-title {
+        text-align: center;
+    }
+    .alert-md .alert-message {
+        max-height: 240px;
+        font-size: 15px;
+        overflow-y: hidden !important;
+    }
+    .alert-md .alert-button-inner {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
     }
 }

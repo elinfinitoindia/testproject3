@@ -33,6 +33,7 @@ export class OfferdetailPage implements AfterViewInit {
   testRadioOpen: boolean;
   testRadioResult;
   public errorModel;
+  public alert;
 
 
   public options: InAppBrowserOptions = {
@@ -86,12 +87,13 @@ export class OfferdetailPage implements AfterViewInit {
   ionViewDidEnter() {
     var coupon = "coupon";
 
-    let alert = this.alertController.create({
+    this.alert = this.alertController.create({
       title: "Coupon Copied",
-      subTitle: "Visit the website for the deal",
+      message: "Visit the merchant site for the deal",
       buttons: [
         {
           text: "Visit",
+          cssClass:'centerBtn',
           handler: () => {
             this.browser = this.iab.create('http://google.com', '_self', this.options);
             this.browser.on('loadstop').subscribe(event => {
@@ -101,11 +103,11 @@ export class OfferdetailPage implements AfterViewInit {
         }
       ]
     });
-    alert.present();
+    this.alert.present();
 
     setTimeout(() => {
-      alert.dismiss();
-    }, 4000);
+      this.alert.dismiss();
+    }, 3000);
   }
 
   ngAfterViewInit() {}
@@ -151,16 +153,16 @@ export class OfferdetailPage implements AfterViewInit {
           'ID':this.id,
           'Data': data
         }
-        console.log(this.errorModel);
-      this.sharedService.sendErrorReports(this.errorModel).subscribe(res=>{
-        console.log(res);
-      })
+        this.sharedService.sendErrorReports(this.errorModel).subscribe(res => {
+          console.log(res);
+        });
+        alert.dismiss();
       }
     });
     alert.present();
+  }
 
-    setTimeout(() => {
-      alert.dismiss();
-    }, 3000);
+  ionViewWillLeave(){
+   
   }
 }
